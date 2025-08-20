@@ -820,50 +820,13 @@ elif team == 'KULA':
         default=["ASI"]
     )
 
-    def get_nearest_tuesday_thursday(today=None):
-        if today is None:
-            today = datetime.today().date()
-
-        weekday = today.weekday()
-
-        # cari selasa minggu ini & depan
-        tuesday_this_week = today - timedelta(days=(weekday - 1)) if weekday >= 1 else today + timedelta(days=(1 - weekday))
-        tuesday_next_week = tuesday_this_week + timedelta(days = 7)
-
-        # cari kamis minggu ini & depan
-        thursday_this_week = today - timedelta(days=(weekday - 3)) if weekday >= 3 else today + timedelta(days=(3 - weekday))
-        thursday_next_week = thursday_this_week + timedelta(days = 7)
-
-        # aturan khusus
-        if weekday == 1:
-            return thursday_this_week - timedelta(days=7)
-        elif weekday == 3:
-            return tuesday_next_week
-
-        # hitung jarak ke selasa & kamis terdekat
-        distance_to_tuesday = min(abs((tuesday_this_week - today).days), abs((tuesday_next_week - today).days))
-        distance_to_thursday = min(abs((thursday_this_week - today).days), abs((tuesday_next_week - today).days))
-
-        if distance_to_tuesday <= distance_to_thursday:
-            if abs((tuesday_this_week - today).days) <= abs((tuesday_next_week - today).days):
-                return tuesday_this_week
-            else:
-                return tuesday_next_week
-        else:
-            if abs((thursday_this_week - today).days) <= abs((thursday_next_week - today).days):
-                return tuesday_this_week
-            else:
-                return thursday_next_week
-    
-    default_date = get_nearest_tuesday_thursday()
-
     # Sidebar filter: Tanggal (hanya 1 tanggal)
     min_date = df_bad_survey['Conversation Start Time'].min().date()
     max_date = df_bad_survey['Conversation Start Time'].max().date()
 
     selected_date = st.sidebar.date_input(
         "Select Bad Survey & Dislike Date",
-        value=default_date,
+        value=max_date,
         min_value=min_date,
         max_value=max_date
     )
