@@ -17674,15 +17674,31 @@ Robot berikan jawaban yang salah tentang : Pinjaman tidak pakai rekening, kode :
 17384,2025-08-19,2025-08-18,Week 4,August,Yulia Sari,No Differentiated,2045215900,2-2045215900-3-1_1755533988,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
 17385,2025-08-19,2025-08-18,Week 4,August,Yulia Sari,No Differentiated,2037743499,2-2037743499-3-1_1755522788,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,2.0
 17386,2025-08-19,2025-08-18,Week 4,August,Yulia Sari,AFI,2008474128,2-2008474128-3-1_1755534251,Customer,Information Not Meet Customer Expectations,Can't pay VA MANDIRI,N/A,Bad Survey,Loan,872-1736-1737-1171,,1.0
-17387,2025-08-20,2025-08-19,Week 4,August,,,2050043476,2-2050043476-3-1_1755567284,,,,,,,,,1.0
-17388,2025-08-20,2025-08-19,Week 4,August,,,54639314,2-54639314-3-1_1755615170,,,,,,,,,2.0
-17389,2025-08-20,2025-08-19,Week 4,August,,,2025162784,2-2025162784-3-1_1755620290,,,,,,,,,1.0
-17390,2025-08-20,2025-08-19,Week 4,August,,,99696292,2-99696292-3-1_1755591635,,,,,,,,,1.0
-17391,2025-08-20,2025-08-19,Week 4,August,,,2045734094,2-2045734094-3-1_1755602692,,,,,,,,,1.0
-17392,2025-08-20,2025-08-19,Week 4,August,,,2021223907,2-2021223907-3-1_1755612830,,,,,,,,,1.0
-17393,2025-08-20,2025-08-19,Week 4,August,,,104914416,2-104914416-3-1_1755574103,,,,,,,,,1.0
-17394,2025-08-20,2025-08-19,Week 4,August,,,2049330886,2-2049330886-3-1_1755621871,,,,,,,,,1.0
-17395,2025-08-20,2025-08-19,Week 4,August,,,2020796983,2-2020796983-3-1_1755586207,,,,,,,,,1.0
-17396,2025-08-20,2025-08-19,Week 4,August,,,2038428538,2-2038428538-3-1_1755586105,,,,,,,,,1.0
-17397,2025-08-20,2025-08-19,Week 4,August,,,2257413,2-2257413-3-1_1755613234,,,,,,,,,1.0
-17398,2025-08-20,2025-08-19,Week 4,August,,,2046029220,2-2046029220-3-1_1755576614,,,,,,,,,1.0
+17387,2025-08-20,2025-08-19,Week 4,August,Nurhamni Septia,No Differentiated,2050043476,2-2050043476-3-1_1755567284,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+17388,2025-08-20,2025-08-19,Week 4,August,Nurhamni Septia,ASI,2045734094,2-2045734094-3-1_1755602692,Customer,Information Not Meet Customer Expectations,"Already paid the loan bill, but it still appears",N/A,Bad Survey,Loan,289-1592-1593-959,,1.0
+17389,2025-08-20,2025-08-19,Week 4,August,Nurhamni Septia,AFI,2025162784,2-2025162784-3-1_1755620290,Customer,Information Not Meet Customer Expectations,Paylater submission failed,N/A,Bad Survey,Submission of Limit/Credit Points,289-398-555-656,,1.0
+17390,2025-08-20,2025-08-19,Week 4,August,Yulia Sari,ASI,104914416,2-104914416-3-1_1755574103,Customer,Information Not Meet Customer Expectations,"Already paid the loan bill, but it still appears",N/A,Bad Survey,Loan,289-1592-1593-959,,1.0
+17391,2025-08-20,2025-08-19,Week 4,August,Nurhamni Septia,ASI,99696292,2-99696292-3-1_1755591635,Customer,Information Not Meet Customer Expectations,Can't pay loan bills via BCA,N/A,Bad Survey,Loan,289-1770-1771-1188,,1.0
+17392,2025-08-20,2025-08-19,Week 4,August,Nurhamni Septia,No Differentiated,2021223907,2-2021223907-3-1_1755612830,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+17393,2025-08-20,2025-08-19,Week 4,August,Nurhamni Septia,ASI,54639314,2-54639314-3-1_1755615170,Customer,Information Not Meet Customer Expectations,Cannot apply for a loan,N/A,Bad Survey,Loan,289-369-526-777,,2.0
+17394,2025-08-20,2025-08-19,Week 4,August,Yulia Sari,No Differentiated,2049330886,2-2049330886-3-1_1755621871,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+17395,2025-08-20,2025-08-19,Week 4,August,Yulia Sari,No Differentiated,2020796983,2-2020796983-3-1_1755586207,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+17396,2025-08-20,2025-08-19,Week 4,August,Yulia Sari,ASI,2257413,2-2257413-3-1_1755613234,Customer,Information Not Meet Customer Expectations,How to pay a loan bill,N/A,Bad Survey,Loan,289-419-576-751,,1.0
+17397,2025-08-20,2025-08-19,Week 4,August,Yulia Sari,ASI,2038428538,2-2038428538-3-1_1755586105,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289-424-581-778,,1.0
+17398,2025-08-20,2025-08-19,Week 4,August,Yulia Sari,ASI,2046029220,2-2046029220-3-1_1755576614,Customer,Information Not Meet Customer Expectations,Loan status has not been successful,N/A,Bad Survey,Loan,289-374-531-610,,1.0
+17399,2025-08-21,2025-08-20,Week 4,August,Yulia Sari,,2048345948,2-2048345948-3-1_1755629764,,,,,Bad Survey,,,,1.0
+17400,2025-08-21,2025-08-20,Week 4,August,Yulia Sari,,2046942298,2-2046942298-3-1_1755648291,,,,,Bad Survey,,,,1.0
+17401,2025-08-21,2025-08-20,Week 4,August,Yulia Sari,,23848054,2-23848054-3-1_1755656159,,,,,Bad Survey,,,,2.0
+17402,2025-08-21,2025-08-20,Week 4,August,Yulia Sari,,2019739794,2-2019739794-3-1_1755657898,,,,,Bad Survey,,,,2.0
+17403,2025-08-21,2025-08-20,Week 4,August,Yulia Sari,,2037390357,2-2037390357-3-1_1755658730,,,,,Bad Survey,,,,1.0
+17404,2025-08-21,2025-08-20,Week 4,August,Yulia Sari,,2040646786,2-2040646786-3-1_1755661455,,,,,Bad Survey,,,,1.0
+17405,2025-08-21,2025-08-20,Week 4,August,Yulia Sari,,2042041390,2-2042041390-3-1_1755662822,,,,,Bad Survey,,,,1.0
+17406,2025-08-21,2025-08-20,Week 4,August,Yulia Sari,,2047041726,2-2047041726-3-1_1755665324,,,,,Bad Survey,,,,1.0
+17407,2025-08-21,2025-08-20,Week 4,August,Nurhamni Septia,,2043418584,2-2043418584-3-1_1755665452,,,,,Bad Survey,,,,1.0
+17408,2025-08-21,2025-08-20,Week 4,August,Nurhamni Septia,,90834420,2-90834420-3-1_1755666889,,,,,Bad Survey,,,,1.0
+17409,2025-08-21,2025-08-20,Week 4,August,Nurhamni Septia,,122717460,2-122717460-3-1_1755671175,,,,,Bad Survey,,,,1.0
+17410,2025-08-21,2025-08-20,Week 4,August,Nurhamni Septia,,2009854527,2-2009854527-3-1_1755674691,,,,,Bad Survey,,,,1.0
+17411,2025-08-21,2025-08-20,Week 4,August,Nurhamni Septia,,2050096034,2-2050096034-3-1_1755677718,,,,,Bad Survey,,,,1.0
+17412,2025-08-21,2025-08-20,Week 4,August,Nurhamni Septia,,2007092829,2-2007092829-3-1_1755678817,,,,,Bad Survey,,,,1.0
+17413,2025-08-21,2025-08-20,Week 4,August,Nurhamni Septia,,2035698676,2-2035698676-3-1_1755680050,,,,,Bad Survey,,,,1.0
+17414,2025-08-21,2025-08-20,Week 4,August,Nurhamni Septia,,628031,2-628031-3-1_1755689915,,,,,Bad Survey,,,,2.0
