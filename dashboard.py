@@ -646,7 +646,7 @@ if team == 'QC':
                 ("Kejelasan Suara", "Text Awal Kejelasan Suara", "Kejelasan Suara"),
                 ("Suara Lain", "Text Awal Suara Lain", "Suara Lain"),
                 ("Kelengkapan Rekaman", "Text Awal Kelengkapan Rekaman", "Kelengkapan Rekaman"),
-                ("Revisi Teks", "Text Awal Revisi Text", "Revisi Teks")
+                ("Revisi Teks", "Text Awal Revisi Text", "Teks")
             ]
 
             for final_col, awal_col, label in mapping:
@@ -654,7 +654,7 @@ if team == 'QC':
                 hasil = str(row[final_col]).strip()
 
                 if text_awal:
-                    if label == "Revisi Teks" and hasil:
+                    if label == "Teks" and hasil:
                         hasil_diff = highlight_diff_words(text_awal, hasil)
                         hasil_markdown = f"**{label}:** {text_awal}  \n**Diubah:** <span>{hasil_diff}</span>  \n"
                         sections.append(hasil_markdown)
