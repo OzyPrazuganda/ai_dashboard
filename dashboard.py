@@ -22,7 +22,7 @@ CURRENT_THEME = "light"
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
 
-team = st.sidebar.radio('Team', ['QC', 'KULA'])
+team = st.sidebar.radio('Team', ['KULA', 'QC'])
 
 if team == 'QC':
     st.sidebar.header("Adjust Data")
@@ -723,6 +723,7 @@ if team == 'QC':
 
 elif team == 'KULA':
     # st.markdown('#####')
+
     page = st.sidebar.selectbox("Pages", ['Dashboard', 'Chatbot'])
 
     if page == 'Dashboard':
@@ -959,7 +960,7 @@ elif team == 'KULA':
             ))
 
             fig.update_layout(
-                yaxis=dict(title=None),
+                yaxis=dict(title=None, range=[100,700]),
                 legend=dict(
                     orientation="v",
                     yanchor="top",
