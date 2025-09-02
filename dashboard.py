@@ -10,7 +10,7 @@ import datetime
 import difflib
 import json
 
-from backend.kula.chatbot_optimized import ChatbotOptimized
+# from backend.kula.chatbot_optimized import ChatbotOptimized
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -160,7 +160,7 @@ if team == 'QC':
                     st.markdown('</div>', unsafe_allow_html=True)
 
         st.markdown(
-            "<h5 style='text-align: center;'>Current AI Accuracy: 92.16%</h5>",
+            "<h5 style='text-align: center;'>Current AI Accuracy: 98.99%</h5>",
             unsafe_allow_html=True
             )
 

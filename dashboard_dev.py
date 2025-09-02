@@ -22,7 +22,7 @@ CURRENT_THEME = "light"
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
 
-team = st.sidebar.radio('Team', ['KULA', 'QC'])
+team = st.sidebar.radio('Team', ['KULA'])
 
 if team == 'KULA':
     # st.markdown('#####')
