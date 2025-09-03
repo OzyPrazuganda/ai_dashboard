@@ -22,6 +22,31 @@ CURRENT_THEME = "light"
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
 
+# The Function
+def aggregate_by_granularity(df, date_col, granularity, agg_dict=None):
+    df = df.copy()
+    df[date_col] = pd.to_datetime(df[date_col])
+    
+    if granularity == 'Daily':
+        df['Period'] = df[date_col].dt.date
+    
+    elif granularity == 'Weekly':
+        df['Period'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
+    
+    elif granularity == 'Monthly':
+        df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
+    
+    else:
+        df['Period'] = df[date_col]
+
+    # Apply aggregation
+    if agg_dict:
+        df = df.groupby('Period').agg(agg_dict).reset_index()
+    else:
+        df = df.groupby('Period').mean().reset_index()
+    
+    return df.rename(columns={'Period': 'Date'})
+
 team = st.sidebar.radio('Team', ['KULA'])
 
 if team == 'KULA':
@@ -65,6 +90,8 @@ if team == 'KULA':
             filtered_df = df_ratio[(df_ratio['Date'] >= pd.to_datetime(start)) & (df_ratio['Date'] <= pd.to_datetime(end))]
         else:
             filtered_df = df_ratio.copy()
+        
+        filtered_df = aggregate_by_granularity(filtered_df, 'Date', granularity, {'Robot Success ratio': 'mean'})
 
         # point on line
         fig = px.line(
@@ -94,7 +121,7 @@ if team == 'KULA':
 
         # Chart 2: CSAT Robot
 
-        df_csat = pd.read_csv('dataset_kula/csat.csv')
+        df_csat = pd.read_csv('dataset_kula/csat_takeout.csv')
         
         df_csat['Date'] = pd.to_datetime(df_csat['Date'])
 
@@ -104,26 +131,39 @@ if team == 'KULA':
         else:
             filtered_df = df_csat.copy()
 
-        fig = px.line(
-            filtered_df.sort_values('Date'),
-            x='Date',
-            y='CSAT',
-            title='CSAT Robot 机器人用户满意度',
-            markers=True,
-            text='CSAT'
-        )
+        fig = go.Figure()
 
-        fig.update_traces(
-            textposition='top center',
-            texttemplate='%{text:.2f}'
-        )
+        fig.add_trace(go.Scatter(
+            x=filtered_df['Date'],
+            y=filtered_df['CSAT [Before]'],
+            mode='lines+markers+text',
+            name='Before take out',
+            text=filtered_df['CSAT [Before]'],
+            textposition='top center'
+        ))
+
+        fig.add_trace(go.Scatter(
+            x=filtered_df['Date'],
+            y=filtered_df['CSAT [After]'],
+            mode='lines+markers+text',
+            name='After take out',
+            line=dict(color='red'),
+            text=filtered_df['CSAT [After]'],
+            textposition='top center'
+        ))
 
         fig.update_layout(
-            xaxis_title='',
+            title='CSAT Robot 机器人用户满意度',
             yaxis_title='CSAT',
-            yaxis_ticksuffix='',
             yaxis=dict(range=[1,5]),
-            template='plotly_white'
+            legend=dict(
+                orientation='v',
+                yanchor='top',
+                y=1.1,
+                xanchor='right',
+                x=1,
+                title=None
+            )
         )
 
         st.plotly_chart(fig, use_container_width=True)
@@ -211,6 +251,12 @@ if team == 'KULA':
                     (df_like_dislike['Date'] <= pd.to_datetime(end))
                 ]
 
+            # Filter company
+            if company_filter:
+                df_like_dislike = df_like_dislike[
+                    df_like_dislike['Manual Check [business]'].isin(company_filter)
+                ]
+
             # Agregasi total Like & Dislike per hari
             df_daily = df_like_dislike.groupby('Date').agg(
                 Like=('solved_num', 'sum'),
@@ -273,7 +319,7 @@ if team == 'KULA':
             ))
 
             fig.update_layout(
-                yaxis=dict(title=None, range=[100,700]),
+                yaxis=dict(title=None, range=[100,800]),
                 legend=dict(
                     orientation="v",
                     yanchor="top",

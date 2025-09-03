@@ -160,7 +160,7 @@ if team == 'QC':
                     st.markdown('</div>', unsafe_allow_html=True)
 
         st.markdown(
-            "<h5 style='text-align: center;'>Current AI Accuracy: 98.99%</h5>",
+            "<h5 style='text-align: center;'>Current AI Accuracy: 98.21%</h5>",
             unsafe_allow_html=True
             )
 
@@ -781,7 +781,7 @@ elif team == 'KULA':
 
         # Chart 2: CSAT Robot
 
-        df_csat = pd.read_csv('dataset_kula/csat.csv')
+        df_csat = pd.read_csv('dataset_kula/csat_takeout.csv')
         
         df_csat['Date'] = pd.to_datetime(df_csat['Date'])
 
@@ -791,26 +791,39 @@ elif team == 'KULA':
         else:
             filtered_df = df_csat.copy()
 
-        fig = px.line(
-            filtered_df.sort_values('Date'),
-            x='Date',
-            y='CSAT',
-            title='CSAT Robot 机器人用户满意度',
-            markers=True,
-            text='CSAT'
-        )
+        fig = go.Figure()
 
-        fig.update_traces(
-            textposition='top center',
-            texttemplate='%{text:.2f}'
-        )
+        fig.add_trace(go.Scatter(
+            x=filtered_df['Date'],
+            y=filtered_df['CSAT [Before]'],
+            mode='lines+markers+text',
+            name='Before take out',
+            text=filtered_df['CSAT [Before]'],
+            textposition='top center'
+        ))
+
+        fig.add_trace(go.Scatter(
+            x=filtered_df['Date'],
+            y=filtered_df['CSAT [After]'],
+            mode='lines+markers+text',
+            name='After take out',
+            line=dict(color='red'),
+            text=filtered_df['CSAT [After]'],
+            textposition='top center'
+        ))
 
         fig.update_layout(
-            xaxis_title='',
+            title='CSAT Robot 机器人用户满意度',
             yaxis_title='CSAT',
-            yaxis_ticksuffix='',
             yaxis=dict(range=[1,5]),
-            template='plotly_white'
+            legend=dict(
+                orientation='v',
+                yanchor='top',
+                y=1.1,
+                xanchor='right',
+                x=1,
+                title=None
+            )
         )
 
         st.plotly_chart(fig, use_container_width=True)
@@ -898,6 +911,12 @@ elif team == 'KULA':
                     (df_like_dislike['Date'] <= pd.to_datetime(end))
                 ]
 
+            # Filter company
+            if company_filter:
+                df_like_dislike = df_like_dislike[
+                    df_like_dislike['Manual Check [business]'].isin(company_filter)
+                ]
+
             # Agregasi total Like & Dislike per hari
             df_daily = df_like_dislike.groupby('Date').agg(
                 Like=('solved_num', 'sum'),
@@ -960,7 +979,7 @@ elif team == 'KULA':
             ))
 
             fig.update_layout(
-                yaxis=dict(title=None, range=[100,700]),
+                yaxis=dict(title=None),
                 legend=dict(
                     orientation="v",
                     yanchor="top",
