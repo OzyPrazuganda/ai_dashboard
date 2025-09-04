@@ -122,14 +122,13 @@ if team == 'KULA':
         # Chart 2: CSAT Robot
 
         df_csat = pd.read_csv('dataset_kula/csat_takeout.csv')
-        
         df_csat['Date'] = pd.to_datetime(df_csat['Date'])
 
-        if isinstance(selected_range, tuple) and len(selected_range) == 2:
-            start, end = selected_range
-            filtered_df = df_csat[(df_csat['Date'] >= pd.to_datetime(start)) & (df_csat['Date'] <= pd.to_datetime(end))]
-        else:
-            filtered_df = df_csat.copy()
+        filtered_df = df_csat[(df_csat['Date'] >= pd.to_datetime(start)) & (df_csat['Date'] <= pd.to_datetime(end))]
+        filtered_df = aggregate_by_granularity(filtered_df, 'Date', granularity, {
+            "CSAT [Before]": 'mean',
+            "CSAT [After]": 'mean'
+        })
 
         fig = go.Figure()
 
@@ -243,25 +242,20 @@ if team == 'KULA':
             df_like_dislike = pd.read_csv('dataset_kula/kula_like_dislike.csv')
             df_like_dislike['Date'] = pd.to_datetime(df_like_dislike['Date'])
 
-            #filter data berdasarkan tanggal
-            if isinstance(selected_range, tuple) and len(selected_range) == 2:
-                start, end = selected_range
-                df_like_dislike = df_like_dislike[
-                    (df_like_dislike['Date'] >= pd.to_datetime(start)) &
-                    (df_like_dislike['Date'] <= pd.to_datetime(end))
-                ]
+            df_like_dislike = df_like_dislike[(df_like_dislike['Date'] >= pd.to_datetime(start)) & (df_like_dislike['Date'] <= pd.to_datetime(end))]
+            df_daily = aggregate_by_granularity(df_like_dislike, 'Date', granularity,{
+                "solved_num": "sum",
+                "unsolved_num": "sum"
+            })
+            df_daily.rename(columns={'solved_num': 'Like', 'unsolved_num': 'Dislike'}, inplace=True)
 
-            # Filter company
-            if company_filter:
-                df_like_dislike = df_like_dislike[
-                    df_like_dislike['Manual Check [business]'].isin(company_filter)
-                ]
-
-            # Agregasi total Like & Dislike per hari
-            df_daily = df_like_dislike.groupby('Date').agg(
-                Like=('solved_num', 'sum'),
-                Dislike=('unsolved_num', 'sum')
-            ).reset_index()
+            latest_date = df_daily['Date'].max()
+            latest_data = df_daily[df_daily['Date'] == latest_date].melt(
+                id_vars = 'Date',
+                value_vars = ['Like', 'Dislike'],
+                var_name = 'Category',
+                value_name = 'Total'
+            )
             
             #The BarGraph Chart
             latest_date = df_daily['Date'].max()
