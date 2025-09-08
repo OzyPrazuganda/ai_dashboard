@@ -11,6 +11,7 @@ import difflib
 import json
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
+from utils_aggregation import aggregation_csat, aggregation_ratio, aggregate_sum
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -21,31 +22,6 @@ logging.getLogger('streamlit.runtime.scriptrunner').setLevel(logging.ERROR)
 CURRENT_THEME = "light" 
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
-
-# The Function
-def aggregate_by_granularity(df, date_col, granularity, agg_dict=None):
-    df = df.copy()
-    df[date_col] = pd.to_datetime(df[date_col])
-    
-    if granularity == 'Daily':
-        df['Period'] = df[date_col].dt.date
-    
-    elif granularity == 'Weekly':
-        df['Period'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
-    
-    elif granularity == 'Monthly':
-        df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
-    
-    else:
-        df['Period'] = df[date_col]
-
-    # Apply aggregation
-    if agg_dict:
-        df = df.groupby('Period').agg(agg_dict).reset_index()
-    else:
-        df = df.groupby('Period').mean().reset_index()
-    
-    return df.rename(columns={'Period': 'Date'})
 
 team = st.sidebar.radio('Team', ['KULA'])
 
@@ -91,7 +67,7 @@ if team == 'KULA':
         else:
             filtered_df = df_ratio.copy()
         
-        filtered_df = aggregate_by_granularity(filtered_df, 'Date', granularity, {'Robot Success ratio': 'mean'})
+        filtered_df = aggregation_ratio(filtered_df, 'Date', granularity)
 
         # point on line
         fig = px.line(
@@ -125,10 +101,7 @@ if team == 'KULA':
         df_csat['Date'] = pd.to_datetime(df_csat['Date'])
 
         filtered_df = df_csat[(df_csat['Date'] >= pd.to_datetime(start)) & (df_csat['Date'] <= pd.to_datetime(end))]
-        filtered_df = aggregate_by_granularity(filtered_df, 'Date', granularity, {
-            "CSAT [Before]": 'mean',
-            "CSAT [After]": 'mean'
-        })
+        filtered_df = aggregation_csat(filtered_df, 'Date', granularity)
 
         fig = go.Figure()
 
@@ -243,7 +216,7 @@ if team == 'KULA':
             df_like_dislike['Date'] = pd.to_datetime(df_like_dislike['Date'])
 
             df_like_dislike = df_like_dislike[(df_like_dislike['Date'] >= pd.to_datetime(start)) & (df_like_dislike['Date'] <= pd.to_datetime(end))]
-            df_daily = aggregate_by_granularity(df_like_dislike, 'Date', granularity,{
+            df_daily = aggregate_sum(df_like_dislike, 'Date', granularity,{
                 "solved_num": "sum",
                 "unsolved_num": "sum"
             })
