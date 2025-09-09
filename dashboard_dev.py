@@ -11,7 +11,7 @@ import difflib
 import json
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
-from utils_aggregation import aggregation_csat, aggregation_ratio, aggregate_sum
+from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -101,7 +101,7 @@ if team == 'KULA':
         df_csat['Date'] = pd.to_datetime(df_csat['Date'])
 
         filtered_df = df_csat[(df_csat['Date'] >= pd.to_datetime(start)) & (df_csat['Date'] <= pd.to_datetime(end))]
-        filtered_df = aggregation_csat(filtered_df, 'Date', granularity)
+        filtered_df = aggregate_csat(filtered_df, 'Date', granularity)
 
         fig = go.Figure()
 
@@ -110,7 +110,7 @@ if team == 'KULA':
             y=filtered_df['CSAT [Before]'],
             mode='lines+markers+text',
             name='Before take out',
-            text=filtered_df['CSAT [Before]'],
+            text=filtered_df['CSAT [Before]'].apply(lambda x: f"{x:.2f}"),
             textposition='top center'
         ))
 
@@ -120,7 +120,7 @@ if team == 'KULA':
             mode='lines+markers+text',
             name='After take out',
             line=dict(color='red'),
-            text=filtered_df['CSAT [After]'],
+            text=filtered_df['CSAT [After]'].apply(lambda x: f"{x:.2f}"),
             textposition='top center'
         ))
 

@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 '''
 Previous code
@@ -31,32 +32,65 @@ def aggregate_by_granularity(df, date_col, granularity, agg_dict=None):
 '''
 
 # Function to return the CSAT weekly monthly count
-def aggregation_csat(df, date_col, granularity):
+def aggregate_csat(df, date_col, granularity):
     df = df.copy()
     df[date_col] = pd.to_datetime(df[date_col])
 
+    for c in ['Total Responden', 'Total Rating', 'CSAT[Before]', 'CSAT[After]']:
+        if c in df.columns:
+            df[c] = pd.to_numeric(df[c], errors='coerce')
+
     if granularity == 'Daily':
-        df['Period'] = df['date_col'].dt.date
-        result = df.groupby('Period')[['CSAT [Before]', 'CSAT [After]']].mean().reset_index()
-    else:
-        if granularity == 'Weekly':
-            df['Period'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
-        elif granularity == 'Monthly':
-            df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
-        
+        df['Period'] = df[date_col].dt.date
         grouped = df.groupby('Period').agg({
-            'rating_before': 'sum',
-            'respondent_before': 'sum',
-            'rating_after': 'sum',
-            'respondent_after': 'sum'
-        }).reset_index()
+            'CSAT [Before]': 'mean',
+            'CSAT [After]': 'mean'
+        }).reset_index().rename(columns={'Period': 'Date'})
+        return grouped
 
-        grouped['CSAT [Before]'] = grouped['rating_before']/grouped['respondent_before']
-        grouped['CSAT [After]'] = grouped['rating_after']/grouped['respondent_after']
+    if granularity == 'Weekly':
+        df['Period'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
+    elif granularity == 'Monthly':
+        df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
+    else:
+        df['Period'] = df[date_col]
 
-        result = grouped[['Period', 'CSAT [Before]', 'CSAT [After]']]
-    return result.rename(columns={'Period': 'Date'})
+    def computer_period(g):
+        out = {}
+        #total
+        tot_rating = g['Total Rating'].sum() if 'Total Rating' in g.columns else np.nan
+        tot_resp = g['Total Responden'].sum() if 'Total Responden' in g.columns else np.nan
+        out['Total Rating'] = tot_rating
+        out['Total Responden'] = tot_resp
 
+        # CSAT [Before]
+        if 'CSAT [Before]' in g.columns:
+            if 'Total Responden' in g.columns and g['Total Responden'].sum() > 0:
+                denom = g['Total Responden'].sum()
+                numer = (g['CSAT [Before]']) * g['Total Responden'].sum()
+                out['CSAT [Before]'] = numer / denom
+            else:
+                out['CSAT [Before]'] = g['CSAT [Before]'].mean()
+        else:
+            out['CSAT [Before]'] = np.nan
+
+        # CSAT [After]
+        if 'CSAT [After]' in g.columns:
+            if 'Total Responden' in g.columns and g['Total Responden'].sum() > 0:
+                denom = g['Total Responden'].sum()
+                numer = (g['CSAT [After]']) * g['Total Responden'].sum()
+                out['CSAT [After]'] = numer / denom
+            else:
+                out['CSAT [After]'] = g['CSAT [After]'].mean()
+        else:
+            out['CSAT [After]'] = np.nan
+        
+        return pd.Series(out)
+
+    grouped = df.groupby('Period').apply(computer_period).reset_index().rename(columns={'Period': 'Date'})
+    
+    # result that will showed on the dashboard
+    return grouped[['Date', 'CSAT [Before]', 'CSAT [After]']]
 
 # Function to return the ratio weekly monthly count
 def aggregation_ratio(df, date_col, granularity):
