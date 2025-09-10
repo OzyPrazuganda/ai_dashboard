@@ -16,6 +16,8 @@ from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 from collections import defaultdict
 from datetime import datetime, timedelta
+
+from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum
 logging.getLogger('streamlit.runtime.scriptrunner').setLevel(logging.ERROR)
 
 CURRENT_THEME = "light" 
@@ -728,7 +730,17 @@ elif team == 'KULA':
 
     if page == 'Dashboard':
         
-        st.title("Dashboard KULA")
+        with st.container():
+            cols = st.columns([3.5,0.5])
+        
+            with cols[0]:
+                st.title("KULA Dashboard")
+            with cols[1]:
+                granularity = st.selectbox(
+                    '',
+                    options=['Daily', 'Weekly', 'Monthly'],
+                    index=0
+                )
 
         # Chart 1: Ratio Success Rate
         df_ratio = pd.read_csv('dataset_kula/success_ratio.csv')
@@ -752,6 +764,8 @@ elif team == 'KULA':
             filtered_df = df_ratio[(df_ratio['Date'] >= pd.to_datetime(start)) & (df_ratio['Date'] <= pd.to_datetime(end))]
         else:
             filtered_df = df_ratio.copy()
+        
+        filtered_df = aggregation_ratio(filtered_df, 'Date', granularity)
 
         # point on line
         fig = px.line(
@@ -782,14 +796,10 @@ elif team == 'KULA':
         # Chart 2: CSAT Robot
 
         df_csat = pd.read_csv('dataset_kula/csat_takeout.csv')
-        
         df_csat['Date'] = pd.to_datetime(df_csat['Date'])
 
-        if isinstance(selected_range, tuple) and len(selected_range) == 2:
-            start, end = selected_range
-            filtered_df = df_csat[(df_csat['Date'] >= pd.to_datetime(start)) & (df_csat['Date'] <= pd.to_datetime(end))]
-        else:
-            filtered_df = df_csat.copy()
+        filtered_df = df_csat[(df_csat['Date'] >= pd.to_datetime(start)) & (df_csat['Date'] <= pd.to_datetime(end))]
+        filtered_df = aggregate_csat(filtered_df, 'Date', granularity)
 
         fig = go.Figure()
 
@@ -798,7 +808,7 @@ elif team == 'KULA':
             y=filtered_df['CSAT [Before]'],
             mode='lines+markers+text',
             name='Before take out',
-            text=filtered_df['CSAT [Before]'],
+            text=filtered_df['CSAT [Before]'].apply(lambda x: f"{x:.2f}"),
             textposition='top center'
         ))
 
@@ -808,7 +818,7 @@ elif team == 'KULA':
             mode='lines+markers+text',
             name='After take out',
             line=dict(color='red'),
-            text=filtered_df['CSAT [After]'],
+            text=filtered_df['CSAT [After]'].apply(lambda x: f"{x:.2f}"),
             textposition='top center'
         ))
 
@@ -903,13 +913,7 @@ elif team == 'KULA':
             df_like_dislike = pd.read_csv('dataset_kula/kula_like_dislike.csv')
             df_like_dislike['Date'] = pd.to_datetime(df_like_dislike['Date'])
 
-            #filter data berdasarkan tanggal
-            if isinstance(selected_range, tuple) and len(selected_range) == 2:
-                start, end = selected_range
-                df_like_dislike = df_like_dislike[
-                    (df_like_dislike['Date'] >= pd.to_datetime(start)) &
-                    (df_like_dislike['Date'] <= pd.to_datetime(end))
-                ]
+            df_like_dislike = df_like_dislike[(df_like_dislike['Date'] >= pd.to_datetime(start)) & (df_like_dislike['Date'] <= pd.to_datetime(end))]
 
             # Filter company
             if company_filter:
@@ -917,11 +921,19 @@ elif team == 'KULA':
                     df_like_dislike['Manual Check [business]'].isin(company_filter)
                 ]
 
-            # Agregasi total Like & Dislike per hari
-            df_daily = df_like_dislike.groupby('Date').agg(
-                Like=('solved_num', 'sum'),
-                Dislike=('unsolved_num', 'sum')
-            ).reset_index()
+            df_daily = aggregate_sum(df_like_dislike, 'Date', granularity,{
+                "solved_num": "sum",
+                "unsolved_num": "sum"
+            })
+            df_daily.rename(columns={'solved_num': 'Like', 'unsolved_num': 'Dislike'}, inplace=True)
+
+            latest_date = df_daily['Date'].max()
+            latest_data = df_daily[df_daily['Date'] == latest_date].melt(
+                id_vars = 'Date',
+                value_vars = ['Like', 'Dislike'],
+                var_name = 'Category',
+                value_name = 'Total'
+            )
             
             #The BarGraph Chart
             latest_date = df_daily['Date'].max()
@@ -979,7 +991,7 @@ elif team == 'KULA':
             ))
 
             fig.update_layout(
-                yaxis=dict(title=None),
+                yaxis=dict(title=None, range=[100,800]),
                 legend=dict(
                     orientation="v",
                     yanchor="top",

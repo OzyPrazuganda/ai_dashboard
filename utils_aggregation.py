@@ -1,42 +1,11 @@
 import pandas as pd
 import numpy as np
 
-'''
-Previous code
-
-# The Function
-def aggregate_by_granularity(df, date_col, granularity, agg_dict=None):
-    df = df.copy()
-    df[date_col] = pd.to_datetime(df[date_col])
-    
-    if granularity == 'Daily':
-        df['Period'] = df[date_col].dt.date
-    
-    elif granularity == 'Weekly':
-        df['Period'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
-    
-    elif granularity == 'Monthly':
-        df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
-    
-    else:
-        df['Period'] = df[date_col]
-
-    # Apply aggregation
-    if agg_dict:
-        df = df.groupby('Period').agg(agg_dict).reset_index()
-    else:
-        df = df.groupby('Period').mean().reset_index()
-    
-    return df.rename(columns={'Period': 'Date'})
-
-'''
-
-# Function to return the CSAT weekly monthly count
 def aggregate_csat(df, date_col, granularity):
     df = df.copy()
     df[date_col] = pd.to_datetime(df[date_col])
 
-    for c in ['Total Responden', 'Total Rating', 'CSAT[Before]', 'CSAT[After]']:
+    for c in ['Total Responden', 'Total Rating', 'CSAT [Before]', 'CSAT [After]']:
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors='coerce')
 
@@ -55,41 +24,28 @@ def aggregate_csat(df, date_col, granularity):
     else:
         df['Period'] = df[date_col]
 
-    def computer_period(g):
+    def compute_period(g):
         out = {}
-        #total
-        tot_rating = g['Total Rating'].sum() if 'Total Rating' in g.columns else np.nan
-        tot_resp = g['Total Responden'].sum() if 'Total Responden' in g.columns else np.nan
-        out['Total Rating'] = tot_rating
-        out['Total Responden'] = tot_resp
+        # Total
+        out['Total Rating'] = g['Total Rating'].sum() if 'Total Rating' in g.columns else np.nan
+        out['Total Responden'] = g['Total Responden'].sum() if 'Total Responden' in g.columns else np.nan
 
-        # CSAT [Before]
-        if 'CSAT [Before]' in g.columns:
-            if 'Total Responden' in g.columns and g['Total Responden'].sum() > 0:
-                denom = g['Total Responden'].sum()
-                numer = (g['CSAT [Before]']) * g['Total Responden'].sum()
-                out['CSAT [Before]'] = numer / denom
-            else:
-                out['CSAT [Before]'] = g['CSAT [Before]'].mean()
+        # CSAT [Before] (weighted average)
+        if 'CSAT [Before]' in g.columns and 'Total Responden' in g.columns and g['Total Responden'].sum() > 0:
+            out['CSAT [Before]'] = (g['CSAT [Before]'] * g['Total Responden']).sum() / g['Total Responden'].sum()
         else:
-            out['CSAT [Before]'] = np.nan
+            out['CSAT [Before]'] = g['CSAT [Before]'].mean() if 'CSAT [Before]' in g.columns else np.nan
 
-        # CSAT [After]
-        if 'CSAT [After]' in g.columns:
-            if 'Total Responden' in g.columns and g['Total Responden'].sum() > 0:
-                denom = g['Total Responden'].sum()
-                numer = (g['CSAT [After]']) * g['Total Responden'].sum()
-                out['CSAT [After]'] = numer / denom
-            else:
-                out['CSAT [After]'] = g['CSAT [After]'].mean()
+        # CSAT [After] (weighted average)
+        if 'CSAT [After]' in g.columns and 'Total Responden' in g.columns and g['Total Responden'].sum() > 0:
+            out['CSAT [After]'] = (g['CSAT [After]'] * g['Total Responden']).sum() / g['Total Responden'].sum()
         else:
-            out['CSAT [After]'] = np.nan
-        
+            out['CSAT [After]'] = g['CSAT [After]'].mean() if 'CSAT [After]' in g.columns else np.nan
+
         return pd.Series(out)
 
-    grouped = df.groupby('Period').apply(computer_period).reset_index().rename(columns={'Period': 'Date'})
+    grouped = df.groupby('Period').apply(compute_period).reset_index().rename(columns={'Period': 'Date'})
     
-    # result that will showed on the dashboard
     return grouped[['Date', 'CSAT [Before]', 'CSAT [After]']]
 
 # Function to return the ratio weekly monthly count
