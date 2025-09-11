@@ -779,14 +779,26 @@ elif team == 'KULA':
 
         fig.update_traces(
             textposition="top center",
-            texttemplate='%{text:.2f}%'
+            text=[f"<span style='color:black'>{x:.2f}%" for x in filtered_df['Robot Success ratio']],
+            fill='tonexty',
+            fillcolor='rgba(0, 123, 255, 0.2)'
         )
+
+        y_min = filtered_df['Robot Success ratio'].min()
+        y_max = filtered_df['Robot Success ratio'].max()
+        x_min = filtered_df['Date'].min()
+        x_max = filtered_df['Date'].max()
+
+        y_margin = (y_max - y_min) * 0.25
 
         fig.update_layout(
             xaxis_title='',
-            yaxis_title='Success Ratio (%)',
-            yaxis_ticksuffix='%',
-            yaxis=dict(range=[60,70]),
+            xaxis=dict(range=[x_min - pd.Timedelta(days=1), x_max + pd.Timedelta(days=1)]),
+            yaxis_title='',
+            yaxis=dict(
+                range=[y_min - y_margin, y_max + y_margin],
+                ticksuffix='%'
+            ),
             template='plotly_white'
         )
 
@@ -808,8 +820,10 @@ elif team == 'KULA':
             y=filtered_df['CSAT [Before]'],
             mode='lines+markers+text',
             name='Before take out',
-            text=filtered_df['CSAT [Before]'].apply(lambda x: f"{x:.2f}"),
-            textposition='top center'
+            text=[f"<span style='color:black'>{x:.2f}" for x in filtered_df['CSAT [Before]']],
+            textposition='top center',
+            fill='tonexty',
+            fillcolor='rgba(0, 123, 255, 0.2)'
         ))
 
         fig.add_trace(go.Scatter(
@@ -818,13 +832,19 @@ elif team == 'KULA':
             mode='lines+markers+text',
             name='After take out',
             line=dict(color='red'),
-            text=filtered_df['CSAT [After]'].apply(lambda x: f"{x:.2f}"),
-            textposition='top center'
+            text=[f"<span style='color:black'>{x:.2f}" for x in filtered_df['CSAT [After]']],
+            textposition='top center',
+            fill='tonexty',
+            fillcolor='rgba(255,0,0,0.2)'
         ))
+        
+        x_min = filtered_df['Date'].min()
+        x_max = filtered_df['Date'].max()
 
         fig.update_layout(
             title='CSAT Robot 机器人用户满意度',
-            yaxis_title='CSAT',
+            xaxis=dict(range=[(x_min - pd.Timedelta(days=1)),x_max + pd.Timedelta(days=1)]),
+            yaxis_title='',
             yaxis=dict(range=[1,5]),
             legend=dict(
                 orientation='v',
@@ -852,22 +872,17 @@ elif team == 'KULA':
             default=["ASI"]
         )
 
-        # Sidebar filter: Tanggal (hanya 1 tanggal)
-        min_date = df_bad_survey['Conversation Start Time'].min().date()
-        max_date = df_bad_survey['Conversation Start Time'].max().date()
-
-        selected_date = st.sidebar.date_input(
-            "Select Bad Survey & Dislike Date",
-            value=max_date,
-            min_value=min_date,
-            max_value=max_date
-        )
-
-        # Filter berdasarkan 1 tanggal (tanpa jam)
-        selected_date = pd.to_datetime(selected_date)
-        df_bad_survey = df_bad_survey[
-            df_bad_survey['Conversation Start Time'].dt.date == selected_date.date()
-        ]
+        # Filter tanggal
+        if isinstance(selected_range, (list, tuple)) and len(selected_range) == 2:
+            start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
+            df_bad_survey = df_bad_survey[
+                df_bad_survey['Conversation Start Time'].between(start_date, end_date)
+            ]
+        else:
+            selected_date = pd.to_datetime(selected_range)
+            df_bad_survey = df_bad_survey[
+                df_bad_survey['Conversation Start Time'].dt.date == selected_date.date()
+            ]
 
         # Terapkan filter
         if company_filter:
@@ -975,8 +990,10 @@ elif team == 'KULA':
                 y=df_daily['Like'],
                 mode='lines+markers+text',
                 name='Like',
-                text=df_daily['Like'],
-                textposition='top center'
+                text=[f"<span style='color:black'>{x}" for x in df_daily['Like']],
+                textposition='top center',
+                fill='tonexty',
+                fillcolor='rgba(0, 123, 255, 0.2)'
             ))
 
             # Dislike
@@ -986,12 +1003,18 @@ elif team == 'KULA':
                 mode='lines+markers+text',
                 name='Dislike',
                 line=dict(color='red'),
-                text=df_daily['Dislike'],
-                textposition='top center'
+                text=[f"<span style='color:black'>{x}" for x in df_daily['Dislike']],
+                textposition='top center',
+                fill='tonexty',
+                fillcolor='rgba(255,0,0,0.2)'
             ))
 
+            x_min = df_like_dislike['Date'].min()
+            x_max = df_like_dislike['Date'].max()
+
             fig.update_layout(
-                yaxis=dict(title=None, range=[100,800]),
+                xaxis=dict(range=[x_min - pd.Timedelta(days=0.5), x_max + pd.Timedelta(days=0.5)]),
+                yaxis=dict(title=None),
                 legend=dict(
                     orientation="v",
                     yanchor="top",
@@ -1007,9 +1030,16 @@ elif team == 'KULA':
         df_like_dislike['unsolved_num'] = pd.to_numeric(df_like_dislike['unsolved_num'], errors='coerce').fillna(0)
 
         # Filter data berdasarkan date range & company jika perlu
-        df_like_dislike = df_like_dislike[
-            df_like_dislike['Date'].dt.date == selected_date.date()
-        ]
+        if isinstance(selected_range, (list, tuple)) and len(selected_range) == 2:
+            start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
+            df_like_dislike = df_like_dislike[
+                df_like_dislike['Date'].between(start_date, end_date)
+            ]
+        else:
+            selected_date = pd.to_datetime(selected_range)
+            df_like_dislike = df_like_dislike[
+                df_like_dislike['Date'].dt.date == selected_date.date()
+            ]
 
         if company_filter:  # multiselect
             df_like_dislike = df_like_dislike[df_like_dislike['Manual Check [business]'].isin(company_filter)]
@@ -1064,6 +1094,7 @@ elif team == 'KULA':
                 gd2.configure_column("Total Feedback", filter=False)
                 grid_options2 = gd2.build()
                 AgGrid(bg_summary, gridOptions=grid_options2, height=400)
+
 
     elif page == 'Chatbot':
         st.title("This is A Dummy")

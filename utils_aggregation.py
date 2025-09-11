@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import streamlit as st
 
 def aggregate_csat(df, date_col, granularity):
     df = df.copy()
@@ -96,3 +97,31 @@ def aggregate_sum(df, date_col, granularity, agg_dict):
 
     result = df.groupby('Period').agg(agg_dict).reset_index()
     return result.rename(columns={'Period': 'Date'})
+
+''' ============ Multiselect filter date for bad surey and like dislike table ============ '''
+def sidebar_filters():
+    company_filter = st.sidebar.multiselect(
+        'Select Company',
+        options=['ASI','AFI','No Differentiated','AFI/ASI'],
+        default=['ASI']
+    )
+    
+    date_mode = st.sidebar.radio('Date Mode', ['Range','Single'], index=0)
+
+    selected_date = None
+    selected_range = None
+
+    if date_mode == 'Single':
+        selected_date = st.sidebar.date_input(
+            'Selected Date',
+            value=pd.to_datetime('today').date(),
+            key='gloval_date'
+        )
+    else:
+        selected_range = st.sidebar.date_input(
+            'Selected Date Range',
+            value=[pd.to_datetime('today').date(), pd.to_datetime('today').date()],
+                   key='global_date_range'
+        )
+
+    return company_filter, date_mode, selected_date, selected_range

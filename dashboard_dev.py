@@ -11,7 +11,7 @@ import difflib
 import json
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
-from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum
+from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -161,32 +161,22 @@ if team == 'KULA':
         st.plotly_chart(fig, use_container_width=True)
 
         # Load data bad survey
-        
         df_bad_survey = pd.read_csv('dataset_kula/bad_survey.csv')
 
         # Pastikan kolom tanggal dalam format datetime
         df_bad_survey['Conversation Start Time'] = pd.to_datetime(df_bad_survey['Conversation Start Time'], errors='coerce')
 
         # Sidebar filter untuk Company
-        company_filter = st.sidebar.multiselect(
-            "Select Company",
-            options=["ASI", "AFI", "No Differentiated", "AFI/ASI"],
-            default=["ASI"]
-        )
+        company_filter, date_mode, selected_date, selected_range = sidebar_filters()
 
         # Filter tanggal
-        if isinstance(selected_range, (list, tuple)) and len(selected_range) == 2:
+        if date_mode == 'Single' and selected_date:
+            df_bad_survey = df_bad_survey[df_bad_survey['Conversation Start Time'].dt.date == selected_date]
+        elif date_mode == 'Range' and selected_range and len(selected_range) == 2:
             start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
-            df_bad_survey = df_bad_survey[
-                df_bad_survey['Conversation Start Time'].between(start_date, end_date)
-            ]
-        else:
-            selected_date = pd.to_datetime(selected_range)
-            df_bad_survey = df_bad_survey[
-                df_bad_survey['Conversation Start Time'].dt.date == selected_date.date()
-            ]
+            df_bad_survey = df_bad_survey[df_bad_survey['Conversation Start Time'].between(start_date, end_date)]
 
-        # Terapkan filter
+        # Terapkan filter company
         if company_filter:
             df_bad_survey = df_bad_survey[df_bad_survey['Business Type'].isin(company_filter)]
 
@@ -201,8 +191,8 @@ if team == 'KULA':
         cat_summary['Percentage'] = (cat_summary['Total Sample'] / cat_summary['Total Sample'].sum() * 100).round(2).astype(str) + '%'
 
         # Tampilkan di dashboard AGGrid
-        st.markdown("##### Bad Survey")
         with st.container():
+            st.markdown("##### Bad Survey")
             cols = st.columns([0.5, 0.45])
 
             with cols[0]:
@@ -332,16 +322,10 @@ if team == 'KULA':
         df_like_dislike['unsolved_num'] = pd.to_numeric(df_like_dislike['unsolved_num'], errors='coerce').fillna(0)
 
         # Filter data berdasarkan date range & company jika perlu
-        if isinstance(selected_range, (list, tuple)) and len(selected_range) == 2:
-            start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
-            df_like_dislike = df_like_dislike[
-                df_like_dislike['Date'].between(start_date, end_date)
-            ]
-        else:
-            selected_date = pd.to_datetime(selected_range)
-            df_like_dislike = df_like_dislike[
-                df_like_dislike['Date'].dt.date == selected_date.date()
-            ]
+        if date_mode == 'Single' and selected_date:
+            df_like_dislike = df_like_dislike[df_like_dislike['Date'].dt.date == selected_date]
+        elif date_mode == 'Range' and selected_range and len(selected_range) == 2:
+            df_like_dislike = df_like_dislike[df_like_dislike['Date'].between(start_date, end_date)]
 
         if company_filter:  # multiselect
             df_like_dislike = df_like_dislike[df_like_dislike['Manual Check [business]'].isin(company_filter)]
@@ -396,3 +380,21 @@ if team == 'KULA':
                 gd2.configure_column("Total Feedback", filter=False)
                 grid_options2 = gd2.build()
                 AgGrid(bg_summary, gridOptions=grid_options2, height=400)
+
+        
+        # Table QC KULA
+        df_qc_kula = pd.read_csv('dataset_kula/qc_kula.csv')
+        df_qc_kula['Score date'] = pd.to_datetime(df_qc_kula['Score date'], errors='coerce')
+
+        if date_mode == 'Single' and selected_date:
+            df_qc_kula = df_qc_kula[df_qc_kula['Score date'].dt.date == selected_date]
+        elif date_mode == 'Range' and selected_range and len(selected_range) == 2:
+            start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
+            df_qc_kula = df_qc_kula[df_qc_kula['Score date'].between(start_date, end_date)]
+        
+        # Filter the company
+        if company_filter:
+            df_qc_kula = df_qc_kula[df_qc_kula['Business Type'].isin(company_filter)]
+
+        # hitung data
+         
