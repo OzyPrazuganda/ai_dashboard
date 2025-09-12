@@ -11,6 +11,7 @@ import difflib
 import json
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
+from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -697,7 +698,7 @@ if team == 'QC':
             st.stop()
 
         # Date filter
-        manual_order = ["Reza", "Azer", "Neneng", "Aulia"]
+        manual_order = ["Reza", "Aulia", "Azer", "Neneng"]
         agent_list = [agent for agent in manual_order if agent in {entry["agent"] for entry in meeting_data[selected_date]}]
         selected_agent = st.sidebar.radio("Agent Sampling", agent_list)
 
@@ -859,32 +860,27 @@ elif team == 'KULA':
         st.plotly_chart(fig, use_container_width=True)
 
         # Load data bad survey
-        
         df_bad_survey = pd.read_csv('dataset_kula/bad_survey.csv')
 
         # Pastikan kolom tanggal dalam format datetime
         df_bad_survey['Conversation Start Time'] = pd.to_datetime(df_bad_survey['Conversation Start Time'], errors='coerce')
 
         # Sidebar filter untuk Company
-        company_filter = st.sidebar.multiselect(
-            "Select Company",
-            options=["ASI", "AFI", "No Differentiated", "AFI/ASI"],
-            default=["ASI"]
-        )
+        company_filter, date_mode, selected_date = sidebar_filters()
+
+        if date_mode == 'Range':
+            selected_range = (start, end)
+        else:
+            selected_range = None
 
         # Filter tanggal
-        if isinstance(selected_range, (list, tuple)) and len(selected_range) == 2:
+        if date_mode == 'Single' and selected_date:
+            df_bad_survey = df_bad_survey[df_bad_survey['Conversation Start Time'].dt.date == selected_date]
+        elif date_mode == 'Range' and selected_range and len(selected_range) == 2:
             start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
-            df_bad_survey = df_bad_survey[
-                df_bad_survey['Conversation Start Time'].between(start_date, end_date)
-            ]
-        else:
-            selected_date = pd.to_datetime(selected_range)
-            df_bad_survey = df_bad_survey[
-                df_bad_survey['Conversation Start Time'].dt.date == selected_date.date()
-            ]
+            df_bad_survey = df_bad_survey[df_bad_survey['Conversation Start Time'].between(start_date, end_date)]
 
-        # Terapkan filter
+        # Terapkan filter company
         if company_filter:
             df_bad_survey = df_bad_survey[df_bad_survey['Business Type'].isin(company_filter)]
 
@@ -899,8 +895,8 @@ elif team == 'KULA':
         cat_summary['Percentage'] = (cat_summary['Total Sample'] / cat_summary['Total Sample'].sum() * 100).round(2).astype(str) + '%'
 
         # Tampilkan di dashboard AGGrid
-        st.markdown("##### Bad Survey")
         with st.container():
+            st.markdown("##### Bad Survey")
             cols = st.columns([0.5, 0.45])
 
             with cols[0]:
@@ -1030,16 +1026,10 @@ elif team == 'KULA':
         df_like_dislike['unsolved_num'] = pd.to_numeric(df_like_dislike['unsolved_num'], errors='coerce').fillna(0)
 
         # Filter data berdasarkan date range & company jika perlu
-        if isinstance(selected_range, (list, tuple)) and len(selected_range) == 2:
-            start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
-            df_like_dislike = df_like_dislike[
-                df_like_dislike['Date'].between(start_date, end_date)
-            ]
-        else:
-            selected_date = pd.to_datetime(selected_range)
-            df_like_dislike = df_like_dislike[
-                df_like_dislike['Date'].dt.date == selected_date.date()
-            ]
+        if date_mode == 'Single' and selected_date:
+            df_like_dislike = df_like_dislike[df_like_dislike['Date'].dt.date == selected_date]
+        elif date_mode == 'Range' and selected_range and len(selected_range) == 2:
+            df_like_dislike = df_like_dislike[df_like_dislike['Date'].between(start_date, end_date)]
 
         if company_filter:  # multiselect
             df_like_dislike = df_like_dislike[df_like_dislike['Manual Check [business]'].isin(company_filter)]
@@ -1094,6 +1084,75 @@ elif team == 'KULA':
                 gd2.configure_column("Total Feedback", filter=False)
                 grid_options2 = gd2.build()
                 AgGrid(bg_summary, gridOptions=grid_options2, height=400)
+
+        
+        # Table QC KULA
+        df_qc_kula = pd.read_csv('dataset_kula/qc_kula.csv')
+        df_qc_kula['Score_date'] = pd.to_datetime(df_qc_kula['Score_date'], errors='coerce')
+
+        if date_mode == 'Single' and selected_date:
+            df_qc_kula = df_qc_kula[df_qc_kula['Score_date'].dt.date == selected_date]
+        elif date_mode == 'Range' and selected_range and len(selected_range) == 2:
+            start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
+            df_qc_kula = df_qc_kula[df_qc_kula['Score_date'].between(start_date, end_date)]
+        
+        # Filter the company
+        if company_filter:
+            df_qc_kula = df_qc_kula[df_qc_kula['Business Type'].isin(company_filter)]
+
+        
+        # === Table 1: Main Category & Sub Category ===
+        main_sub_summary = (
+            df_qc_kula.groupby(['Main Category', 'Checking Result (Sub Category)'])
+            .size()
+            .reset_index(name='Total Sample')
+            .sort_values('Total Sample', ascending=False)
+        )
+
+        # === Table 2: Team Category ===
+        team_cat_qc = (
+            df_qc_kula.groupby('Team/Category')
+            .size()
+            .reset_index(name='Total Sample')
+            .sort_values('Total Sample', ascending=False)
+        )
+
+        # === Table 3: Background Detail ===
+        bg_summary = (
+            df_qc_kula.groupby('Background detail- ID')
+            .size()
+            .reset_index(name='Total Sample')
+            .sort_values('Total Sample', ascending=False)
+        )
+
+        # Show the data
+        st.markdown('##### QC KULA')
+        with st.container():
+            cols = st.columns([0.35, 0.3, 0.35])
+
+            with cols[0]:
+                gd_main = GridOptionsBuilder.from_dataframe(main_sub_summary)
+                gd_main.configure_pagination()
+                gd_main.configure_default_column(sortable=True, resizable=True)
+                gd_main.configure_column('Total Sample', filter=False)
+                grid_options_main = gd_main.build()
+                AgGrid(main_sub_summary, gridOptions=grid_options_main, height=400)
+
+            with cols[1]:
+                gd_bg = GridOptionsBuilder.from_dataframe(team_cat_qc)
+                gd_bg.configure_pagination()
+                gd_bg.configure_default_column(sortable=True, resizable=True)
+                gd_bg.configure_column('Total Sample', filter=False)
+                grid_options_bg = gd_bg.build()
+                AgGrid(team_cat_qc, gridOptions=grid_options_bg, height=400)
+
+            with cols[2]:
+                gd_bg = GridOptionsBuilder.from_dataframe(bg_summary)
+                gd_bg.configure_pagination()
+                gd_bg.configure_default_column(sortable=True, resizable=True)
+                gd_bg.configure_column('Total Sample', filter=False)
+                grid_options_bg = gd_bg.build()
+                AgGrid(bg_summary, gridOptions=grid_options_bg, height=400)
 
 
     elif page == 'Chatbot':
