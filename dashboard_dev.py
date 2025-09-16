@@ -11,7 +11,7 @@ import difflib
 import json
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
-from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters
+from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -167,7 +167,12 @@ if team == 'KULA':
         df_bad_survey['Conversation Start Time'] = pd.to_datetime(df_bad_survey['Conversation Start Time'], errors='coerce')
 
         # Sidebar filter untuk Company
-        company_filter, date_mode, selected_date, selected_range = sidebar_filters()
+        company_filter, date_mode, selected_date = sidebar_filters()
+
+        if date_mode == 'Range':
+            selected_range = (start, end)
+        else:
+            selected_range = None
 
         # Filter tanggal
         if date_mode == 'Single' and selected_date:
@@ -331,34 +336,50 @@ if team == 'KULA':
             df_like_dislike = df_like_dislike[df_like_dislike['Manual Check [business]'].isin(company_filter)]
 
         # ===== Table 1: Berdasarkan Team/Category =====
-        team_summary = (
-            df_like_dislike.groupby('Team/Category')
-            .agg(
-                **{
-                    'Total Like': ('solved_num', 'sum'),
-                    'Total Dislike': ('unsolved_num', 'sum')
-                }
+        if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
+            team_summary = aggregate_table_with_granularity(
+                df_like_dislike,
+                category_col = 'Team/Category',
+                value_col = 'unsolved_num',
+                date_col = 'Date',
+                granularity = granularity,
+                start_date = start_date,
+                end_date = end_date
             )
-            .reset_index()
-        )
-
-        team_summary['Total Feedback'] = team_summary['Total Like'] + team_summary['Total Dislike']
-        team_summary = team_summary.sort_values('Total Feedback', ascending=False)
+        else:
+            team_summary = (
+                df_like_dislike.groupby('Team/Category')
+                .agg(
+                    **{
+                        'Total Dislike': ('unsolved_num', 'sum')
+                    }
+                )
+                .reset_index()
+                .sort_values('Total Dislike', ascending=False)
+            )
 
         # ===== Table 2: Berdasarkan Background detail =====
-        bg_summary = (
-            df_like_dislike.groupby('Background detail')
-            .agg(
-                **{
-                    'Total Like': ('solved_num', 'sum'),
-                    'Total Dislike': ('unsolved_num', 'sum')
-                }
+        if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
+            bg_summary = aggregate_table_with_granularity(
+                df_like_dislike,
+                category_col='Background detail',
+                value_col='unsolved_num',
+                date_col='Date',
+                granularity=granularity,
+                start_date=start_date,
+                end_date=end_date
             )
-            .reset_index()
-        )
-
-        bg_summary['Total Feedback'] = bg_summary['Total Like'] + bg_summary['Total Dislike']
-        bg_summary = bg_summary.sort_values('Total Feedback', ascending=False)
+        else:
+            bg_summary = (
+                df_like_dislike.groupby('Background detail')
+                .agg(
+                    **{
+                        'Total Dislike': ('unsolved_num', 'sum')
+                    }
+                )
+                .reset_index()
+                .sort_values('Total Dislike', ascending=False)
+            )
 
         # ===== Tampilkan di dashboard =====
         st.markdown("##### Like & Dislike Summary")
@@ -369,7 +390,6 @@ if team == 'KULA':
                 gd1 = GridOptionsBuilder.from_dataframe(team_summary)
                 gd1.configure_pagination()
                 gd1.configure_default_column(sortable=True, resizable=True)
-                gd1.configure_column("Total Feedback", filter=False)
                 grid_options1 = gd1.build()
                 AgGrid(team_summary, gridOptions=grid_options1, height=400)
 
@@ -377,7 +397,6 @@ if team == 'KULA':
                 gd2 = GridOptionsBuilder.from_dataframe(bg_summary)
                 gd2.configure_pagination()
                 gd2.configure_default_column(sortable=True, resizable=True)
-                gd2.configure_column("Total Feedback", filter=False)
                 grid_options2 = gd2.build()
                 AgGrid(bg_summary, gridOptions=grid_options2, height=400)
 

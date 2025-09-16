@@ -98,7 +98,7 @@ def aggregate_sum(df, date_col, granularity, agg_dict):
     result = df.groupby('Period').agg(agg_dict).reset_index()
     return result.rename(columns={'Period': 'Date'})
 
-''' ============ Multiselect filter date for bad surey and like dislike table ============ '''
+# ============ Multiselect filter date for bad surey and like dislike table ============
 def sidebar_filters():
     company_filter = st.sidebar.multiselect(
         'Select Company',
@@ -118,3 +118,47 @@ def sidebar_filters():
         )
 
     return company_filter, date_mode, selected_date
+
+# ============ Function to show W1 W2 W3 / M1 M2 M3 ============
+def aggregate_table_with_granularity(df, category_col, value_col, date_col, granularity, start_date=None, end_date=None):
+    df = df.copy()
+    
+    # make sure there is date range
+    if start_date is not None and end_date is not None:
+        df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
+    
+    if df.empty:
+        return pd.DataFrame(columns=[category_col, 'Total'])
+
+    # determine period column based on granularity
+    if granularity == 'Weekly':
+        df['PeriodRaw'] = df[date_col].dt.to_period('W')
+    elif granularity == 'Monthly':
+        df['PeriodRaw'] = df[date_col].dt.to_period('M')
+    else:
+        df['PeriodRaw'] = df[date_col].dt.strftime('%Y-%m-%d')
+
+    # Mapping W1/W2... or M1/M2...
+    unique_periods = sorted(df['PeriodRaw'].unique())
+    mapping = {
+        p: f"W{i+1}" if granularity == "Weekly" else f"M{i+1}"
+        for i, p in enumerate(unique_periods)
+    }
+
+    # Assign period label
+    df["Period"] = df["PeriodRaw"].map(mapping)
+
+    # group by category + period -> pivot
+    pivot = (
+        df.groupby([category_col, 'Period'])[value_col]
+        .sum()
+        .reset_index()
+        .pivot(index=category_col, columns='Period', values=value_col)
+        .fillna(0)
+    )
+
+    # adding total column
+    pivot['Total'] = pivot.sum(axis=1)
+    pivot = pivot.sort_values('Total', ascending=False)
+    
+    return pivot.reset_index()
