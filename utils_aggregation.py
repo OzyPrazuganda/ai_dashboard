@@ -120,7 +120,7 @@ def sidebar_filters():
     return company_filter, date_mode, selected_date
 
 # ============ Function to show W1 W2 W3 / M1 M2 M3 ============
-def aggregate_table_with_granularity(df, category_col, value_col, date_col, granularity, start_date=None, end_date=None):
+def aggregate_table_with_granularity(df, category_col, value_col=None, date_col=None, granularity=None, start_date=None, end_date=None):
     df = df.copy()
     
     # make sure there is date range
@@ -149,13 +149,20 @@ def aggregate_table_with_granularity(df, category_col, value_col, date_col, gran
     df["Period"] = df["PeriodRaw"].map(mapping)
 
     # group by category + period -> pivot
-    pivot = (
-        df.groupby([category_col, 'Period'])[value_col]
-        .sum()
-        .reset_index()
-        .pivot(index=category_col, columns='Period', values=value_col)
-        .fillna(0)
-    )
+    if value_col is None:
+        agg_df = (
+            df.groupby([category_col, 'Period'])
+            .size()
+            .reset_index(name='Total Sample')
+        )
+    else:
+        agg_df = (
+            df.groupby([category_col, 'Period'])[value_col]
+            .sum()
+            .reset_index(name='Total Sample')
+        )
+    
+    pivot = agg_df.pivot(index=category_col, columns='Period', values='Total Sample').fillna(0)
 
     # adding total column
     pivot['Total'] = pivot.sum(axis=1)

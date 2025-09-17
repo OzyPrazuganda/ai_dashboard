@@ -185,15 +185,52 @@ if team == 'KULA':
         if company_filter:
             df_bad_survey = df_bad_survey[df_bad_survey['Business Type'].isin(company_filter)]
 
-        # Hitung Sub Category Summary
-        subcat_summary = df_bad_survey['Sub Category'].value_counts().reset_index()
-        subcat_summary.columns = ['Sub Category', 'Total Sample']
-        subcat_summary['Percentage'] = (subcat_summary['Total Sample'] / subcat_summary['Total Sample'].sum() * 100).round(2).astype(str) + '%'
+        # === Table 1: Sub Category with Granularity ===
+        if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
+            subcat_summary = aggregate_table_with_granularity(
+                df_bad_survey,
+                category_col='Sub Category',
+                date_col='Conversation Start Time',
+                granularity=granularity,
+                start_date=start_date,
+                end_date=end_date
+            )
+        else:
+            subcat_summary = (
+                df_bad_survey.groupby('Sub Category')
+                .size()
+                .reset_index(name='Total Sample')
+                .sort_values('Total Sample', ascending=False)
+            )
 
-        # Hitung QC Result
-        cat_summary = df_bad_survey['QC Result'].value_counts().reset_index()
-        cat_summary.columns = ['Category', 'Total Sample']
-        cat_summary['Percentage'] = (cat_summary['Total Sample'] / cat_summary['Total Sample'].sum() * 100).round(2).astype(str) + '%'
+        # === Table 2: QC result with Granularity ===
+        if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
+            cat_summary = aggregate_table_with_granularity(
+                df_bad_survey,
+                category_col='QC Result',
+                date_col='Conversation Start Time',
+                granularity=granularity,
+                start_date=start_date,
+                end_date=end_date
+            )
+        else:
+            cat_summary = (
+                df_bad_survey.groupby('QC Result')
+                .size()
+                .reset_index(name='Total Sample')
+                .sort_values('Total Sample', ascending=False)
+            )
+
+        # if there is percent label
+        if 'Total Sample' in subcat_summary.columns:
+            subcat_summary['Percentage'] = (
+                subcat_summary['Total Sample'] / subcat_summary['Total Sample'].sum() * 100
+            ).round(2).astype(str) + '%'
+        
+        if 'Total Sample' in cat_summary.columns:
+            cat_summary['Percentage'] = (
+                cat_summary['Total Sample'] / cat_summary['Total Sample'].sum() * 100
+            ).round(2).astype(str) + '%'
 
         # Tampilkan di dashboard AGGrid
         with st.container():
@@ -425,23 +462,43 @@ if team == 'KULA':
         )
 
         # === Table 2: Team Category ===
-        team_cat_qc = (
-            df_qc_kula.groupby('Team/Category')
-            .size()
-            .reset_index(name='Total Sample')
-            .sort_values('Total Sample', ascending=False)
-        )
+        if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
+            team_cat_qc = aggregate_table_with_granularity(
+                df_qc_kula,
+                category_col='Team/Category',
+                date_col='Score_date',
+                granularity=granularity,
+                start_date=start_date,
+                end_date=end_date
+            )
+        else:
+            team_cat_qc = (
+                df_qc_kula.groupby('Team/Category')
+                .size()
+                .reset_index(name='Total Sample')
+                .sort_values('Total Sample', ascending=False)
+            )
 
         # === Table 3: Background Detail ===
-        bg_summary = (
-            df_qc_kula.groupby('Background detail- ID')
-            .size()
-            .reset_index(name='Total Sample')
-            .sort_values('Total Sample', ascending=False)
-        )
+        if granularity in ['Weekly','Monthly'] and date_mode == 'Range':
+            bg_summary = aggregate_table_with_granularity(
+                df_qc_kula,
+                category_col='Background detail- ID',
+                date_col='Score_date',
+                granularity=granularity,
+                start_date=start_date,
+                end_date=end_date
+            )
+        else:
+            bg_summary = (
+                df_qc_kula.groupby('Background detail- ID')
+                .size()
+                .reset_index(name='Total Sample')
+                .sort_values('Total Sample', ascending=False)
+            )
 
         # Show the data
-        st.markdown('##### QC KULA')
+        st.markdown('##### QC Dislike')
         with st.container():
             cols = st.columns([0.35, 0.3, 0.35])
 
