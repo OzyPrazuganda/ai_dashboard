@@ -1118,7 +1118,7 @@ elif team == 'KULA':
             )
 
         # ===== Tampilkan di dashboard =====
-        st.markdown("##### Like & Dislike Summary")
+        st.markdown("##### Dislike Summary")
         with st.container():
             cols = st.columns([0.45, 0.5])
 
@@ -1226,43 +1226,43 @@ elif team == 'KULA':
                 AgGrid(bg_summary, gridOptions=grid_options_bg, height=400)
 
 
-    elif page == 'Chatbot':
-        st.title("This is A Dummy")
+    # elif page == 'Chatbot':
+    #     st.title("This is A Dummy")
 
-        chatbot = ChatbotOptimized()
+    #     chatbot = ChatbotOptimized()
 
-        if not os.path.exists("chatbot_index/faiss.index"):
-            st.warning("Index not found. Please build the index first.")
-            chatbot.load_data('../../dataset_kula/kula_knowledge_base.csv')
-            chatbot.build_index()
-            chatbot.save_index()
-        else:
-            chatbot.load_index()
+    #     if not os.path.exists("chatbot_index/faiss.index"):
+    #         st.warning("Index not found. Please build the index first.")
+    #         chatbot.load_data('../../dataset_kula/kula_knowledge_base.csv')
+    #         chatbot.build_index()
+    #         chatbot.save_index()
+    #     else:
+    #         chatbot.load_index()
 
-        # Init Chatbox
-        chat_box = ChatBox(
-            use_rich_markdown=True,
-            user_theme="green",
-            assistant_theme="blue"
-        )
-        chat_box.use_chat_name('chat1')
+    #     # Init Chatbox
+    #     chat_box = ChatBox(
+    #         use_rich_markdown=True,
+    #         user_theme="green",
+    #         assistant_theme="blue"
+    #     )
+    #     chat_box.use_chat_name('chat1')
 
-        def on_chat_chane():
-            chat_box.user_chat_name(st.session_state["chat_name"])
-            chat_box.context_to_session()
+    #     def on_chat_chane():
+    #         chat_box.user_chat_name(st.session_state["chat_name"])
+    #         chat_box.context_to_session()
 
-        with st.sidebar:
-            st.subheader("start to chat using streamlit")
-            chat_name = st.selectbox("Chat Session:", ["default", "chat1"], key="chat_name", on_change=on_chat_change)
-            chat_box.use_chat_name(chat_name)
-            streaming = st.checkbox("streaming", key="streaming")
-            in_expander = st.checkbox("show message in expander", key="in_exapnder")
-            show_history = st.checkbox("show session state", key="show_history")
-            chat_box.context_from_session(exclude=["chat_name"])
+    #     with st.sidebar:
+    #         st.subheader("start to chat using streamlit")
+    #         chat_name = st.selectbox("Chat Session:", ["default", "chat1"], key="chat_name", on_change=on_chat_change)
+    #         chat_box.use_chat_name(chat_name)
+    #         streaming = st.checkbox("streaming", key="streaming")
+    #         in_expander = st.checkbox("show message in expander", key="in_exapnder")
+    #         show_history = st.checkbox("show session state", key="show_history")
+    #         chat_box.context_from_session(exclude=["chat_name"])
 
-            st.divider()
-            btns = st.container()
+    #         st.divider()
+    #         btns = st.container()
 
-            file = st.file_uploader("chat history json", type=["json"])
-            if st.button("Load json") and file:
-                data = json.load(file)
+    #         file = st.file_uploader("chat history json", type=["json"])
+    #         if st.button("Load json") and file:
+    #             data = json.load(file)
