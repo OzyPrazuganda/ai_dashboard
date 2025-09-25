@@ -169,3 +169,25 @@ def aggregate_table_with_granularity(df, category_col, value_col=None, date_col=
     pivot = pivot.sort_values('Total', ascending=False)
     
     return pivot.reset_index()
+
+def calculate_checker_accuracy(df):
+    # cari semua kolom yang dimulai dengan 'Count'
+    count_cols = [col for col in df.columns if col.startswith("Count")]
+    
+    # bikin kolom baru = total kesalahan di 1 baris
+    df["Total_Kesalahan"] = df[count_cols].sum(axis=1)
+    
+    # groupby per checker
+    result = (
+        df.groupby("Checker")
+        .agg(
+            Total_Tagging=("Checker", "count"),
+            Kesalahan=("Total_Kesalahan", "sum")
+        )
+        .reset_index()
+    )
+    
+    # hitung akurasi
+    result["Accuracy"] = (result["Total_Tagging"] - result["Kesalahan"]) / result["Total_Tagging"] * 100
+    
+    return result

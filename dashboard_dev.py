@@ -11,7 +11,7 @@ import difflib
 import json
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
-from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity
+from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -67,19 +67,40 @@ if team == 'QC':
                 </div>
             """, unsafe_allow_html=True)
 
+        # Accuracy
         with cols[2]:
-            st.markdown("""
-                <div class="card">
-                    test
-                </div>
-            """, unsafe_allow_html=True)
-
-            #Accuracy Validator
+            acc_df = calculate_checker_accuracy(df_sampling)
             
+            # filter sesuai validator yang dipilih di sidebar
+            acc_row = acc_df[acc_df["Checker"] == validator]
+            
+            if not acc_row.empty:
+                acc_value = acc_row["Accuracy"].values[0]
+                total_tagging = acc_row["Total_Tagging"].values[0]
+                kesalahan = acc_row["Kesalahan"].values[0]
+                
+                st.markdown(f"""
+                    <div class="card" style="padding:10px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1)">
+                        <h6>Accuracy</h6>
+                        <h3>{acc_value:.2f}%</h3>
+                        <p style="margin:0; font-size:12px; color:gray">
+                            {total_tagging} Tagging<br>
+                            {kesalahan} Salah
+                        </p>
+                    </div>
+                """, unsafe_allow_html=True)
+            else:
+                st.markdown("""
+                    <div class="card" style="padding:10px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1)">
+                        <h6>Accuracy</h6>
+                        <h3>-</h3>
+                        <p style="margin:0; font-size:12px; color:gray">No data</p>
+                    </div>
+                """, unsafe_allow_html=True)
 
         with cols[3]:
             st.markdown("""
                 <div class="card">
-                    test
+                    <h6>Tagged</h6>
                 </div>
             """, unsafe_allow_html=True)
