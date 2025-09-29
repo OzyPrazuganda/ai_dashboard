@@ -2028,7 +2028,7 @@ Pertanyaan cust ""Mengapa tidak melakukan pengajuan Pinjaman?, saran seharusnya 
 Pertanyaan cust ""Mengapa tidak melakukan pengajuan Pinjaman?, saran seharusnya robot bisa jawab menggunakan code 051001",1.0
 1928,2023-05-15,2023-05-12,Week 2,January,Yulia Sari,AFI,142089548,2-142089548-3-1_1683857233,Customer,Information Not Meet Customer Expectations,How to pay Dana Cicil bills,N/A,Bad Survey,Loan,,,1.0
 1929,2023-05-15,2023-05-12,Week 2,January,Yulia Sari,AFI,2004112454,2-2004112454-3-1_1683876446,Customer,Information Not Meet Customer Expectations,Loan limit decreased,N/A,Bad Survey,Loan,,,2.0
-1930,2023-05-15,2023-05-13,Week 2,January,Yulia Sari,AFI,105137615,2-105137615-3-1_1683972369,Customer,Information Not Meet Customer Expectations,"Can't get a loan, credit quality issues",N/A,Bad Survey,Loan,,,2.0
+1930,2023-05-15,2023-05-13,Week 2,January,Yulia Sari,AFI,105137615,2-105137615-3-1_1683972369,Customer,Information Not Meet Customer Expectations,"Can't get loan, credit quality problem",N/A,Bad Survey,Loan,,,2.0
 1931,2023-05-15,2023-05-13,Week 2,January,Yulia Sari,AFI,124691749,2-124691749-3-1_1683970513,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0
 1932,2023-05-15,2023-05-13,Week 2,January,Yulia Sari,AFI,22996194,2-22996194-3-1_1683939380,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0
 1933,2023-05-15,2023-05-13,Week 2,January,Yulia Sari,AFI,86666158,2-86666158-3-1_1683980806,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0
@@ -2567,7 +2567,7 @@ Pertanyaan cust ""Mengapa tidak melakukan pengajuan Pinjaman?, saran seharusnya 
 2432,2023-06-05,2023-06-01,Week 1,January,Yulia Sari,AFI,2.01E+09,2-2008413268-3-1_1685605100,Customer,Information Not Meet Customer Expectations,Loan limit decreased,N/A,Bad Survey,Loan,,,2.0
 2433,2023-06-05,2023-06-01,Week 1,January,Yulia Sari,AFI,5.95E+07,2-59484495-3-1_1685623462,Customer,Information Not Meet Customer Expectations,Installment Fund bill payment time,N/A,Bad Survey,Loan,,,1.0
 2434,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,ASI,2.02E+09,2-2016311566-3-1_1685674460,CHATBOT OPS,Answer not update by Engineer,Change of telephone number,Urgent,Bad Survey,Account,,,1.0
-2435,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,AFI,1.06E+08,2-106076935-3-1_1685676177,Customer,Information Not Meet Customer Expectations,"Can't get a loan, credit quality issues",N/A,Bad Survey,Loan,,,1.0
+2435,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,AFI,1.06E+08,2-106076935-3-1_1685676177,Customer,Information Not Meet Customer Expectations,"Can't get loan, credit quality problem",N/A,Bad Survey,Loan,,,1.0
 2436,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,No Differentiated,1.34E+08,2-133649679-3-1_1685654803,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,"palanggan kirim ""ko tidak ada nmr seri ka"" Robot tidak memberikan jawab",1.0
 2437,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,No Differentiated,2.01E+09,2-2013068022-3-1_1685676984,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
 2438,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,AFI,2.02E+09,2-2021027806-3-1_1685661189,Customer,Information Not Meet Customer Expectations,Akulaku Paylater application rejected,N/A,Bad Survey,Akulaku Paylater,,,1.0
@@ -3301,7 +3301,7 @@ Pertanyaan cust ""Mengapa tidak melakukan pengajuan Pinjaman?, saran seharusnya 
 3133,2023-07-03,2023-07-01,Week 5,January,Nurhamni Septia,AFI,2002998617,2-2002998617-3-1_1688149275,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0
 3134,2023-07-03,2023-07-01,Week 5,January,Nurhamni Septia,AFI,138722327,2-138722327-3-1_1688179055,Customer,Information Not Meet Customer Expectations,Failed loan application,N/A,Bad Survey,Loan,,,1.0
 3135,2023-07-03,2023-07-01,Week 5,January,Nurhamni Septia,AFI,137105829,2-137105829-3-1_1688148810,Customer,Information Not Meet Customer Expectations,Cannot make installment transactions,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0
-3136,2023-07-03,2023-07-01,Week 5,January,Nurhamni Septia,ASI,2008113382,2-2008113382-3-1_1688157479,CHATBOT OPS,FAQ Revision Q&A,"Online Merchant - check order status, transaction successful",Urgent,Bad Survey,Merchant Online,,,1.0
+3136,2023-07-03,2023-07-01,Week 5,January,Nurhamni Septia,ASI,2008113382,2-2008113382-3-1_1688157479,CHATBOT OPS,FAQ Revision Q&A,"Online Merchant - check order status, successful transaction",Urgent,Bad Survey,Merchant Online,,,1.0
 3137,2023-07-03,2023-07-01,Week 5,January,Nurhamni Septia,No Differentiated,2016705563,2-2016705563-3-1_1688170944,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,klo 3 juta selama 12 bulan ..berapa cicilan per bulannya,1.0
 3138,2023-07-03,2023-07-01,Week 5,January,Nurhamni Septia,No Differentiated,2024749796,2-2024749796-3-1_1688172173,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
 3139,2023-07-03,2023-07-01,Week 5,January,Nurhamni Septia,No Differentiated,95233288,2-95233288-3-1_1688172868,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
@@ -18294,25 +18294,26 @@ jawaban robot tidak sesuai",1.0
 17994,2025-09-25,2025-09-24,Week 4,September,Nurhamni Septia,AFI,2000855511,2-2000855511-3-1_1758700327,CHATBOT OPS,Answer Robot Mistake,Paylater limit cannot be used,Urgent,Bad Survey,Submission of Limit/Credit Points,289397554652,"Answer Robot Mistake	2-2000855511-3-1_1758700327	Cust Question : suci mau pake playter knp gk bis	""289-397-554-652
 289-400-557-658
 74-169-276-815""",1.0
-17995,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2051042302,2-2051042302-3-1_1758742154,,,,,,,,,1.0
-17996,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,56469000,2-56469000-3-1_1758737479,,,,,,,,,1.0
-17997,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,481243,2-481243-3-1_1758770168,,,,,,,,,1.0
-17998,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2006500597,2-2006500597-3-1_1758757942,,,,,,,,,1.0
-17999,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2030994867,2-2030994867-3-1_1758752616,,,,,,,,,1.0
-18000,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,79016943,2-79016943-3-1_1758766593,,,,,,,,,1.0
-18001,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2051042302,2-2051042302-3-1_1758741555,,,,,,,,,1.0
-18002,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,52746098,2-52746098-3-1_1758804499,,,,,,,,,1.0
-18003,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2019408146,2-2019408146-3-1_1758757134,,,,,,,,,1.0
-18004,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2049106901,2-2049106901-3-1_1758764783,,,,,,,,,1.0
-18005,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2037891177,2-2037891177-3-1_1758796043,,,,,,,,,1.0
-18006,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2040826015,2-2040826015-3-1_1758787381,,,,,,,,,1.0
-18007,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2041388408,2-2041388408-3-1_1758742770,,,,,,,,,1.0
-18008,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2049242312,2-2049242312-3-1_1758787501,,,,,,,,,1.0
-18009,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2051454263,2-2051454263-3-1_1758756586,,,,,,,,,1.0
-18010,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2014975814,2-2014975814-3-1_1758765477,,,,,,,,,1.0
-18011,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2050420645,2-2050420645-3-1_1758773209,,,,,,,,,1.0
-18012,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,109730174,2-109730174-3-1_1758813983,,,,,,,,,1.0
-18013,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2032058883,2-2032058883-3-1_1758785374,,,,,,,,,1.0
-18014,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,2051460937,2-2051460937-3-1_1758772124,,,,,,,,,1.0
-18015,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,111665801,2-111665801-3-1_1758809205,,,,,,,,,1.0
-18016,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,,123168219,2-123168219-3-1_1758778717,,,,,,,,,1.0
+17995,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,2051042302,2-2051042302-3-1_1758742154,Customer,Information Not Meet Customer Expectations,Loan status has not been successful,N/A,Bad Survey,Loan,289374531610,,1.0
+17996,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,56469000,2-56469000-3-1_1758737479,Customer,Information Not Meet Customer Expectations,Cannot apply for a loan,N/A,Bad Survey,Loan,289369526777,,1.0
+17997,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,No Differentiated,481243,2-481243-3-1_1758770168,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+17998,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,2006500597,2-2006500597-3-1_1758757942,Customer,Information Not Meet Customer Expectations,Loan approval estimate,N/A,Bad Survey,Loan,289172417251165,,1.0
+17999,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,2030994867,2-2030994867-3-1_1758752616,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0
+18000,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,AFI,79016943,2-79016943-3-1_1758766593,Customer,Information Not Meet Customer Expectations,Can't make payments,N/A,Bad Survey,Installment/Payment Gateway,8729221017527,,1.0
+18001,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,2051042302,2-2051042302-3-1_1758741555,Customer,Information Not Meet Customer Expectations,Loan status has not been successful,N/A,Bad Survey,Loan,289374531610,,1.0
+18002,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,52746098,2-52746098-3-1_1758804499,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0
+18003,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,No Differentiated,2019408146,2-2019408146-3-1_1758757134,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18004,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,2049106901,2-2049106901-3-1_1758764783,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0
+18005,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,2037891177,2-2037891177-3-1_1758796043,Customer,Information Not Meet Customer Expectations,Merchant shipping complaints,N/A,Bad Survey,Merchant Online,11862422,,1.0
+18006,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,AFI,2040826015,2-2040826015-3-1_1758787381,CHATBOT OPS,FAQ Revision Q&A,Loan bill appears 2 months,Urgent,Bad Survey,Collection,69516651666997,Sebelumnya ini adalah FAQ bisnis tipe nya AFI. Namun karena ada tentang tagihan Pinjaman maka apakah ini masuk ke ASI? Jika iyya maka aku akan ubah. Dan ini sudah di masukan ke Gdoc review trainer,1.0
+18007,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,2041388408,2-2041388408-3-1_1758742770,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0
+18008,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,2049242312,2-2049242312-3-1_1758787501,Customer,Information Not Meet Customer Expectations,Cannot apply for a loan,N/A,Bad Survey,Loan,289369526777,,1.0
+18009,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,2051454263,2-2051454263-3-1_1758756586,Customer,Information Not Meet Customer Expectations,How to apply for a loan,N/A,Bad Survey,Loan,289328485506,,1.0
+18010,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,2014975814,2-2014975814-3-1_1758765477,Customer,Information Not Meet Customer Expectations,"On time paying loans, but can't borrow",N/A,Bad Survey,Loan,289423580772,,1.0
+18011,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,2050420645,2-2050420645-3-1_1758773209,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0
+18012,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,AFI,109730174,2-109730174-3-1_1758813983,Customer,Information Not Meet Customer Expectations,How to submit akulaku paylater,N/A,Bad Survey,Akulaku Paylater,74172279825,,1.0
+18013,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,AFI,2032058883,2-2032058883-3-1_1758785374,CHATBOT OPS,FAQ Revision Q&A,The item is lost while still having a bill,Urgent,Bad Survey,Collection,87215211522919,"""Dear Trainer,
+Untuk pertanyaan ini apakah bisa close di Kula atau tetap harus transfer ke CS seperti jawaban saat ini?""",1.0
+18014,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,No Differentiated,2051460937,2-2051460937-3-1_1758772124,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18015,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,ASI,111665801,2-111665801-3-1_1758809205,Customer,Information Not Meet Customer Expectations,loan limit reduced,N/A,Bad Survey,Loan,28915621563943,,1.0
+18016,2025-09-26,2025-09-25,Week 4,September,Nurhamni Septia,AFI,123168219,2-123168219-3-1_1758778717,Customer,Information Not Meet Customer Expectations,Notification of Installment Bill Payment,N/A,Bad Survey,Installment/Payment Gateway,8729351030611,,1.0

@@ -11,7 +11,7 @@ import difflib
 import json
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
-from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy
+from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -22,7 +22,7 @@ logging.getLogger('streamlit.runtime.scriptrunner').setLevel(logging.ERROR)
 CURRENT_THEME = "light" 
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
-
+ 
 team = st.sidebar.radio('Team', ['QC'])
 
 if team == 'QC':
@@ -93,19 +93,34 @@ if team == 'QC':
         with cols[2]:
             if acc_value is not None:
                 st.markdown(f"""
-                    <div class="card">
+                    <div class="card" style="
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        padding: 20px;
+                    ">
                         <h5>Accuracy</h5>
                         <h3>{acc_value:.2f}%</h3>
                     </div>
                 """, unsafe_allow_html=True)
             else:
                 st.markdown("""
-                    <div class="card">
+                    <div class="card" style="
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        padding: 20px;
+                    ">
                         <h6>Accuracy</h6>
                         <h3>-</h3>
                         <p>No data</p>
                     </div>
                 """, unsafe_allow_html=True)
+
 
         # Tag Count card
         with cols[3]:
@@ -120,7 +135,7 @@ if team == 'QC':
                     names="Category",
                     color="Category",
                     color_discrete_map={"Benar": "light blue", "Salah": "red"},
-                    hole=0.45,
+                    hole=0.65,
                     title='Tag Count'
                 )
                 fig.update_traces(
@@ -132,14 +147,19 @@ if team == 'QC':
                 )
                 fig.update_layout(
                     showlegend=False,
+                    title=dict(
+                        x=0.5,
+                        xanchor='center',
+                        yanchor='top'
+                    ),
+                    margin=dict(t=40, b=20, l=20, r=20),
+                    height=240,
                     annotations=[dict(
-                        text="ini apa ya",
+                        text="{} Tagged".format(total_tagging),
                         font_size=14,
                         showarrow=False,
                         xanchor="center"
                     )],
-                    margin=dict(t=20, b=20, l=20, r=20),
-                    height=200,
                 )
 
                 # Masukkan ke card container
@@ -152,6 +172,34 @@ if team == 'QC':
                     </div>
                 """, unsafe_allow_html=True)
 
-        # account
+        # radar chart
         cols = st.columns([2, 4])
-        
+        with cols[0]:
+            df_checker, count_cols = aggregate_checker_errors(df_sampling)
+
+            row = df_checker[df_checker["Checker"] == validator].iloc[0]
+
+            r = row[count_cols].values.tolist()
+            theta = count_cols
+            
+            fig = go.Figure()
+            
+            fig.add_trace(
+                go.Scatterpolar(
+                    r=r + [r[0]],
+                    theta=theta + [theta[0]],
+                    fill='toself',
+                    name=validator,
+                    line=dict(color='blue'),
+                    marker=dict(size=8)
+                )
+            )
+
+            fig.update_layout(
+                polar=dict(
+                    radialaxis=dict(visible=True, range=[0, max(r)+2])
+                ),
+                showlegend=True
+            )
+
+            st.plotly_chart(fig, use_container_width=True)

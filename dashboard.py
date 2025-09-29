@@ -169,21 +169,6 @@ if team == 'QC':
 
         # Line Chart Graphic
         with st.container():
-            # cols = st.columns([0.6,2.3])
-
-            # #KPI
-            # with cols[0]:
-            #     st.markdown("")
-            #     st.markdown("")
-            #     st.markdown("##### 🎯 KPI Harian")
-            #     st.markdown("""
-            #     <div style="border: 1px solid #ddd; border-radius: 10px; padding: 14px 16px;
-            #                 box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); background-color: #fff; display: flex; flex-direction: column; gap: 6px;">
-            #         <div><strong>HC:</strong> 200</div>
-            #         <div><strong>Live Chat:</strong> 100</div>
-            #         <div><strong>AI Summary:</strong> 30</div>
-            #     </div>
-            #     """, unsafe_allow_html=True)
 
             df_weekly = df_filtered.copy()
             df_weekly['Week'] = df_weekly['Tanggal Pengerjaan'].dt.to_period('W').apply(lambda r: r.start_time)

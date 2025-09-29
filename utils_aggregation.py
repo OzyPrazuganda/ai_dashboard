@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+import matplotlib.pyplot as plt
 
 def aggregate_csat(df, date_col, granularity):
     df = df.copy()
@@ -120,7 +121,9 @@ def sidebar_filters():
     return company_filter, date_mode, selected_date
 
 # ============ Function to show W1 W2 W3 / M1 M2 M3 ============
-def aggregate_table_with_granularity(df, category_col, value_col=None, date_col=None, granularity=None, start_date=None, end_date=None):
+def aggregate_table_with_granularity(
+        df, category_col, value_col=None, date_col=None, granularity=None, start_date=None, end_date=None
+):
     df = df.copy()
     
     # make sure there is date range
@@ -133,36 +136,35 @@ def aggregate_table_with_granularity(df, category_col, value_col=None, date_col=
     # determine period column based on granularity
     if granularity == 'Weekly':
         df['PeriodRaw'] = df[date_col].dt.to_period('W')
+        df['Period'] = df['PeriodRaw'].apply(lambda x: f"W{x.start_time.strftime('%U')} {x.start_time.year}")
     elif granularity == 'Monthly':
         df['PeriodRaw'] = df[date_col].dt.to_period('M')
+        df['Period'] = df['PeriodRaw'].dt.strftime("%b %Y")  # contoh: Sep 2024
     else:
-        df['PeriodRaw'] = df[date_col].dt.strftime('%Y-%m-%d')
+        df['PeriodRaw'] = df[date_col]
+        df['Period'] = df[date_col].dt.strftime('%Y-%m-%d')
 
-    # Mapping W1/W2... or M1/M2...
-    unique_periods = sorted(df['PeriodRaw'].unique())
-    mapping = {
-        p: f"W{i+1}" if granularity == "Weekly" else f"M{i+1}"
-        for i, p in enumerate(unique_periods)
-    }
-
-    # Assign period label
-    df["Period"] = df["PeriodRaw"].map(mapping)
 
     # group by category + period -> pivot
     if value_col is None:
         agg_df = (
-            df.groupby([category_col, 'Period'])
+            df.groupby([category_col, 'PeriodRaw'])
             .size()
             .reset_index(name='Total Sample')
         )
     else:
         agg_df = (
-            df.groupby([category_col, 'Period'])[value_col]
+            df.groupby([category_col, 'PeriodRaw'])[value_col]
             .sum()
             .reset_index(name='Total Sample')
         )
     
+    agg_df = agg_df.merge(df[['PeriodRaw','Period']].drop_duplicates(), on='PeriodRaw', how='left')
     pivot = agg_df.pivot(index=category_col, columns='Period', values='Total Sample').fillna(0)
+
+    # Sort column by PeriodRaw
+    period_order = df[['PeriodRaw', 'Period']].drop_duplicates().sort_values('PeriodRaw')
+    pivot = pivot[period_order['Period'].tolist()]
 
     # adding total column
     pivot['Total'] = pivot.sum(axis=1)
@@ -191,3 +193,15 @@ def calculate_checker_accuracy(df):
     result["Accuracy"] = (result["Total_Tagging"] - result["Kesalahan"]) / result["Total_Tagging"] * 100
     
     return result
+
+def aggregate_checker_errors(df):
+    count_cols = [
+        'Count Hasil ASR',
+        'Count Hasil Pemeriksaan Kualitas',
+        'Count Efektif',
+        'Count Kejelasan Suara',
+        'Count Kelengkapan Rekaman',
+        'Count Revisi Text'
+    ]
+    df_checker = df.groupby('Checker')[count_cols].sum().reset_index()
+    return df_checker, count_cols
