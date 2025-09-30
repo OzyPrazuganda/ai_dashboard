@@ -11,7 +11,7 @@ import difflib
 import json
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
-from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors
+from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors, get_week_of_month
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -173,7 +173,7 @@ if team == 'QC':
                 """, unsafe_allow_html=True)
 
         # radar chart
-        cols = st.columns([2, 4])
+        cols = st.columns([4,4])
         with cols[0]:
             df_checker, count_cols = aggregate_checker_errors(df_sampling)
 
@@ -181,25 +181,114 @@ if team == 'QC':
 
             r = row[count_cols].values.tolist()
             theta = count_cols
-            
+
+            theta_clean = [t.replace("Count ", "") for t in theta]
+
             fig = go.Figure()
-            
+
             fig.add_trace(
                 go.Scatterpolar(
                     r=r + [r[0]],
-                    theta=theta + [theta[0]],
+                    theta=theta_clean + [theta_clean[0]], 
                     fill='toself',
                     name=validator,
-                    line=dict(color='blue'),
-                    marker=dict(size=8)
+                    line=dict(color='red')
                 )
             )
 
             fig.update_layout(
-                polar=dict(
-                    radialaxis=dict(visible=True, range=[0, max(r)+2])
-                ),
-                showlegend=True
+                polar=dict(radialaxis=dict(visible=True, range=[0, max(r)+2])),
+                showlegend=False,
+                width=300,
+                height=300,
+                margin=dict(l=30, r=30, t=2, b=30)
+            )
+
+            st.plotly_chart(fig, use_container_width=True)
+        
+        # Barchart mistake per week
+
+        with cols[1]:
+            # Pastikan kolom datetime benar
+            if not pd.api.types.is_datetime64_any_dtype(df_sampling['Tanggal Sampling']):
+                df_sampling['Tanggal Sampling'] = pd.to_datetime(df_sampling['Tanggal Sampling'])
+
+            # Ambil bulan & tahun sekarang
+            today = datetime.now()
+            current_month = today.month
+            current_year = today.year
+
+            # Filter data bulan ini
+            df_current = df_sampling[(df_sampling['Tanggal Sampling'].dt.month == current_month) &
+                                    (df_sampling['Tanggal Sampling'].dt.year == current_year)]
+
+            # Tentukan minggu dalam bulan ini (week1 = tgl 1–7, week2 = tgl 8–14, dst.)
+            def get_week_of_month(date):
+                day = date.day
+                if day <= 7:
+                    return 1
+                elif day <= 14:
+                    return 2
+                elif day <= 21:
+                    return 3
+                else:
+                    return 4
+
+            df_current['week'] = df_current['Tanggal Sampling'].apply(get_week_of_month)
+
+            # Hitung minggu maksimal yang bisa dipilih (berdasarkan hari ini)
+            current_week = get_week_of_month(today)
+            week_labels = [f"week {i}" for i in range(1, current_week + 1)]
+
+            # Sidebar filter
+            week1_label = st.sidebar.selectbox('First Chart', week_labels)
+            week2_label = st.sidebar.selectbox('Second Chart', week_labels)
+
+            week1_num = int(week1_label.split()[-1])
+            week2_num = int(week2_label.split()[-1])
+
+            # Filter data sesuai validator & minggu
+            df_week1 = df_current[(df_current['Checker'] == validator) & 
+                                (df_current['week'] == week1_num)]
+
+            df_week2 = df_current[(df_current['Checker'] == validator) & 
+                                (df_current['week'] == week2_num)]
+
+            # Variabel yang dipakai
+            variables = ['Count Kejelasan Suara', 'Count Efektif', 'Count Hasil Pemeriksaan Kualitas',
+                        'Count Hasil ASR', 'Count Revisi Text', 'Count Kelengkapan Rekaman']
+
+            week1_counts = [df_week1[var].sum() for var in variables]
+            week2_counts = [df_week2[var].sum() for var in variables]
+
+            # Plot bar chart
+            fig = go.Figure()
+
+            fig.add_trace(go.Bar(
+                x=variables,
+                y=week1_counts,
+                name=week1_label,
+                marker_color='blue',
+                text=week1_counts,
+                textposition='outside'
+            ))
+
+            fig.add_trace(go.Bar(
+                x=variables,
+                y=week2_counts,
+                name=week2_label,
+                marker_color='purple',
+                text=week2_counts,
+                textposition='outside'
+            ))
+
+            fig.update_layout(
+                barmode='group',
+                title=f'Perbandingan Kesalahan Validator: {validator}',
+                xaxis_title='Kategori Kesalahan',
+                yaxis_title='Jumlah Kesalahan',
+                template='plotly_white',
+                height=500
             )
 
             st.plotly_chart(fig, use_container_width=True)

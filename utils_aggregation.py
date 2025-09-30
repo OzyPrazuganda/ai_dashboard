@@ -120,7 +120,7 @@ def sidebar_filters():
 
     return company_filter, date_mode, selected_date
 
-# ============ Function to show W1 W2 W3 / M1 M2 M3 ============
+# ============ Function to show Weeks and Months ============
 def aggregate_table_with_granularity(
         df, category_col, value_col=None, date_col=None, granularity=None, start_date=None, end_date=None
 ):
@@ -133,37 +133,41 @@ def aggregate_table_with_granularity(
     if df.empty:
         return pd.DataFrame(columns=[category_col, 'Total'])
 
-    # determine period column based on granularity
     if granularity == 'Weekly':
+        df['Year'] = df[date_col].dt.year
+        df['Month'] = df[date_col].dt.strftime('%b %Y')
+        df['WeekInMonth'] = df.groupby(['Year','Month'])[date_col].transform(
+            lambda x: ((x.dt.day - 1) // 7) + 1
+        )
         df['PeriodRaw'] = df[date_col].dt.to_period('W')
-        df['Period'] = df['PeriodRaw'].apply(lambda x: f"W{x.start_time.strftime('%U')} {x.start_time.year}")
+        df['Period'] = 'W' + df['WeekInMonth'].astype(str) + ' ' + df['Month']
+
     elif granularity == 'Monthly':
         df['PeriodRaw'] = df[date_col].dt.to_period('M')
-        df['Period'] = df['PeriodRaw'].dt.strftime("%b %Y")  # contoh: Sep 2024
+        df['Period'] = df['PeriodRaw'].dt.strftime("%b %Y")
+
     else:
         df['PeriodRaw'] = df[date_col]
         df['Period'] = df[date_col].dt.strftime('%Y-%m-%d')
 
-
     # group by category + period -> pivot
     if value_col is None:
         agg_df = (
-            df.groupby([category_col, 'PeriodRaw'])
+            df.groupby([category_col, 'PeriodRaw','Period'])
             .size()
             .reset_index(name='Total Sample')
         )
     else:
         agg_df = (
-            df.groupby([category_col, 'PeriodRaw'])[value_col]
+            df.groupby([category_col, 'PeriodRaw','Period'])[value_col]
             .sum()
             .reset_index(name='Total Sample')
         )
     
-    agg_df = agg_df.merge(df[['PeriodRaw','Period']].drop_duplicates(), on='PeriodRaw', how='left')
     pivot = agg_df.pivot(index=category_col, columns='Period', values='Total Sample').fillna(0)
 
-    # Sort column by PeriodRaw
-    period_order = df[['PeriodRaw', 'Period']].drop_duplicates().sort_values('PeriodRaw')
+    # urutkan kolom sesuai PeriodRaw
+    period_order = agg_df[['PeriodRaw','Period']].drop_duplicates().sort_values('PeriodRaw')
     pivot = pivot[period_order['Period'].tolist()]
 
     # adding total column
@@ -171,6 +175,7 @@ def aggregate_table_with_granularity(
     pivot = pivot.sort_values('Total', ascending=False)
     
     return pivot.reset_index()
+
 
 def calculate_checker_accuracy(df):
     # cari semua kolom yang dimulai dengan 'Count'
@@ -205,3 +210,14 @@ def aggregate_checker_errors(df):
     ]
     df_checker = df.groupby('Checker')[count_cols].sum().reset_index()
     return df_checker, count_cols
+
+def get_week_of_month(date):
+    day = date.day
+    if day <= 7:
+        return 1
+    elif day <= 14:
+        return 2
+    elif day <= 21:
+        return 3
+    else:
+        return 4
