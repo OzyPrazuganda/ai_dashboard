@@ -73,7 +73,10 @@ if team == 'QC':
         # Image column
         with cols[0]:
             images = {
-                "Aulia": "pict/gawr_gura.png",
+                "Aulia": "pict/aul.png",
+                "Reza": "pict/reza.png",
+                "Neneng": "pict/neneng.png",
+                "Azer": "pict/azer.png"
                 # Add other mappings if needed
             }
             if validator in images:
@@ -134,7 +137,7 @@ if team == 'QC':
                     values="Count",
                     names="Category",
                     color="Category",
-                    color_discrete_map={"Benar": "light blue", "Salah": "red"},
+                    color_discrete_map={"Benar": "lightslategrey", "Salah": "crimson"},
                     hole=0.65,
                     title='Tag Count'
                 )
@@ -155,7 +158,7 @@ if team == 'QC':
                     margin=dict(t=40, b=20, l=20, r=20),
                     height=240,
                     annotations=[dict(
-                        text="{} Tagged".format(total_tagging),
+                        text="{}<br>Tagged".format(total_tagging),
                         font_size=14,
                         showarrow=False,
                         xanchor="center"
@@ -173,7 +176,7 @@ if team == 'QC':
                 """, unsafe_allow_html=True)
 
         # radar chart
-        cols = st.columns([4,4])
+        cols = st.columns([4,5])
         with cols[0]:
             df_checker, count_cols = aggregate_checker_errors(df_sampling)
 
@@ -192,7 +195,7 @@ if team == 'QC':
                     theta=theta_clean + [theta_clean[0]], 
                     fill='toself',
                     name=validator,
-                    line=dict(color='red')
+                    line=dict(color='crimson')
                 )
             )
 
@@ -207,40 +210,38 @@ if team == 'QC':
             st.plotly_chart(fig, use_container_width=True)
         
         # Barchart mistake per week
-
         with cols[1]:
             # Pastikan kolom datetime benar
             if not pd.api.types.is_datetime64_any_dtype(df_sampling['Tanggal Sampling']):
                 df_sampling['Tanggal Sampling'] = pd.to_datetime(df_sampling['Tanggal Sampling'])
 
-            # Ambil bulan & tahun sekarang
-            today = datetime.now()
-            current_month = today.month
-            current_year = today.year
+            # Ambil bulan & tahun unik dari data
+            available_months = df_sampling['Tanggal Sampling'].dt.to_period('M').unique()
+            available_months = sorted(available_months)
 
-            # Filter data bulan ini
-            df_current = df_sampling[(df_sampling['Tanggal Sampling'].dt.month == current_month) &
-                                    (df_sampling['Tanggal Sampling'].dt.year == current_year)]
+            # Konversi ke format label misalnya "Oktober 2025"
+            month_labels = [p.strftime("%B %Y") for p in available_months]
 
-            # Tentukan minggu dalam bulan ini (week1 = tgl 1–7, week2 = tgl 8–14, dst.)
-            def get_week_of_month(date):
-                day = date.day
-                if day <= 7:
-                    return 1
-                elif day <= 14:
-                    return 2
-                elif day <= 21:
-                    return 3
-                else:
-                    return 4
+            # Sidebar pilih bulan
+            selected_month_label = st.sidebar.selectbox("Pilih Bulan", month_labels)
+            selected_period = available_months[month_labels.index(selected_month_label)]
 
+            # Filter data sesuai bulan & tahun yang dipilih
+            df_current = df_sampling[(df_sampling['Tanggal Sampling'].dt.month == selected_period.month) &
+                                     (df_sampling['Tanggal Sampling'].dt.year == selected_period.year)]
+
+            # Tambahkan kolom week
             df_current['week'] = df_current['Tanggal Sampling'].apply(get_week_of_month)
 
-            # Hitung minggu maksimal yang bisa dipilih (berdasarkan hari ini)
-            current_week = get_week_of_month(today)
+            # Hitung minggu maksimal yang bisa dipilih
+            if (selected_period.month == datetime.now().month) and (selected_period.year == datetime.now().year):
+                current_week = get_week_of_month(datetime.now())
+            else:
+                current_week = df_current['week'].max()
+
             week_labels = [f"week {i}" for i in range(1, current_week + 1)]
 
-            # Sidebar filter
+            # Sidebar filter untuk minggu
             week1_label = st.sidebar.selectbox('First Chart', week_labels)
             week2_label = st.sidebar.selectbox('Second Chart', week_labels)
 
@@ -261,34 +262,42 @@ if team == 'QC':
             week1_counts = [df_week1[var].sum() for var in variables]
             week2_counts = [df_week2[var].sum() for var in variables]
 
-            # Plot bar chart
+            # Bersihkan nama variabel (hapus "Count ")
+            clean_labels = [v.replace("Count ", "") for v in variables]
+
+            # Plot horizontal bar chart
             fig = go.Figure()
 
             fig.add_trace(go.Bar(
-                x=variables,
-                y=week1_counts,
-                name=week1_label,
-                marker_color='blue',
-                text=week1_counts,
+                y=clean_labels,
+                x=week2_counts,
+                name=week2_label,
+                marker_color='crimson',
+                orientation='h',
+                text=week2_counts,
                 textposition='outside'
             ))
 
             fig.add_trace(go.Bar(
-                x=variables,
-                y=week2_counts,
-                name=week2_label,
-                marker_color='purple',
-                text=week2_counts,
+                y=clean_labels,
+                x=week1_counts,
+                name=week1_label,
+                marker_color='lightslategrey',
+                orientation='h',
+                text=week1_counts,
                 textposition='outside'
             ))
 
             fig.update_layout(
                 barmode='group',
-                title=f'Perbandingan Kesalahan Validator: {validator}',
-                xaxis_title='Kategori Kesalahan',
-                yaxis_title='Jumlah Kesalahan',
+                xaxis_title='Jumlah Kesalahan',
+                yaxis_title='Kategori Kesalahan',
                 template='plotly_white',
-                height=500
+                height=400,
+                margin=dict(l=0, r=0, t=0, b=0),
+                xaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.5),
+                yaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.5)
+
             )
 
             st.plotly_chart(fig, use_container_width=True)
