@@ -496,6 +496,20 @@ if team == 'QC':
             textposition='top center'
         ))
 
+        # === Hitung rata-rata MERAH saja ===
+        avg_merah = df_merah_weekly['Jumlah'].mean()
+
+        # Tambahkan garis rata-rata MERAH
+        fig_line.add_hline(
+            y=avg_merah,
+            line_dash="dot",
+            line_color="rgb(26, 118, 255)",
+            annotation_text=f"Avg Merah = {avg_merah:.1f}",
+            annotation_position="right",
+            annotation_font=dict(color="rgb(26, 118, 255)")
+        )
+
+
         # Layout
         fig_line.update_layout(
             title='Weekly Trend',
@@ -549,42 +563,62 @@ if team == 'QC':
             )
             cols[0].plotly_chart(fig_pie, use_container_width=True)
 
-        # ==== Weekly Bar Chart: Jumlah Merah ====
-        df_merah_weekly = df_merah.groupby('Week').size().reset_index(name='MERAH')
-        df_text_weekly = df_text.groupby('Week').size().reset_index(name='TEXT')
+            # ==== Daily Bar Chart: Jumlah Merah & Text (7 Hari Terakhir) ====
+            # Pastikan kolom datetime benar
+            if not pd.api.types.is_datetime64_any_dtype(df_sampling['Tanggal Sampling']):
+                df_sampling['Tanggal Sampling'] = pd.to_datetime(df_sampling['Tanggal Sampling'])
 
-        # Gabungkan data
-        df_bar = pd.merge(df_merah_weekly, df_text_weekly, on='Week', how='outer').fillna(0)
-        df_bar = df_bar.sort_values(by='Week')
+            # Filter 7 hari terakhir
+            last_7_days = df_sampling['Tanggal Sampling'].max() - pd.Timedelta(days=6)
+            df_last7 = df_sampling[df_sampling['Tanggal Sampling'] >= last_7_days]
 
-        # Ubah ke long format untuk stacked bar
-        df_melted_bar = df_bar.melt(id_vars='Week', value_vars=['MERAH', 'TEXT'], var_name='Label', value_name='Jumlah')
+            # Pisahkan berdasarkan Red Label
+            df_merah = df_last7[df_last7['Red Label'].str.upper() == "MERAH"]
+            df_text = df_last7[df_last7['Red Label'].str.upper() != "MERAH"]
 
-        # Stacked Bar Chart
-        fig_bar = px.bar(
-            df_melted_bar,
-            x='Week',
-            y='Jumlah',
-            color='Label',
-            title='Jumlah Sampling per Minggu',
-            text='Jumlah',
-            color_discrete_map={
-                'MERAH': '#dc3545',
-                'TEXT': '#f4a261'
-            }
-        )
-        fig_bar.update_layout(
-            barmode='stack',
-            xaxis_title=None,
-            yaxis_title=None,
-            plot_bgcolor="#fff",
-            hovermode="x unified",
-            legend=dict(orientation="h", y=1.15, x=0, xanchor="left")
-        )
-        fig_bar.update_traces(
-            textposition='inside'
-        )
-        cols[1].plotly_chart(fig_bar, use_container_width=True)
+            # Hitung jumlah per hari
+            df_merah_daily = df_merah.groupby('Tanggal Sampling').size().reset_index(name='MERAH')
+            df_text_daily = df_text.groupby('Tanggal Sampling').size().reset_index(name='TEXT')
+
+            # Gabungkan data
+            df_bar = pd.merge(df_merah_daily, df_text_daily, on='Tanggal Sampling', how='outer').fillna(0)
+            df_bar = df_bar.sort_values(by='Tanggal Sampling')
+
+            # Ubah ke long format untuk stacked bar
+            df_melted_bar = df_bar.melt(
+                id_vars='Tanggal Sampling',
+                value_vars=['MERAH', 'TEXT'],
+                var_name='Label',
+                value_name='Jumlah'
+            )
+
+            # Stacked Bar Chart
+            fig_bar = px.bar(
+                df_melted_bar,
+                x='Tanggal Sampling',
+                y='Jumlah',
+                color='Label',
+                title='Jumlah Sampling per Hari (7 Hari Terakhir)',
+                text='Jumlah',
+                color_discrete_map={
+                    'MERAH': '#dc3545',
+                    'TEXT': '#f4a261'
+                }
+            )
+            fig_bar.update_layout(
+                barmode='stack',
+                xaxis_title=None,
+                yaxis_title=None,
+                plot_bgcolor="#fff",
+                hovermode="x unified",
+                legend=dict(orientation="h", y=1.15, x=0, xanchor="left")
+            )
+            fig_bar.update_traces(
+                textposition='inside'
+            )
+
+            cols[1].plotly_chart(fig_bar, use_container_width=True)
+
 
 
     # Page 3
@@ -683,7 +717,7 @@ if team == 'QC':
             st.stop()
 
         # Date filter
-        manual_order = ["Reza", "Neneng", "Aulia", "Azer"]
+        manual_order = ["Azer", "Aulia", "Reza", "Neneng"]
         agent_list = [agent for agent in manual_order if agent in {entry["agent"] for entry in meeting_data[selected_date]}]
         selected_agent = st.sidebar.radio("Agent Sampling", agent_list)
 
@@ -707,6 +741,7 @@ if team == 'QC':
                                 st.audio(item["file"])
                             except Exception as e:
                                 st.error(f"Audio Restricted")
+
 
     # Page 4
     if page == 'Performance':
@@ -987,7 +1022,7 @@ if team == 'QC':
 elif team == 'KULA':
     # st.markdown('#####')
 
-    page = st.sidebar.selectbox("Pages", ['Dashboard', 'Chatbot'])
+    page = st.sidebar.selectbox("Pages", ['Dashboard'])
 
     if page == 'Dashboard':
         
@@ -1484,45 +1519,3 @@ elif team == 'KULA':
                 gd_bg.configure_column('Total Sample', filter=False)
                 grid_options_bg = gd_bg.build()
                 AgGrid(bg_summary, gridOptions=grid_options_bg, height=400)
-
-
-    # elif page == 'Chatbot':
-    #     st.title("This is A Dummy")
-
-    #     chatbot = ChatbotOptimized()
-
-    #     if not os.path.exists("chatbot_index/faiss.index"):
-    #         st.warning("Index not found. Please build the index first.")
-    #         chatbot.load_data('../../dataset_kula/kula_knowledge_base.csv')
-    #         chatbot.build_index()
-    #         chatbot.save_index()
-    #     else:
-    #         chatbot.load_index()
-
-    #     # Init Chatbox
-    #     chat_box = ChatBox(
-    #         use_rich_markdown=True,
-    #         user_theme="green",
-    #         assistant_theme="blue"
-    #     )
-    #     chat_box.use_chat_name('chat1')
-
-    #     def on_chat_chane():
-    #         chat_box.user_chat_name(st.session_state["chat_name"])
-    #         chat_box.context_to_session()
-
-    #     with st.sidebar:
-    #         st.subheader("start to chat using streamlit")
-    #         chat_name = st.selectbox("Chat Session:", ["default", "chat1"], key="chat_name", on_change=on_chat_change)
-    #         chat_box.use_chat_name(chat_name)
-    #         streaming = st.checkbox("streaming", key="streaming")
-    #         in_expander = st.checkbox("show message in expander", key="in_exapnder")
-    #         show_history = st.checkbox("show session state", key="show_history")
-    #         chat_box.context_from_session(exclude=["chat_name"])
-
-    #         st.divider()
-    #         btns = st.container()
-
-    #         file = st.file_uploader("chat history json", type=["json"])
-    #         if st.button("Load json") and file:
-    #             data = json.load(file)
