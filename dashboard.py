@@ -620,7 +620,6 @@ if team == 'QC':
             cols[1].plotly_chart(fig_bar, use_container_width=True)
 
 
-
     # Page 3
     elif page == "Audio Sample":
         st.title("Audio Sample")
@@ -853,7 +852,7 @@ if team == 'QC':
                     values="Count",
                     names="Category",
                     color="Category",
-                    color_discrete_map={"Benar": "lightslategrey", "Salah": "crimson"},
+                    color_discrete_map={"Salah": "#5fa8d3", "Benar": "#1b4965"},
                     hole=0.65,
                     title='Tag Count'
                 )
