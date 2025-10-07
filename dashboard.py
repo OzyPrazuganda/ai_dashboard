@@ -163,7 +163,7 @@ if team == 'QC':
                     st.markdown('</div>', unsafe_allow_html=True)
 
         st.markdown(
-            "<h5 style='text-align: center;'>Current AI Accuracy: 94.11%</h5>",
+            "<h5 style='text-align: center;'>Current AI Accuracy: 98.83%</h5>",
             unsafe_allow_html=True
             )
 
@@ -743,7 +743,7 @@ if team == 'QC':
 
 
     # Page 4
-    if page == 'Performance':
+    elif page == 'Performance':
         df_sampling = pd.read_csv(
             'dataset_qc/kalib_sampling.csv',
             parse_dates=['Tanggal Sampling']
