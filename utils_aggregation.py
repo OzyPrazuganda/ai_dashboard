@@ -58,29 +58,36 @@ def aggregation_ratio(df, date_col, granularity):
     df = df.copy()
     df[date_col] = pd.to_datetime(df[date_col])
 
+    # ==== Fungsi bantu week quartile-like ====
+    def week_of_month(date):
+        days_in_month = pd.Period(date, freq='M').days_in_month
+        week_length = days_in_month / 4
+        week_num = int((date.day - 1) // week_length) + 1
+        return min(week_num, 4)
+
     if granularity == 'Daily':
         df['Period'] = df[date_col].dt.date
-        result = df.groupby('Period')[['Robot Success ratio']].mean().reset_index()
+    elif granularity == 'Weekly':
+        df['Period'] = df[date_col].apply(lambda d: f"W{week_of_month(d)} {d.strftime('%b %Y')}")
+    elif granularity == 'Monthly':
+        df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
     else:
-        if granularity == 'Weekly':
-            df['Period'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
-        elif granularity == 'Monthly':
-            df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
+        df['Period'] = df[date_col]
 
-        grouped = df.groupby('Period').agg({
-            'Connected to robot': lambda x: pd.to_numeric(x, errors='coerce').sum(),
-            'Number of exit queues': lambda x: pd.to_numeric(x, errors='coerce').sum(),
-            'Total handle robot': lambda x: pd.to_numeric(x, errors='coerce').sum()
-        }).reset_index()
+    # hitung ratio per period
+    grouped = df.groupby('Period').agg({
+        'Connected to robot': lambda x: pd.to_numeric(x, errors='coerce').sum(),
+        'Number of exit queues': lambda x: pd.to_numeric(x, errors='coerce').sum(),
+        'Total handle robot': lambda x: pd.to_numeric(x, errors='coerce').sum()
+    }).reset_index()
 
-        grouped['Robot Success ratio'] = (
-            (grouped['Total handle robot'] - grouped['Number of exit queues']) /
-            grouped['Connected to robot'] * 100
-        )
+    grouped['Robot Success ratio'] = (
+        (grouped['Total handle robot'] - grouped['Number of exit queues']) /
+        grouped['Connected to robot'] * 100
+    )
 
-        result = grouped[['Period', 'Robot Success ratio']]
+    return grouped[['Period', 'Robot Success ratio']].rename(columns={'Period': 'Date'})
 
-    return result.rename(columns={'Period': 'Date'})
 
     
 def aggregate_sum(df, date_col, granularity, agg_dict):
@@ -126,19 +133,24 @@ def aggregate_table_with_granularity(
 ):
     df = df.copy()
     
-    # make sure there is date range
+    # pastikan ada filter tanggal
     if start_date is not None and end_date is not None:
         df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
     
     if df.empty:
         return pd.DataFrame(columns=[category_col, 'Total'])
 
+    # ==== Fungsi bantu untuk week quartile-like ====
+    def week_of_month(date):
+        days_in_month = pd.Period(date, freq='M').days_in_month
+        week_length = days_in_month / 4
+        week_num = int((date.day - 1) // week_length) + 1
+        return min(week_num, 4)
+
     if granularity == 'Weekly':
         df['Year'] = df[date_col].dt.year
         df['Month'] = df[date_col].dt.strftime('%b %Y')
-        df['WeekInMonth'] = df.groupby(['Year','Month'])[date_col].transform(
-            lambda x: ((x.dt.day - 1) // 7) + 1
-        )
+        df['WeekInMonth'] = df[date_col].apply(week_of_month)
         df['PeriodRaw'] = df[date_col].dt.to_period('W')
         df['Period'] = 'W' + df['WeekInMonth'].astype(str) + ' ' + df['Month']
 
@@ -150,7 +162,7 @@ def aggregate_table_with_granularity(
         df['PeriodRaw'] = df[date_col]
         df['Period'] = df[date_col].dt.strftime('%Y-%m-%d')
 
-    # group by category + period -> pivot
+    # ==== Aggregasi ====
     if value_col is None:
         agg_df = (
             df.groupby([category_col, 'PeriodRaw','Period'])
@@ -164,17 +176,27 @@ def aggregate_table_with_granularity(
             .reset_index(name='Total Sample')
         )
     
-    pivot = agg_df.pivot(index=category_col, columns='Period', values='Total Sample').fillna(0)
+    pivot = agg_df.pivot_table(index=category_col, columns='Period', values='Total Sample', aggfunc='sum', fill_value=0)
 
     # urutkan kolom sesuai PeriodRaw
-    period_order = agg_df[['PeriodRaw','Period']].drop_duplicates().sort_values('PeriodRaw')
+    period_order = (
+        agg_df[['PeriodRaw','Period']]
+        .drop_duplicates()
+        .sort_values('PeriodRaw')
+    )
     pivot = pivot[period_order['Period'].tolist()]
 
     # adding total column
     pivot['Total'] = pivot.sum(axis=1)
     pivot = pivot.sort_values('Total', ascending=False)
     
-    return pivot.reset_index()
+    pivot = pivot.reset_index()
+
+    pivot.columns = pd.Index(pivot.columns).map(str)
+    pivot = pivot.loc[:, ~pivot.columns.duplicated()]
+
+    return pivot
+
 
 
 def calculate_checker_accuracy(df):
@@ -210,14 +232,3 @@ def aggregate_checker_errors(df):
     ]
     df_checker = df.groupby('Checker')[count_cols].sum().reset_index()
     return df_checker, count_cols
-
-def get_week_of_month(date):
-    day = date.day
-    if day <= 7:
-        return 1
-    elif day <= 14:
-        return 2
-    elif day <= 21:
-        return 3
-    else:
-        return 4
