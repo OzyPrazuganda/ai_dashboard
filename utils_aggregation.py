@@ -3,6 +3,15 @@ import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
 
+
+# ============ Fungsi Global Week of Month ============
+def week_of_month(date):
+    days_in_month = pd.Period(date, freq='M').days_in_month
+    week_length = days_in_month / 4
+    week_num = int((date.day - 1) // week_length) + 1
+    return min(week_num, 4)
+
+
 def aggregate_csat(df, date_col, granularity):
     df = df.copy()
     df[date_col] = pd.to_datetime(df[date_col])
@@ -50,6 +59,7 @@ def aggregate_csat(df, date_col, granularity):
     
     return grouped[['Date', 'CSAT [Before]', 'CSAT [After]']]
 
+
 # Function to return the ratio weekly monthly count
 def aggregation_ratio(df, date_col, granularity):
     if df is None or df.empty:
@@ -58,17 +68,11 @@ def aggregation_ratio(df, date_col, granularity):
     df = df.copy()
     df[date_col] = pd.to_datetime(df[date_col])
 
-    # ==== Fungsi bantu week quartile-like ====
-    def week_of_month(date):
-        days_in_month = pd.Period(date, freq='M').days_in_month
-        week_length = days_in_month / 4
-        week_num = int((date.day - 1) // week_length) + 1
-        return min(week_num, 4)
 
     if granularity == 'Daily':
         df['Period'] = df[date_col].dt.date
     elif granularity == 'Weekly':
-        df['Period'] = df[date_col].apply(lambda d: f"W{week_of_month(d)} {d.strftime('%b %Y')}")
+        df['Period'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
     elif granularity == 'Monthly':
         df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
     else:
@@ -106,6 +110,7 @@ def aggregate_sum(df, date_col, granularity, agg_dict):
     result = df.groupby('Period').agg(agg_dict).reset_index()
     return result.rename(columns={'Period': 'Date'})
 
+
 # ============ Multiselect filter date for bad surey and like dislike table ============
 def sidebar_filters():
     company_filter = st.sidebar.multiselect(
@@ -126,6 +131,7 @@ def sidebar_filters():
         )
 
     return company_filter, date_mode, selected_date
+
 
 # ============ Function to show Weeks and Months ============
 def aggregate_table_with_granularity(
@@ -220,6 +226,7 @@ def calculate_checker_accuracy(df):
     result["Accuracy"] = (result["Total_Tagging"] - result["Kesalahan"]) / result["Total_Tagging"] * 100
     
     return result
+
 
 def aggregate_checker_errors(df):
     count_cols = [
