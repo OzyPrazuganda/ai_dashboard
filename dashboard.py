@@ -11,7 +11,7 @@ import difflib
 import json
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
-from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors
+from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors, week_of_month, week_of_month_performance
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -574,7 +574,7 @@ if team == 'QC':
 
             # Pisahkan berdasarkan Red Label
             df_merah = df_last7[df_last7['Red Label'].str.upper() == "MERAH"]
-            df_text = df_last7[df_last7['Red Label'].str.upper() != "MERAH"]
+            df_text = df_last7[df_last7['Red Label'].str.upper() == "TEXT"]
 
             # Hitung jumlah per hari
             df_merah_daily = df_merah.groupby('Tanggal Sampling').size().reset_index(name='MERAH')
@@ -946,11 +946,11 @@ if team == 'QC':
                                      (df_sampling['Tanggal Sampling'].dt.year == selected_period.year)]
 
             # Tambahkan kolom week
-            df_current['week'] = df_current['Tanggal Sampling'].apply(get_week_of_month)
+            df_current['week'] = df_current['Tanggal Sampling'].apply(week_of_month_performance)
 
             # Hitung minggu maksimal yang bisa dipilih
             if (selected_period.month == datetime.now().month) and (selected_period.year == datetime.now().year):
-                current_week = get_week_of_month(datetime.now())
+                current_week = week_of_month_performance(datetime.now())
             else:
                 current_week = df_current['week'].max()
 

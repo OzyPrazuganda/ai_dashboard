@@ -11,6 +11,13 @@ def week_of_month(date):
     week_num = int((date.day - 1) // week_length) + 1
     return min(week_num, 4)
 
+# ============ Fungsi Week of Month khusus page performance ============
+def week_of_month_performance(date): 
+    days_in_month = pd.Period(date, freq='M').days_in_month
+    week_length = days_in_month / 4
+    week_num = int((date.day - 1) // week_length) + 1
+    return min(week_num, 4)
+
 
 def aggregate_csat(df, date_col, granularity):
     df = df.copy()
