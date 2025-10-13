@@ -272,9 +272,9 @@ if team == 'KULA':
 
             df_daily = aggregate_sum(df_like_dislike, 'Date', granularity,{
                 "solved_num": "sum",
-                "unsolved_num": "sum"
-            })
-            df_daily.rename(columns={'solved_num': 'Like', 'unsolved_num': 'Dislike'}, inplace=True)
+                "Code": pd.Series.nunique
+            }).reset_index()
+            df_daily.rename(columns={'solved_num': 'Like', 'Code': 'Dislike'}, inplace=True)
 
             latest_date = df_daily['Date'].max()
             latest_data = df_daily[df_daily['Date'] == latest_date].melt(
@@ -318,18 +318,6 @@ if team == 'KULA':
             # Plot line chart
             fig = go.Figure()
 
-            # Like
-            fig.add_trace(go.Scatter(
-                x=df_daily['Date'],
-                y=df_daily['Like'],
-                mode='lines+markers+text',
-                name='Like',
-                text=[f"<span style='color:black'>{x}" for x in df_daily['Like']],
-                textposition='top center',
-                fill='tonexty',
-                fillcolor='rgba(0, 123, 255, 0.2)'
-            ))
-
             # Dislike
             fig.add_trace(go.Scatter(
                 x=df_daily['Date'],
@@ -341,6 +329,19 @@ if team == 'KULA':
                 textposition='top center',
                 fill='tonexty',
                 fillcolor='rgba(255,0,0,0.2)'
+            ))
+
+            # Like
+            fig.add_trace(go.Scatter(
+                x=df_daily['Date'],
+                y=df_daily['Like'],
+                mode='lines+markers+text',
+                name='Like',
+                line=dict(color='blue'),
+                text=[f"<span style='color:black'>{x}" for x in df_daily['Like']],
+                textposition='top center',
+                fill='tonexty',
+                fillcolor='rgba(0, 123, 255, 0.2)'
             ))
 
             x_min = df_like_dislike['Date'].min()
