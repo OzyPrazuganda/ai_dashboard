@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
+from datetime import timedelta
 
 
 # ============ Fungsi Global Week of Month ============
@@ -160,11 +161,34 @@ def aggregate_table_with_granularity(
     # konversi date_col ke datetime
     df[date_col] = pd.to_datetime(df[date_col])
 
-    # standar period start untuk weekly (sama seperti aggregation_ratio)
+    # ==== Tentukan granularity ====
     if granularity == 'Weekly':
-        df['PeriodRaw'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
-        # Label human-friendly: "W1 01 Oct 2025" atau "01 Oct 2025 - 07 Oct 2025"
-        df['Period'] = df['PeriodRaw'].dt.strftime('%d %b %Y')  # gunakan start date label
+        # Buat daftar rentang minggu berdasarkan start_date dan end_date
+        start_date = pd.to_datetime(start_date)
+        end_date = pd.to_datetime(end_date)
+
+        # Buat list awal minggu
+        week_starts = []
+        current_start = start_date
+        while current_start <= end_date:
+            current_end = min(current_start + timedelta(days=6), end_date)
+            week_starts.append((current_start, current_end))
+            current_start = current_end + timedelta(days=1)
+
+        # Buat kolom PeriodRaw dan Period (range tanggal)
+        def get_week_label(d):
+            for ws, we in week_starts:
+                if ws <= d <= we:
+                    if ws.month == we.month:
+                        return f"{ws.day:02d}-{we.day:02d} {ws.strftime('%b')}"
+                    else:
+                        # kalau minggu melewati pergantian bulan
+                        return f"{ws.day:02d} {ws.strftime('%b')} - {we.day:02d} {we.strftime('%b')}"
+            return None
+
+        df['PeriodRaw'] = df[date_col].apply(lambda d: next(ws for ws, we in week_starts if ws <= d <= we))
+        df['Period'] = df[date_col].apply(get_week_label)
+
     elif granularity == 'Monthly':
         df['PeriodRaw'] = df[date_col].dt.to_period('M').dt.to_timestamp()
         df['Period'] = df['PeriodRaw'].dt.strftime('%b %Y')
@@ -172,7 +196,7 @@ def aggregate_table_with_granularity(
         df['PeriodRaw'] = df[date_col].dt.normalize()
         df['Period'] = df['PeriodRaw'].dt.strftime('%Y-%m-%d')
 
-    # jika value_col diberikan, konversikan ke numeric
+    # ==== Konversi value_col ke numeric ====
     if value_col is not None and value_col in df.columns:
         df[value_col] = pd.to_numeric(df[value_col], errors='coerce').fillna(0)
 
@@ -190,26 +214,18 @@ def aggregate_table_with_granularity(
               .reset_index(name='Total Sample')
         )
 
-    # Buat pivot: index=category, columns=Period, values=Total Sample
+    # ==== Pivot ====
     pivot = agg_df.pivot_table(index=category_col, columns='Period', values='Total Sample', aggfunc='sum', fill_value=0)
 
-    # urutkan kolom sesuai PeriodRaw
-    period_order = (
-        agg_df[['PeriodRaw', 'Period']]
-        .drop_duplicates()
-        .sort_values('PeriodRaw')
-    )
-    ordered_cols = period_order['Period'].tolist()
-    # Pastikan semua ordered_cols ada di pivot columns (safety)
-    ordered_cols = [c for c in ordered_cols if c in pivot.columns]
+    # Urutkan kolom sesuai PeriodRaw
+    period_order = agg_df[['PeriodRaw', 'Period']].drop_duplicates().sort_values('PeriodRaw')
+    ordered_cols = [c for c in period_order['Period'] if c in pivot.columns]
     pivot = pivot[ordered_cols]
 
-    # adding total column: hanya jumlahkan kolom numerik periode, hindari kolom index (category)
+    # Tambah total
     pivot['Total'] = pivot.select_dtypes(include=[np.number]).sum(axis=1)
-
     pivot = pivot.sort_values('Total', ascending=False).reset_index()
 
-    # Hapus kemungkinan duplikat nama kolom (safety)
     pivot.columns = pd.Index(pivot.columns).map(str)
     pivot = pivot.loc[:, ~pivot.columns.duplicated()]
 
