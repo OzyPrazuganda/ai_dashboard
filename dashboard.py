@@ -946,11 +946,11 @@ if team == 'QC':
                                      (df_sampling['Tanggal Sampling'].dt.year == selected_period.year)]
 
             # Tambahkan kolom week
-            df_current['week'] = df_current['Tanggal Sampling'].apply(week_of_month_performance)
+            df_current['week'] = df_current['Tanggal Sampling'].apply(week_of_month)
 
             # Hitung minggu maksimal yang bisa dipilih
             if (selected_period.month == datetime.now().month) and (selected_period.year == datetime.now().year):
-                current_week = week_of_month_performance(datetime.now())
+                current_week = week_of_month(datetime.now())
             else:
                 current_week = df_current['week'].max()
 
