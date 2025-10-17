@@ -163,7 +163,7 @@ if team == 'QC':
                     st.markdown('</div>', unsafe_allow_html=True)
 
         st.markdown(
-            "<h5 style='text-align: center;'>Current AI Accuracy: 98.83%</h5>",
+            "<h5 style='text-align: center;'>Current AI Accuracy: 96.12%</h5>",
             unsafe_allow_html=True
             )
 
