@@ -1431,90 +1431,102 @@ elif team == 'KULA':
                 AgGrid(bg_summary, gridOptions=grid_options2, height=400)
 
         
-        # Table QC KULA
-        df_qc_kula = pd.read_csv('dataset_kula/qc_kula.csv')
-        df_qc_kula['Score_date'] = pd.to_datetime(df_qc_kula['Score_date'], errors='coerce')
+            # Table QC KULA
+            df_qc_kula = pd.read_csv('dataset_kula/qc_kula.csv')
+            df_qc_kula['Score_date'] = pd.to_datetime(df_qc_kula['Score_date'], errors='coerce')
 
-        if date_mode == 'Single' and selected_date:
-            df_qc_kula = df_qc_kula[df_qc_kula['Score_date'].dt.date == selected_date]
-        elif date_mode == 'Range' and selected_range and len(selected_range) == 2:
-            start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
-            df_qc_kula = df_qc_kula[df_qc_kula['Score_date'].between(start_date, end_date)]
-        
-        # Filter the company
-        if company_filter:
-            df_qc_kula = df_qc_kula[df_qc_kula['Business Type'].isin(company_filter)]
+            if date_mode == 'Single' and selected_date:
+                df_qc_kula = df_qc_kula[df_qc_kula['Score_date'].dt.date == selected_date]
+            elif date_mode == 'Range' and selected_range and len(selected_range) == 2:
+                start_date, end_date = pd.to_datetime(selected_range[0]), pd.to_datetime(selected_range[1])
+                df_qc_kula = df_qc_kula[df_qc_kula['Score_date'].between(start_date, end_date)]
 
-        
-        # === Table 1: Main Category & Sub Category ===
-        main_sub_summary = (
-            df_qc_kula.groupby(['Main Category', 'Checking Result (Sub Category)'])
-            .size()
-            .reset_index(name='Total Sample')
-            .sort_values('Total Sample', ascending=False)
-        )
+            # Filter the company
+            if company_filter:
+                df_qc_kula = df_qc_kula[df_qc_kula['Business Type'].isin(company_filter)]
 
-        # === Table 2: Team Category ===
-        if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
-            team_cat_qc = aggregate_table_with_granularity(
-                df_qc_kula,
-                category_col='Team/Category',
-                date_col='Score_date',
-                granularity=granularity,
-                start_date=start_date,
-                end_date=end_date
-            )
-        else:
-            team_cat_qc = (
-                df_qc_kula.groupby('Team/Category')
-                .size()
-                .reset_index(name='Total Sample')
-                .sort_values('Total Sample', ascending=False)
-            )
+            # === Table 1: Main Category & Sub Category ===
+            if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
+                main_sub_summary = aggregate_table_with_granularity(
+                    df_qc_kula,
+                    category_col=['Main Category', 'Checking Result (Sub Category)'],
+                    date_col='Score_date',
+                    granularity=granularity,
+                    start_date=start_date,
+                    end_date=end_date
+                )
+            else:
+                main_sub_summary = (
+                    df_qc_kula.groupby(['Main Category', 'Checking Result (Sub Category)'])
+                    .size()
+                    .reset_index(name='Total Sample')
+                    .sort_values('Total Sample', ascending=False)
+                )
 
-        # === Table 3: Background Detail ===
-        if granularity in ['Weekly','Monthly'] and date_mode == 'Range':
-            bg_summary = aggregate_table_with_granularity(
-                df_qc_kula,
-                category_col='Background detail- ID',
-                date_col='Score_date',
-                granularity=granularity,
-                start_date=start_date,
-                end_date=end_date
-            )
-        else:
-            bg_summary = (
-                df_qc_kula.groupby('Background detail- ID')
-                .size()
-                .reset_index(name='Total Sample')
-                .sort_values('Total Sample', ascending=False)
-            )
+            # === Table 2: Team Category ===
+            if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
+                team_cat_qc = aggregate_table_with_granularity(
+                    df_qc_kula,
+                    category_col='Team/Category',
+                    date_col='Score_date',
+                    granularity=granularity,
+                    start_date=start_date,
+                    end_date=end_date
+                )
+            else:
+                team_cat_qc = (
+                    df_qc_kula.groupby('Team/Category')
+                    .size()
+                    .reset_index(name='Total Sample')
+                    .sort_values('Total Sample', ascending=False)
+                )
 
-        # Show the data
-        st.markdown('##### QC Dislike')
-        with st.container():
-            cols = st.columns([0.35, 0.3, 0.35])
+            # === Table 3: Background Detail ===
+            if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
+                bg_summary = aggregate_table_with_granularity(
+                    df_qc_kula,
+                    category_col='Background detail- ID',
+                    date_col='Score_date',
+                    granularity=granularity,
+                    start_date=start_date,
+                    end_date=end_date
+                )
+            else:
+                bg_summary = (
+                    df_qc_kula.groupby('Background detail- ID')
+                    .size()
+                    .reset_index(name='Total Sample')
+                    .sort_values('Total Sample', ascending=False)
+                )
 
-            with cols[0]:
-                gd_main = GridOptionsBuilder.from_dataframe(main_sub_summary)
-                gd_main.configure_pagination()
-                gd_main.configure_default_column(sortable=True, resizable=True)
-                gd_main.configure_column('Total Sample', filter=False)
-                grid_options_main = gd_main.build()
-                AgGrid(main_sub_summary, gridOptions=grid_options_main, height=400)
+            # === Show the data ===
+            st.markdown('##### QC Dislike')
+            with st.container():
+                cols = st.columns([4, 3])
 
-            with cols[1]:
-                gd_bg = GridOptionsBuilder.from_dataframe(team_cat_qc)
-                gd_bg.configure_pagination()
-                gd_bg.configure_default_column(sortable=True, resizable=True)
-                gd_bg.configure_column('Total Sample', filter=False)
-                grid_options_bg = gd_bg.build()
-                AgGrid(team_cat_qc, gridOptions=grid_options_bg, height=400)
+                with cols[0]:
+                    gd_main = GridOptionsBuilder.from_dataframe(main_sub_summary)
+                    gd_main.configure_pagination()
+                    gd_main.configure_default_column(sortable=True, resizable=True)
+                    gd_main.configure_column('Total Sample', filter=False)
+                    grid_options_main = gd_main.build()
+                    AgGrid(main_sub_summary, gridOptions=grid_options_main, height=400)
 
-            with cols[2]:
-                gd_bg = GridOptionsBuilder.from_dataframe(bg_summary)
-                gd_bg.configure_pagination()
-                gd_bg.configure_default_column(sortable=True, resizable=True)
-                gd_bg.configure_column('Total Sample', filter=False)
-                grid_options_bg = gd_bg.build()
-                AgGrid(bg_summary, gridOptions=grid_options_bg, height=400)
+                with cols[1]:
+                    gd_team = GridOptionsBuilder.from_dataframe(team_cat_qc)
+                    gd_team.configure_pagination()
+                    gd_team.configure_default_column(sortable=True, resizable=True)
+                    gd_team.configure_column('Total Sample', filter=False)
+                    grid_options_team = gd_team.build()
+                    AgGrid(team_cat_qc, gridOptions=grid_options_team, height=400)
+            
+            with st.container():
+                cols = st.columns([3,2])
+
+                with cols[0]:
+                    gd_bg = GridOptionsBuilder.from_dataframe(bg_summary)
+                    gd_bg.configure_pagination()
+                    gd_bg.configure_default_column(sortable=True, resizable=True)
+                    gd_bg.configure_column('Total Sample', filter=False)
+                    grid_options_bg = gd_bg.build()
+                    AgGrid(bg_summary, gridOptions=grid_options_bg, height=400)
