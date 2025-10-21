@@ -105,7 +105,7 @@ def aggregation_ratio(df, date_col, granularity):
     return grouped[['Period', 'Robot Success ratio']].rename(columns={'Period': 'Date'})
 
 
-    
+
 def aggregate_sum(df, date_col, granularity, agg_dict):
     df = df.copy()
     df[date_col] = pd.to_datetime(df[date_col])
@@ -200,22 +200,36 @@ def aggregate_table_with_granularity(
     if value_col is not None and value_col in df.columns:
         df[value_col] = pd.to_numeric(df[value_col], errors='coerce').fillna(0)
 
+    # ==== Making sure the category_col is list ====
+    if isinstance(category_col, str):
+        group_cols = [category_col, 'PeriodRaw','Period']
+    elif isinstance(category_col, list):
+        group_cols = category_col + ['PeriodRaw','Period']
+    else:
+        raise ValueError("category_col should be a string or a list of strings")
+
     # ==== Aggregasi ====
     if value_col is None:
         agg_df = (
-            df.groupby([category_col, 'PeriodRaw', 'Period'])
-              .size()
-              .reset_index(name='Total Sample')
+            df.groupby(group_cols)
+            .size()
+            .reset_index(name='Total Sample')
         )
     else:
         agg_df = (
-            df.groupby([category_col, 'PeriodRaw', 'Period'])[value_col]
-              .sum()
-              .reset_index(name='Total Sample')
+            df.groupby(group_cols)[value_col]
+            .sum()
+            .reset_index(name='Total Sample')
         )
 
     # ==== Pivot ====
-    pivot = agg_df.pivot_table(index=category_col, columns='Period', values='Total Sample', aggfunc='sum', fill_value=0)
+    pivot = agg_df.pivot_table(
+        index=category_col, 
+        columns='Period', 
+        values='Total Sample', 
+        aggfunc='sum', 
+        fill_value=0
+    )
 
     # Urutkan kolom sesuai PeriodRaw
     period_order = agg_df[['PeriodRaw', 'Period']].drop_duplicates().sort_values('PeriodRaw')
