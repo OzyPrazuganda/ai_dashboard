@@ -1,21 +1,17 @@
-import os
 import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 import logging
-import pyperclip
 import datetime
 import difflib
-import json
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
 from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors, week_of_month
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
-from collections import defaultdict
 from datetime import datetime, timedelta
 
 from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum
@@ -163,7 +159,7 @@ if team == 'QC':
                     st.markdown('</div>', unsafe_allow_html=True)
 
         st.markdown(
-            "<h5 style='text-align: center;'>Current AI Accuracy: 96.12%</h5>",
+            "<h5 style='text-align: center;'>Current AI Accuracy: 93.55%</h5>",
             unsafe_allow_html=True
             )
 
