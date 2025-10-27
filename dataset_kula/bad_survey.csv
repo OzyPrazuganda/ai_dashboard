@@ -2028,7 +2028,7 @@ Pertanyaan cust ""Mengapa tidak melakukan pengajuan Pinjaman?, saran seharusnya 
 Pertanyaan cust ""Mengapa tidak melakukan pengajuan Pinjaman?, saran seharusnya robot bisa jawab menggunakan code 051001",1.0
 1928,2023-05-15,2023-05-12,Week 2,January,Yulia Sari,AFI,142089548,2-142089548-3-1_1683857233,Customer,Information Not Meet Customer Expectations,How to pay Dana Cicil bills,N/A,Bad Survey,Loan,,,1.0
 1929,2023-05-15,2023-05-12,Week 2,January,Yulia Sari,AFI,2004112454,2-2004112454-3-1_1683876446,Customer,Information Not Meet Customer Expectations,Loan limit decreased,N/A,Bad Survey,Loan,,,2.0
-1930,2023-05-15,2023-05-13,Week 2,January,Yulia Sari,AFI,105137615,2-105137615-3-1_1683972369,Customer,Information Not Meet Customer Expectations,"Can't get loan, credit quality problem",N/A,Bad Survey,Loan,,,2.0
+1930,2023-05-15,2023-05-13,Week 2,January,Yulia Sari,AFI,105137615,2-105137615-3-1_1683972369,Customer,Information Not Meet Customer Expectations,"Can't get a loan, credit quality issues",N/A,Bad Survey,Loan,,,2.0
 1931,2023-05-15,2023-05-13,Week 2,January,Yulia Sari,AFI,124691749,2-124691749-3-1_1683970513,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0
 1932,2023-05-15,2023-05-13,Week 2,January,Yulia Sari,AFI,22996194,2-22996194-3-1_1683939380,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0
 1933,2023-05-15,2023-05-13,Week 2,January,Yulia Sari,AFI,86666158,2-86666158-3-1_1683980806,Customer,Information Not Meet Customer Expectations,Can't make a loan,N/A,Bad Survey,Loan,,,1.0
@@ -2567,7 +2567,7 @@ Pertanyaan cust ""Mengapa tidak melakukan pengajuan Pinjaman?, saran seharusnya 
 2432,2023-06-05,2023-06-01,Week 1,January,Yulia Sari,AFI,2.01E+09,2-2008413268-3-1_1685605100,Customer,Information Not Meet Customer Expectations,Loan limit decreased,N/A,Bad Survey,Loan,,,2.0
 2433,2023-06-05,2023-06-01,Week 1,January,Yulia Sari,AFI,5.95E+07,2-59484495-3-1_1685623462,Customer,Information Not Meet Customer Expectations,Installment Fund bill payment time,N/A,Bad Survey,Loan,,,1.0
 2434,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,ASI,2.02E+09,2-2016311566-3-1_1685674460,CHATBOT OPS,Answer not update by Engineer,Change of telephone number,Urgent,Bad Survey,Account,,,1.0
-2435,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,AFI,1.06E+08,2-106076935-3-1_1685676177,Customer,Information Not Meet Customer Expectations,"Can't get loan, credit quality problem",N/A,Bad Survey,Loan,,,1.0
+2435,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,AFI,1.06E+08,2-106076935-3-1_1685676177,Customer,Information Not Meet Customer Expectations,"Can't get a loan, credit quality issues",N/A,Bad Survey,Loan,,,1.0
 2436,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,No Differentiated,1.34E+08,2-133649679-3-1_1685654803,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,"palanggan kirim ""ko tidak ada nmr seri ka"" Robot tidak memberikan jawab",1.0
 2437,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,No Differentiated,2.01E+09,2-2013068022-3-1_1685676984,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
 2438,2023-06-05,2023-06-02,Week 1,January,Yulia Sari,AFI,2.02E+09,2-2021027806-3-1_1685661189,Customer,Information Not Meet Customer Expectations,Akulaku Paylater application rejected,N/A,Bad Survey,Akulaku Paylater,,,1.0
@@ -18722,3 +18722,83 @@ Kenapa tidak bisa pembayaran tagihan Akulaku Paylater via Gopay""",1.0
 18416,2025-10-22,2025-10-21,Week 4,October,Nurhamni Septia,No Differentiated,2033885624,2-2033885624-3-1_1760980221,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
 18417,2025-10-22,2025-10-21,Week 4,October,Nurhamni Septia,ASI,2025630263,2-2025630263-3-1_1761019758,Customer,Information Not Meet Customer Expectations,How to transaction e-wallet,N/A,Bad Survey,Voucher,134413781440555,,1.0
 18418,2025-10-22,2025-10-21,Week 4,October,Nurhamni Septia,ASI,2052411635,2-2052411635-3-1_1761034607,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0
+18419,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,ASI,2047569862,2-2047569862-3-1_1761102026,Customer,Information Not Meet Customer Expectations,Cannot apply for a loan,N/A,Bad Survey,Loan,289369526777,,1.0
+18420,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,ASI,9746312,2-9746312-3-1_1761100198,Customer,Information Not Meet Customer Expectations,Loan Bill Payment Not Update,N/A,Bad Survey,Loan,872889984242,,2.0
+18421,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,ASI,2050706366,2-2050706366-3-1_1761137155,Customer,Information Not Meet Customer Expectations,Merchant shipping complaints,N/A,Bad Survey,Loan,11862422,,1.0
+18422,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,No Differentiated,2001467048,2-2001467048-3-1_1761110674,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18423,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,ASI,84873150,2-84873150-3-1_1761132432,Customer,Information Not Meet Customer Expectations,Merchant shipping complaints,N/A,Bad Survey,Loan,11862422,,2.0
+18424,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,ASI,6977360,2-6977360-3-1_1761091936,Customer,Information Not Meet Customer Expectations,loan limit reduced,N/A,Bad Survey,Loan,28915621563943,,1.0
+18425,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,ASI,2021573032,2-2021573032-3-1_1761107917,Customer,Information Not Meet Customer Expectations,Cannot apply for a loan,N/A,Bad Survey,Loan,289369526777,,1.0
+18426,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,ASI,74411876,2-74411876-3-1_1761129480,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0
+18427,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,AFI,2044193899,2-2044193899-3-1_1761113350,Customer,Information Not Meet Customer Expectations,How to use akulaku credit limit,N/A,Bad Survey,Submission of Limit/Credit Points,289313470458,,1.0
+18428,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,ASI,2029776841,2-2029776841-3-1_1761115275,Customer,Information Not Meet Customer Expectations,Cannot apply for a loan,N/A,Bad Survey,Loan,289369526777,,2.0
+18429,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,ASI,75623600,2-75623600-3-1_1761075719,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0
+18430,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,No Differentiated,2050666339,2-2050666339-3-1_1761132991,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18431,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,No Differentiated,2051806571,2-2051806571-3-1_1761144621,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18432,2025-10-23,2025-10-22,Week 4,October,Nurhamni Septia,No Differentiated,2041938830,2-2041938830-3-1_1761138546,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18433,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,ASI,91629904,2-91629904-3-1_1761154560,Customer,Information Not Meet Customer Expectations,PLN token number has not been received,N/A,Bad Survey,Voucher,134413561418260,,1.0
+18434,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,AFI,2049062132,2-2049062132-3-1_1761156667,Customer,Information Not Meet Customer Expectations,Limit cannot be used,N/A,Bad Survey,Submission of Limit/Credit Points,289435592846,,2.0
+18435,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,No Differentiated,56152828,2-56152828-3-1_1761157096,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18436,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,No Differentiated,2051850218,2-2051850218-3-1_1761159853,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18437,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,ASI,2044239407,2-2044239407-3-1_1761163182,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0
+18438,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,No Differentiated,2052480837,2-2052480837-3-1_1761174042,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18439,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,AFI,2050469241,2-2050469241-3-1_1761178713,Customer,Information Not Meet Customer Expectations,Not getting a credit limit,N/A,Bad Survey,Submission of Limit/Credit Points,289385542627,,1.0
+18440,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,No Differentiated,2052482385,2-2052482385-3-1_1761180011,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18441,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,ASI,2039231976,2-2039231976-3-1_1761181386,Customer,Information Not Meet Customer Expectations,Unable to pay loan,N/A,Bad Survey,Loan,289171417151160,,1.0
+18442,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,No Differentiated,2022612206,2-2022612206-3-1_1761205217,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18443,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,ASI,2051368036,2-2051368036-3-1_1761189771,Customer,Information Not Meet Customer Expectations,How to increase loan limit,N/A,Bad Survey,Loan,289380537622,,1.0
+18444,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,No Differentiated,2031585046,2-2031585046-3-1_1761205470,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18445,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,No Differentiated,2039893867,2-2039893867-3-1_1761206356,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18446,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,No Differentiated,2020281336,2-2020281336-3-1_1761220831,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0
+18447,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,AFI,2052443985,2-2052443985-3-1_1761213325,Customer,Information Not Meet Customer Expectations,Paylater submission failed,N/A,Bad Survey,Submission of Limit/Credit Points,289398555656,,1.0
+18448,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,No Differentiated,5573955,2-5573955-3-1_1761188622,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,2.0
+18449,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,AFI,114155408,2-114155408-3-1_1761230272,Customer,Information Not Meet Customer Expectations,Payment akulaku paylater is not appropriate,N/A,Bad Survey,Account Security,872890985243,,1.0
+18450,2025-10-24,2025-10-23,Week 4,October,Yulia Sari,ASI,2052516842,2-2052516842-3-1_1761233489,Customer,Information Not Meet Customer Expectations,Change Phone Number - Cannot Login (Approved Account),N/A,Bad Survey,Account,113411441167662,,2.0
+18451,2025-10-27,2025-10-24,,,,,57421421,2-57421421-3-1_1761270102,,,,,Bad Survey,,,,1.0
+18452,2025-10-27,2025-10-24,,,,,2019987091,2-2019987091-3-1_1761272195,,,,,Bad Survey,,,,1.0
+18453,2025-10-27,2025-10-24,,,,,19798207,2-19798207-3-1_1761274502,,,,,Bad Survey,,,,1.0
+18454,2025-10-27,2025-10-24,,,,,2016518238,2-2016518238-3-1_1761277490,,,,,Bad Survey,,,,1.0
+18455,2025-10-27,2025-10-24,,,,,10863388,2-10863388-3-1_1761279005,,,,,Bad Survey,,,,1.0
+18456,2025-10-27,2025-10-24,,,,,24351270,2-24351270-3-1_1761287951,,,,,Bad Survey,,,,1.0
+18457,2025-10-27,2025-10-24,,,,,2018039292,2-2018039292-3-1_1761288998,,,,,Bad Survey,,,,1.0
+18458,2025-10-27,2025-10-24,,,,,2015274430,2-2015274430-3-1_1761291780,,,,,Bad Survey,,,,1.0
+18459,2025-10-27,2025-10-24,,,,,2041951077,2-2041951077-3-1_1761293926,,,,,Bad Survey,,,,1.0
+18460,2025-10-27,2025-10-24,,,,,2008147135,2-2008147135-3-1_1761294134,,,,,Bad Survey,,,,1.0
+18461,2025-10-27,2025-10-24,,,,,99863792,2-99863792-3-1_1761300756,,,,,Bad Survey,,,,1.0
+18462,2025-10-27,2025-10-24,,,,,2051974631,2-2051974631-3-1_1761301693,,,,,Bad Survey,,,,1.0
+18463,2025-10-27,2025-10-24,,,,,19008196,2-19008196-3-1_1761305188,,,,,Bad Survey,,,,1.0
+18464,2025-10-27,2025-10-24,,,,,2023727439,2-2023727439-3-1_1761306479,,,,,Bad Survey,,,,1.0
+18465,2025-10-27,2025-10-24,,,,,2043910081,2-2043910081-3-1_1761313975,,,,,Bad Survey,,,,1.0
+18466,2025-10-27,2025-10-24,,,,,11024834,2-11024834-3-1_1761320809,,,,,Bad Survey,,,,1.0
+18467,2025-10-27,2025-10-24,,,,,2030882885,2-2030882885-3-1_1761320890,,,,,Bad Survey,,,,1.0
+18468,2025-10-27,2025-10-24,,,,,2049601473,2-2049601473-3-1_1761323519,,,,,Bad Survey,,,,1.0
+18469,2025-10-27,2025-10-25,,,,,2007942081,2-2007942081-3-1_1761330895,,,,,Bad Survey,,,,1.0
+18470,2025-10-27,2025-10-25,,,,,126205088,2-126205088-3-1_1761335157,,,,,Bad Survey,,,,1.0
+18471,2025-10-27,2025-10-25,,,,,2002558235,2-2002558235-3-1_1761359377,,,,,Bad Survey,,,,1.0
+18472,2025-10-27,2025-10-25,,,,,2050396755,2-2050396755-3-1_1761368073,,,,,Bad Survey,,,,1.0
+18473,2025-10-27,2025-10-25,,,,,2032860250,2-2032860250-3-1_1761377072,,,,,Bad Survey,,,,1.0
+18474,2025-10-27,2025-10-25,,,,,2043417030,2-2043417030-3-1_1761377565,,,,,Bad Survey,,,,1.0
+18475,2025-10-27,2025-10-25,,,,,2050160644,2-2050160644-3-1_1761380926,,,,,Bad Survey,,,,1.0
+18476,2025-10-27,2025-10-25,,,,,25251295,2-25251295-3-1_1761384873,,,,,Bad Survey,,,,1.0
+18477,2025-10-27,2025-10-25,,,,,485705,2-485705-3-1_1761393623,,,,,Bad Survey,,,,1.0
+18478,2025-10-27,2025-10-25,,,,,2041517272,2-2041517272-3-1_1761406152,,,,,Bad Survey,,,,1.0
+18479,2025-10-27,2025-10-26,,,,,2043408777,2-2043408777-3-1_1761418097,,,,,Bad Survey,,,,1.0
+18480,2025-10-27,2025-10-26,,,,,2009720334,2-2009720334-3-1_1761418405,,,,,Bad Survey,,,,2.0
+18481,2025-10-27,2025-10-26,,,,,2040430273,2-2040430273-3-1_1761425420,,,,,Bad Survey,,,,1.0
+18482,2025-10-27,2025-10-26,,,,,2051921186,2-2051921186-3-1_1761439863,,,,,Bad Survey,,,,1.0
+18483,2025-10-27,2025-10-26,,,,,2021320047,2-2021320047-3-1_1761440297,,,,,Bad Survey,,,,1.0
+18484,2025-10-27,2025-10-26,,,,,2039798149,2-2039798149-3-1_1761444056,,,,,Bad Survey,,,,1.0
+18485,2025-10-27,2025-10-26,,,,,2016147765,2-2016147765-3-1_1761447270,,,,,Bad Survey,,,,1.0
+18486,2025-10-27,2025-10-26,,,,,2039198838,2-2039198838-3-1_1761449728,,,,,Bad Survey,,,,1.0
+18487,2025-10-27,2025-10-26,,,,,50971654,2-50971654-3-1_1761452260,,,,,Bad Survey,,,,1.0
+18488,2025-10-27,2025-10-26,,,,,2026759011,2-2026759011-3-1_1761459161,,,,,Bad Survey,,,,1.0
+18489,2025-10-27,2025-10-26,,,,,2018564244,2-2018564244-3-1_1761459634,,,,,Bad Survey,,,,1.0
+18490,2025-10-27,2025-10-26,,,,,2016315680,2-2016315680-3-1_1761460883,,,,,Bad Survey,,,,1.0
+18491,2025-10-27,2025-10-26,,,,,123003702,2-123003702-3-1_1761468715,,,,,Bad Survey,,,,1.0
+18492,2025-10-27,2025-10-26,,,,,2013402874,2-2013402874-3-1_1761474253,,,,,Bad Survey,,,,1.0
+18493,2025-10-27,2025-10-26,,,,,2052627354,2-2052627354-3-1_1761475187,,,,,Bad Survey,,,,1.0
+18494,2025-10-27,2025-10-26,,,,,362113,2-362113-3-1_1761487009,,,,,Bad Survey,,,,1.0
+18495,2025-10-27,2025-10-26,,,,,2052169901,2-2052169901-3-1_1761487626,,,,,Bad Survey,,,,1.0
+18496,2025-10-27,2025-10-26,,,,,102011836,2-102011836-3-1_1761488522,,,,,Bad Survey,,,,1.0
+18497,2025-10-27,2025-10-26,,,,,2024095485,2-2024095485-3-1_1761491126,,,,,Bad Survey,,,,1.0
+18498,2025-10-27,2025-10-26,,,,,2029189432,2-2029189432-3-1_1761497358,,,,,Bad Survey,,,,1.0
