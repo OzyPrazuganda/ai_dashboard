@@ -8,7 +8,7 @@ import datetime
 import difflib
 
 # from backend.kula.chatbot_optimized import ChatbotOptimized
-from utils_aggregation_dev import aggregate_csat, aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors, week_of_month
+from utils_aggregation_dev import aggregation_ratio, aggregate_sum, sidebar_filters, aggregate_table_with_granularity, calculate_checker_accuracy, aggregate_checker_errors, week_of_month, aggregate_csat_dual
 from streamlit_chatbox import *
 from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
@@ -106,12 +106,22 @@ if team == 'KULA':
 
 
         # Chart 2: CSAT Robot
+        
+        csat_before = pd.read_csv('dataset_kula/csat_before_takeout.csv')
+        csat_after = pd.read_csv('dataset_kula/csat_after_takeout.csv')
 
-        df_csat = pd.read_csv('dataset_kula/csat_takeout.csv')
-        df_csat['Date'] = pd.to_datetime(df_csat['Date'])
+        # Parse dates
+        csat_before['Date'] = pd.to_datetime(csat_before['Date'], errors='coerce')
+        csat_after['Date'] = pd.to_datetime(csat_after['Date'], errors='coerce')
 
-        filtered_df = df_csat[(df_csat['Date'] >= pd.to_datetime(start)) & (df_csat['Date'] <= pd.to_datetime(end))]
-        filtered_df = aggregate_csat(filtered_df, 'Date', granularity)
+        # filter by selected range
+        start_dt = pd.to_datetime(start)
+        end_dt = pd.to_datetime(end)
+        before_filtered = csat_before[(csat_before['Date'] >= start_dt) & (csat_before['Date'] <= end_dt)]
+        after_filtered = csat_after[(csat_after['Date'] >= start_dt) & (csat_after['Date'] <= end_dt)]
+
+        # Aggregate per granularity
+        filtered_df = aggregate_csat_dual(before_filtered, after_filtered, 'Date', granularity)
 
         fig = go.Figure()
 
@@ -138,8 +148,12 @@ if team == 'KULA':
             fillcolor='rgba(255,0,0,0.2)'
         ))
         
-        x_min = filtered_df['Date'].min()
-        x_max = filtered_df['Date'].max()
+        if not filtered_df.empty:
+            x_min = filtered_df['Date'].min()
+            x_max = filtered_df['Date'].max()
+        else:
+            # fallback
+            x_min, x_max = start_dt, end_dt
 
         fig.update_layout(
             title='CSAT Robot 机器人用户满意度',

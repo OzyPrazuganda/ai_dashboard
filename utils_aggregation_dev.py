@@ -13,21 +13,25 @@ def week_of_month(date):
     return min(week_num, 4)
 
 
-def aggregate_csat(df, date_col, granularity):
+def aggregate_side(df, date_col, granularity, csat_col):
     df = df.copy()
-    df[date_col] = pd.to_datetime(df[date_col])
+    df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
 
+    # Force numeric
     for c in ['Total Responden', 'Total Rating', 'CSAT [Before]', 'CSAT [After]']:
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors='coerce')
 
+    # Period bucketing
     if granularity == 'Daily':
         df['Period'] = df[date_col].dt.date
-        grouped = df.groupby('Period').agg({
-            'CSAT [Before]': 'mean',
-            'CSAT [After]': 'mean'
-        }).reset_index().rename(columns={'Period': 'Date'})
-        return grouped
+        grouped = (
+            df.groupby('Period').
+            agg({csat_col: 'mean'})
+            .reset_index()
+            .rename(columns={'Period': 'Date'})
+        )
+        return grouped[['Date', csat_col]]
 
     if granularity == 'Weekly':
         df['Period'] = df[date_col].dt.to_period('W').apply(lambda r: r.start_time)
@@ -38,28 +42,38 @@ def aggregate_csat(df, date_col, granularity):
 
     def compute_period(g):
         out = {}
-        # Total
-        out['Total Rating'] = g['Total Rating'].sum() if 'Total Rating' in g.columns else np.nan
-        out['Total Responden'] = g['Total Responden'].sum() if 'Total Responden' in g.columns else np.nan
-
-        # CSAT [Before] (weighted average)
-        if 'CSAT [Before]' in g.columns and 'Total Responden' in g.columns and g['Total Responden'].sum() > 0:
-            out['CSAT [Before]'] = (g['CSAT [Before]'] * g['Total Responden']).sum() / g['Total Responden'].sum()
+        # Weighted average by respondents (fallback to mean if missing)
+        if csat_col in g.columns and 'Total Responden' in g.columns and g['Total Responden'].sum() > 0:
+            out[csat_col] = (g[csat_col] * g['Total Responden']).sum() / g['Total Responden'].sum()
         else:
-            out['CSAT [Before]'] = g['CSAT [Before]'].mean() if 'CSAT [Before]' in g.columns else np.nan
-
-        # CSAT [After] (weighted average)
-        if 'CSAT [After]' in g.columns and 'Total Responden' in g.columns and g['Total Responden'].sum() > 0:
-            out['CSAT [After]'] = (g['CSAT [After]'] * g['Total Responden']).sum() / g['Total Responden'].sum()
-        else:
-            out['CSAT [After]'] = g['CSAT [After]'].mean() if 'CSAT [After]' in g.columns else np.nan
-
+            out[csat_col] = g[csat_col].mean() if csat_col in g.columns else np.nan
         return pd.Series(out)
-
-    grouped = df.groupby('Period').apply(compute_period).reset_index().rename(columns={'Period': 'Date'})
     
-    return grouped[['Date', 'CSAT [Before]', 'CSAT [After]']]
+    grouped = (
+        df.groupby('Period')
+        .apply(compute_period)
+        .reset_index()
+        .rename(columns={'Period': 'Date'})
+    )
+    
+    return grouped[['Date', csat_col]]
 
+def aggregate_csat_dual(df_before, df_after, date_col, granularity):
+    if 'CSAT [Before]' not in df_before.columns:
+        raise ValueError("df_before must contain 'CSAT [Before]' column")
+    if 'CSAT [After]' not in df_after.columns:
+        raise ValueError("df_after must contain 'CSAT [After]' column")
+    
+    before_g = aggregate_side(df_before, date_col, granularity, 'CSAT [Before]')
+    after_g = aggregate_side(df_after, date_col, granularity, 'CSAT [After]')
+
+    combined = (
+        pd.merge(before_g, after_g, on='Date', how='outer')
+        .sort_values('Date')
+        .reset_index(drop=True)
+    )
+
+    return combined[['Date', 'CSAT [Before]', 'CSAT [After]']]
 
 # Function to return the ratio weekly monthly count
 def aggregation_ratio(df, date_col, granularity):
