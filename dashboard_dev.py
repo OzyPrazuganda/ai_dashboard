@@ -14,7 +14,6 @@ from st_aggrid import AgGrid
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 from datetime import datetime, timedelta
 
-from utils_aggregation import aggregate_csat, aggregation_ratio, aggregate_sum
 logging.getLogger('streamlit.runtime.scriptrunner').setLevel(logging.ERROR)
 
 CURRENT_THEME = "light" 
