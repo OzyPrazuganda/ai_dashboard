@@ -250,17 +250,17 @@ if team == 'KULA':
 
             with cols[0]:
                 gd1 = GridOptionsBuilder.from_dataframe(subcat_summary)
+                for col in subcat_summary.columns:
+                    gd1.configure_column(col, filter=False, sortable=False, resizable=True)
                 gd1.configure_pagination()
-                gd1.configure_default_column(sortable=True, resizable=True)
-                gd1.configure_column("Total Sample", filter=False)
                 grid_options1 = gd1.build()
                 AgGrid(subcat_summary, gridOptions=grid_options1, height=300)
 
             with cols[1]:
                 gd2 = GridOptionsBuilder.from_dataframe(cat_summary)
+                for col in cat_summary.columns:
+                    gd2.configure_column(col, filter=False, sortable=False, resizable=True)
                 gd2.configure_pagination()
-                gd2.configure_default_column(sortable=True, resizable=True)
-                gd2.configure_column("Total Sample", filter=False)
                 grid_options2 = gd2.build()
                 AgGrid(cat_summary, gridOptions=grid_options2, height=300)
 
@@ -436,15 +436,17 @@ if team == 'KULA':
 
             with cols[0]:
                 gd1 = GridOptionsBuilder.from_dataframe(team_summary)
+                for col in team_summary.columns:
+                    gd1.configure_column(col, filter=False, sortable=False, resizable=True)
                 gd1.configure_pagination()
-                gd1.configure_default_column(sortable=True, resizable=True)
                 grid_options1 = gd1.build()
                 AgGrid(team_summary, gridOptions=grid_options1, height=400)
 
             with cols[1]:
                 gd2 = GridOptionsBuilder.from_dataframe(bg_summary)
+                for col in bg_summary.columns:
+                    gd2.configure_column(col, filter=False, sortable=False, resizable=True)
                 gd2.configure_pagination()
-                gd2.configure_default_column(sortable=True, resizable=True)
                 grid_options2 = gd2.build()
                 AgGrid(bg_summary, gridOptions=grid_options2, height=400)
 
@@ -524,16 +526,18 @@ if team == 'KULA':
 
                 with cols[0]:
                     gd_main = GridOptionsBuilder.from_dataframe(main_sub_summary)
+                    for col in main_sub_summary.columns:
+                        gd_main.configure_column(col, filter=False, sortable=False, resizable=True)
                     gd_main.configure_pagination()
-                    gd_main.configure_default_column(sortable=True, resizable=True)
                     gd_main.configure_column('Total Sample', filter=False)
                     grid_options_main = gd_main.build()
                     AgGrid(main_sub_summary, gridOptions=grid_options_main, height=400)
 
                 with cols[1]:
                     gd_team = GridOptionsBuilder.from_dataframe(team_cat_qc)
+                    for col in team_cat_qc.columns:
+                        gd_team.configure_column(col, filter=False, sortable=False, resizable=True)
                     gd_team.configure_pagination()
-                    gd_team.configure_default_column(sortable=True, resizable=True)
                     gd_team.configure_column('Total Sample', filter=False)
                     grid_options_team = gd_team.build()
                     AgGrid(team_cat_qc, gridOptions=grid_options_team, height=400)
@@ -543,8 +547,9 @@ if team == 'KULA':
 
                 with cols[0]:
                     gd_bg = GridOptionsBuilder.from_dataframe(bg_summary)
+                    for col in bg_summary.columns:
+                        gd_bg.configure_column(col, filter=False, sortable=False, resizable=True)
                     gd_bg.configure_pagination()
-                    gd_bg.configure_default_column(sortable=True, resizable=True)
                     gd_bg.configure_column('Total Sample', filter=False)
                     grid_options_bg = gd_bg.build()
                     AgGrid(bg_summary, gridOptions=grid_options_bg, height=400)
