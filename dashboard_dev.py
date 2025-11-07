@@ -296,7 +296,6 @@ if team == 'QC':
                 margin=dict(l=0, r=0, t=0, b=0),
                 xaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.5),
                 yaxis=dict(showgrid=True, gridcolor='lightgrey', gridwidth=0.5)
-
             )
 
             st.plotly_chart(fig, use_container_width=True)

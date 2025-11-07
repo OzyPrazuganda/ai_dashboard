@@ -711,7 +711,7 @@ if team == 'QC':
             st.stop()
 
         # Date filter
-        manual_order = ["Azer", "Aulia", "Reza", "Neneng"]
+        manual_order = ["Neneng", "Azer", "Reza", "Aulia"]
         agent_list = [agent for agent in manual_order if agent in {entry["agent"] for entry in meeting_data[selected_date]}]
         selected_agent = st.sidebar.radio("Agent Sampling", agent_list)
 
