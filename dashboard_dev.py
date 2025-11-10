@@ -221,24 +221,33 @@ if team == 'QC':
             # Konversi ke format label misalnya "Oktober 2025"
             month_labels = [p.strftime("%B %Y") for p in available_months]
 
+            # Last Month
+            last_period = pd.to_datetime(df_sampling['Tanggal Sampling'].max()).to_period('M')
+
+            # hit the index
+            default_month_index = available_months.index(last_period) if last_period in available_months else len(available_months) - 1
+
             # Sidebar pilih bulan
-            selected_month_label = st.sidebar.selectbox("Pilih Bulan", month_labels)
+            selected_month_label = st.sidebar.selectbox("Pilih Bulan", month_labels, index=default_month_index)
             selected_period = available_months[month_labels.index(selected_month_label)]
 
             # Filter data sesuai bulan & tahun yang dipilih
-            df_current = df_sampling[(df_sampling['Tanggal Sampling'].dt.month == selected_period.month) &
-                                     (df_sampling['Tanggal Sampling'].dt.year == selected_period.year)]
+            df_current = df_sampling[
+                (df_sampling['Tanggal Sampling'].dt.month == selected_period.month) &
+                (df_sampling['Tanggal Sampling'].dt.year == selected_period.year)
+            ].copy()
 
             # Tambahkan kolom week
             df_current['week'] = df_current['Tanggal Sampling'].apply(week_of_month)
 
-            # Hitung minggu maksimal yang bisa dipilih
-            if (selected_period.month == datetime.now().month) and (selected_period.year == datetime.now().year):
-                current_week = week_of_month(datetime.now())
-            else:
-                current_week = df_current['week'].max()
+            # Last week avail
+            last_week_available = int(df_current['week'].max()) if not df_current.empty else 1
 
-            week_labels = [f"week {i}" for i in range(1, current_week + 1)]
+            # Buat daftar minggu
+            week_labels = [f"week {i}" for i in range(1, last_week_available + 1)]
+
+            # default minggu terakhir
+            default_week_index = len(week_labels) - 1
 
             # Sidebar filter untuk minggu
             week1_label = st.sidebar.selectbox('First Chart', week_labels)

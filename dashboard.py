@@ -746,7 +746,8 @@ if team == 'QC':
         
         # Filter
         df_sampling = df_sampling[df_sampling['Agent Sampling'] != 'No Data']
-        validator = st.sidebar.radio('Validators', df_sampling['Agent Sampling'].unique())
+        validators = [name for name in df_sampling['Agent Sampling'].unique() if name != "Irman"]
+        validator = st.sidebar.radio('Validators', validators)
 
         # Custom CSS for card style
         st.markdown("""
