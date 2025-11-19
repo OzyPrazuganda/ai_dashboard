@@ -109,11 +109,6 @@ def aggregation_ratio(df, date_col, granularity):
         axis = 1
     )
 
-    # grouped['Robot Success ratio'] = (
-    #     (grouped['Total handle robot'] - grouped['Number of exit queues']) /
-    #     grouped['Connected to robot'] * 100
-    # )
-
     grouped = grouped.sort_values('Period').reset_index(drop=True)
 
     return grouped[['Period', 'Robot Success ratio']].rename(columns={'Period': 'Date'})
@@ -170,7 +165,7 @@ def aggregate_table_with_granularity(
         df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
 
     if df.empty:
-        return pd.DataFrame(columns=[category_col, 'Total'])
+        return pd.DataFrame(columns=[category_col])
 
     # konversi date_col ke datetime
     df[date_col] = pd.to_datetime(df[date_col])
@@ -294,3 +289,28 @@ def aggregate_checker_errors(df):
     ]
     df_checker = df.groupby('Checker')[count_cols].sum().reset_index()
     return df_checker, count_cols
+
+def default_range_ratio_CSAT(df, date_col, granularity, daily_days=14, weekly_periods=4, monthly_periods=4):
+    if df is None or df.empty:
+        return df
+    
+    df = df.sort_values(date_col).copy()
+
+    if granularity == 'Daily':
+        end_date = df[date_col].max()
+        start_date = end_date - pd.Timedelta(days=daily_days - 1)
+        filtered = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
+
+    elif granularity == 'Weekly':
+        filtered = df.tail(weekly_periods)
+
+    elif granularity == 'Monthly':
+        filtered = df.tail(monthly_periods)
+    
+    else:
+        filtered = df
+
+    # Fallback
+    if filtered.empty:
+        return df
+    return filtered
