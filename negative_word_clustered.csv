@@ -1,0 +1,110 @@
+Date,Validator,Ticket ID,AFI,Indikasi Kata Negative,cluster_id
+2025-11-26,Aulia,21906939,AFI,pinjaman gak bisa,5
+2025-11-26,Aulia,21915627,AFI,tidak bisa pengajuan kredit ,1
+2025-11-26,Aulia,21915656,AFI,limit paylater tidak bisa dipakai,1
+2025-11-26,Aulia,21915825,AFI,transaksi gagal,1
+2025-11-26,Aulia,21919039,AFI,kenapa gagal,8
+2025-11-26,Aulia,21905535,AFI,tidak dapat digunakan,8
+2025-11-26,Aulia,21905695,AFI,belum diterima,8
+2025-11-26,Aulia,21905708,AFI,gagal pakai,8
+2025-11-26,Aulia,21905712,AFI,sangat tidak membantu,8
+2025-11-26,Azer,22302274,,masalah pengajuan pinjaman,5
+2025-11-26,Azer,22302060,,paylater tidak bisa digunakan,1
+2025-11-26,Azer,22333145,,masih muncul tagihan,11
+2025-11-26,Azer,22288714,,belum nerima surat pelunasan,24
+2025-11-26,Azer,22286481,,kesulitan melunasi cicilan tagihan,11
+2025-11-26,Azer,22289287,,masalah pinjaman,5
+2025-11-26,Azer,22300587,,pinjaman tunai tidak bisa,5
+2025-11-26,Azer,22320492,,pinjaman ditolak,5
+2025-11-26,Azer,22331448,,tidak bisa pengajuan,8
+2025-11-26,Azer,22334800,,limit pinjaman di kurangi,5
+2025-11-26,Neneng,21924286,,limit tidak dapat digunakan,6
+2025-11-26,Neneng,21924133,,tidak sesuai,8
+2025-11-26,Neneng,21923590,,kenapa tidak bisa bayar,1
+2025-11-26,Neneng,21924507,,denda muncul,9
+2025-11-26,Neneng,21924357,,tidak muncul barcode pembayaran,1
+2025-11-26,Neneng,21924357,,tagihan pinjaman tidak muncul,5
+2025-11-26,Neneng,21924357,,tidak bisa melakukan pembayaran cicilan,1
+2025-11-26,Neneng,21924336,,pembayaran dengan paylater gagal ,1
+2025-11-26,Neneng,21934267,,pembayaran tidak sesuai,1
+2025-11-26,Neneng,21924947,,sudah melakukan pembayaran tapi nggak masuk,1
+2025-11-26,Reza,22387603,,kendala ,9
+2025-11-26,Reza,22387595,,kesulitan ,9
+2025-11-26,Reza,22387595,,tidak bisa melakukan pembayaran,1
+2025-11-26,Reza,22387533,,sllu gagal ,8
+2025-11-26,Reza,22387533,,pengajuan pinjaman ditolak,5
+2025-11-26,Reza,22387533,,tidak sesuai ,8
+2025-11-26,Reza,22387444,,sudah bayar masih ada tagihan,11
+2025-11-26,Reza,22387434,,tidak bisa bayar,1
+2025-11-26,Reza,22387156,,saya mau bayar kok jadi ,11
+2025-11-26,Reza,22387117,,sama sekali tidak membantu,23
+2025-11-27,Aulia,21906690,AFI,waduh ribet ya,9
+2025-11-27,Aulia,21906956,AFI,akulaku gak berguna,0
+2025-11-27,Aulia,21914695,AFI,gagal terus ,8
+2025-11-27,Aulia,21914708,AFI,pesanan saya tidak bisa di batalkan,3
+2025-11-27,Aulia,21914949,AFI,tidak lolos verifikasi,13
+2025-11-27,Aulia,21915377,AFI,tidak bisa pake qris,8
+2025-11-27,Aulia,21915464,AFI,ada masalah akun ,14
+2025-11-27,Aulia,21915825,AFI,tidak bisa di pakai top up pulsa,22
+2025-11-27,Aulia,21919075,AFI,sudah 3x ini saya gagal menggunakannya,25
+2025-11-27,Aulia,21905818,AFI,kenapa prosesnya lama sekali,2
+2025-11-27,Azer,22406347,,gagal melakukan pembayaran,1
+2025-11-27,Azer,22405074,,nggak bisa pinjam,1
+2025-11-27,Azer,22376509,,mau pnjam lagi belum terverivikasi,9
+2025-11-27,Azer,22405058,,kenapa sya tidak bisa mengajukan paylater,1
+2025-11-27,Azer,22376751,,kendala nya hari ini,9
+2025-11-27,Azer,22408154,,tidak bisa melakukan dana cicil,1
+2025-11-27,Azer,22377079,,gagal pembayaran,1
+2025-11-27,Azer,22376691,,akulaku bener2 sampah,0
+2025-11-27,Azer,22376864,,tidak muncul di riwayat dana cicil,24
+2025-11-27,Azer,22406746,,"sudah bayar tagihan pinjaman, tetapi masih muncul",11
+2025-11-27,Neneng,21934166,AFI,tidak bisa bayar pake paylater,1
+2025-11-27,Neneng,21934138,AFI,pinjaman gagal,5
+2025-11-27,Neneng,21933978,AFI,tidak bisa pinjam,1
+2025-11-27,Neneng,21935247,AFI,pembayaran gagal,1
+2025-11-27,Neneng,21935351,AFI,bisa pakai qris paylater,15
+2025-11-27,Neneng,21936479,AFI,token ngga bisa di pakai,20
+2025-11-27,Neneng,21936655,AFI,kenapa ini suruh bayar dp,12
+2025-11-27,Neneng,21938278,AFI,tidak bisa membeli pulsa,22
+2025-11-27,Neneng,21987041,,pinjaman kok lama,5
+2025-11-27,Neneng,21987437,,tidak bisa bayar va mandiri,1
+2025-11-27,Reza,22393215,,tai,9
+2025-11-27,Reza,22393215,,ngewe,9
+2025-11-27,Reza,22393215,,hpus akun,14
+2025-11-27,Reza,22388239,,va alfamart dan va bca saya tidak bisa,3
+2025-11-27,Reza,22369695,,kode virtual tagihan tidak sama,19
+2025-11-27,Reza,22393882,,ada kenaikan limit namun tidak bertambah,6
+2025-11-27,Reza,22393411,,sampai kapan saya bisa bayar cicilan tagihan,11
+2025-11-27,Reza,22393060,,tidak bisa lolos di dana cicil ,1
+2025-11-27,Reza,22392882,,koq ga bisa transfer dr neo bank ,16
+2025-11-27,Reza,22392882,,server nya perbaikan terus,17
+2025-11-28,Reza,22421091,,komplain pengiriman merchant,4
+2025-11-28,Reza,22421091,,status pinjaman belum sukses,5
+2025-11-28,Reza,22421023,,pinjaman lama disetujuinya,5
+2025-11-28,Reza,22421023,,proses pencairan lama bos,10
+2025-11-28,Reza,22421023,,tolong dipercepat bos,10
+2025-11-28,Reza,22420726,,tidak bisa membayar,1
+2025-11-28,Reza,22420641,,ribet,9
+2025-11-28,Reza,22420641,,mau bayar aja susah,11
+2025-11-28,Reza,22420515,,halo kenapa pinjaman saya tidak kunjung cair😭,5
+2025-11-28,Reza,22420515,,terlalu lama dicairkan padahal saya selalu melunasi tepat waktu😭,2
+2025-11-28,Aulia,20163460,AFI,ini customer service dongo banget heran,4
+2025-11-28,Aulia,20322021,AFI,saldo berkurang tapi di akulaku belum berhasil,0
+2025-11-28,Aulia,20322017,AFI,ini sudah lebih dri 1x24 jam,2
+2025-11-28,Aulia,20323055,AFI,kenapa tagihan selalu muncul,11
+2025-11-28,Aulia,20362026,AFI,apasi sekelas akulaku jelek sistemnya,0
+2025-11-28,Aulia,20183969,AFI,mau hapus akun aja dibikin ribet,14
+2025-11-28,Aulia,20323122,AFI,saldo aku aja udh ketarik loh udh 2 hari yg bener aja,9
+2025-11-28,Aulia,20357163,AFI,tidak ada solusi,8
+2025-11-28,Aulia,20223150,AFI,kalau begini saya gk nyaman jadinya,18
+2025-11-28,Aulia,20310667,AFI,mls repot,7
+2025-11-28,Azer,22000471,,akun disalahgunakan,14
+2025-11-28,Azer,22000610,,gagal terus ajukan pinjaman,5
+2025-11-28,Azer,21999950,,kurang apalagi,8
+2025-11-28,Azer,22009962,,tidak muncul va bni,8
+2025-11-28,Azer,21997177,,saya sudah bayar tagihan masih ada,11
+2025-11-28,Azer,21995746,,tagihan pinjaman muncul 2 bulan,5
+2025-11-28,Azer,22011777,,ajukan pinjaman kok ditolak terus,5
+2025-11-28,Azer,22011522,,layanan pelanggan respon lambat,21
+2025-11-28,Azer,22011597,,paylater saya kenapa tidak bisa di gunakan,1
+2025-11-28,Azer,22011584,,pinjaman ditolak terus,5
