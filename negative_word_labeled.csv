@@ -1,0 +1,157 @@
+Date,Validator,Ticket ID,AFI,Type,Indikasi Kata Negative,cluster,cluster_id,label,noise_cluster
+2025-12-2,Aulia,20414100,ASI,Kalimat,kuota atau paket yg saya beli blum msuk sampai skrg,17,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Aulia,20414518,ASI,Kalimat,kemaren saya bayar Wifi pakai akulaku deskripsinya sudah berhasil tapi kenapa belum masuk ya mas,38,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Aulia,20526184,ASI,Kalimat,kenapa lokasinya gagal terus ya,42,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Aulia,20526441,ASI,Kalimat,nasabah AKULAKU NAMUN SY TDK ADA TUNGGAKAN,3,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-2,Aulia,20371657,ASI,Kalimat,"tolong sy pusing,sy bilang pinjaman yg sy ajukan belum sy terima",7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Aulia,20419031,ASI,Kalimat,"gak ada pengaruh sama aja jawabannya ganti"" cs dari kemarin sama aja gk bakal ada perubahan apk gak nyaman untuk pinjol",41,-1,(Cluster Noise) Keluhan Umum/Noise,-1.0
+2025-12-2,Aulia,20372209,ASI,Kalimat,"ini kesalahan dari akulaku nya lambat ,tangganin nyaa",9,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Aulia,20531716,ASI,Kalimat,saya juga bisa buat laporan atas masalah ini,1,-1,(Cluster D) Masalah Laporan/Investigasi,0.0
+2025-12-2,Aulia,20561905,ASI,Kalimat,"kalau mau saya bayarkan itu ya buang bunganya. krna saya tidak merasa memakai nya..
+dan klopun tidak ya sudah terserah sya tidka akan bayarkan",0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Aulia,20285647,ASI,Kalimat,ingat saya sudah bayar ya!!,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Azer,22055951,ASI,Kalimat,kenapa pinjaman saya masih ditolak ya kak,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Azer,22078903,ASI,Kalimat,kenapa sudah bayar tetapi masih muncul,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Azer,22079521,ASI,Kalimat,Sudah lunasi Pinjaman tapi tagihan muncul,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Azer,22074769,ASI,Kalimat,Tidak muncul Virtual Account tagihan Pinjaman,18,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Azer,22080660,ASI,Kalimat,Pembayaran Akulaku Paylater tidak sesuai,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Azer,22079914,ASI,Kalimat,mau diganti tp tidak bisa,15,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-2,Azer,22078932,ASI,Kalimat,Pembayaran tagihan Pinjaman belum masuk,4,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Neneng,22432898,ASI,Kalimat,no VA sudah sesuai tapi gagal terus,15,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Neneng,22433818,ASI,Kalimat,kenapa pinjaman saya lama sekali cair nya,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Neneng,22477040,ASI,Kalimat,kenapa sekarang status tagihanku masih bulan November saja seharusnya tagihanku berubah menjadi bulan Desember,25,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Neneng,22476896,ASI,Kalimat,pembayaran melalui bca kok dihilangkan,12,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Neneng,22476896,ASI,Kalimat,tidak ada pilihan untuk bayar melalui BCA,4,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Neneng,22476735,ASI,Kalimat,"bos ini saya sudah bayar di bulan ini , kok masih blm masuk ya pembayarannya",0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Neneng,22476610,ASI,Kalimat,saya mau bayar tapi kok gak bisa,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Neneng,22476568,ASI,Kalimat,sudah bayar dana cicil namun masih dalam penagihan,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Reza,22299182,ASI,Kalimat,Pret akh teu berpungsi dana cicil ya,17,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Reza,22298970,ASI,Kalimat,kok gk bs pinjm lg kk,17,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-2,Reza,22298508,ASI,Kalimat,sebelumya saya mau mengajuhkan pinjaman diakulaku tetapi menunggu pending terus tidak di-ACC padahal belum pernah pinjol,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-2,Reza,22298508,ASI,Kalimat,saya sudah semuanya tetapi tidak diverifikasi,46,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Reza,22298686,ASI,Kalimat,"lama kelamaan limit itu BKN ny bertambah,yg ada malah berkurang terus🤦",2,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-2,Reza,22298371,ASI,Kalimat,AQ udah bayar tagihan 390 kok masih ada tagihan,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Aulia,20171153,ASI,Kalimat,"informasi sudah jelas dan itu harus bikin"" laporan/ dukumen kurang ribet bang",1,-1,(Cluster D) Masalah Laporan/Investigasi,0.0
+2025-12-3,Aulia,20249280,ASI,Kalimat,kejelasannya dong udh seminggu ga dikabarin,5,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Aulia,20518183,ASI,Kalimat,kalo emang tida bisa meminjam di aplikasi ini bilang,45,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Aulia,20554534,ASI,Kalimat,"itu bukti trsferan saya,, saya udah bayar lunas, tpi ko jdi ribet begini",0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Aulia,20191012,ASI,Kalimat,akulaku kok gini sih. kecewa banget aku,9,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Aulia,20167667,ASI,Kalimat,sudah dapet email dari akulaku tapi blon ada perkembangan,24,-1,(Cluster D) Masalah Laporan/Investigasi,0.0
+2025-12-3,Aulia,20531716,ASI,Kalimat,saya minta bantuan ke OJK atau pihak berwajib,47,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Aulia,20347327,ASI,Kalimat,pokonya sya ga Terima sya mau limitnya balik,17,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-3,Neneng,22038774,ASI,Kalimat,Metode bank mandiri tidak ada,18,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Neneng,22038659,ASI,Kalimat,kenapa limit pinjamanku gk bida di pakai gagal trs,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Neneng,22039283,ASI,Kalimat,aplikasinya tidak ramah untuk customer/pengguna,29,-1,(Cluster Noise) Keluhan Umum/Noise,-1.0
+2025-12-3,Neneng,22039141,ASI,Kalimat,kendala ya di tolak trs padahal pinjaman udh lunas,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Neneng,22039119,ASI,Kalimat,massa udah benar samua di tolak,27,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Neneng,22039105,ASI,Kalimat,ko saya mau pinjaman tidak bisa ya min,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Neneng,22039852,ASI,Kalimat,Saya ingin memeriksan tagihan karena akun saya tidak bisa diakses,11,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Neneng,22040027,ASI,Kalimat,saya mau lunasi tagihan bulan januari tapi tidak bisa kak,0,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Neneng,22039651,ASI,Kalimat,kredit saya ko masih bermasalah saya Uda ga ada cicilan,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Azer,22512935,ASI,Kalimat,saya bener bener gabisa pinjam lg ya di akun ini,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Azer,22512833,ASI,Kalimat,Masalah akan diviralkan ke media,33,-1,(Cluster Noise) Keluhan Umum/Noise,-1.0
+2025-12-3,Azer,22512525,ASI,Kalimat,"Sudah memiliki no rekening, tetapi pinjaman gagal",18,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Azer,22512230,ASI,Kalimat,paylater ga bisa di pakai,22,-1,(Cluster Noise) Keluhan Umum/Noise,-1.0
+2025-12-3,Azer,22488075,ASI,Kalimat,Tidak bisa bayar tagihan Akulaku paylater lewat BCA,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Azer,22511336,ASI,Kalimat,Tidak bisa bayar tagihan via Alfamart,4,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Azer,22490707,ASI,Kalimat,hadeh susah amat ya mau bayar di persulit,17,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-3,Azer,22511318,ASI,Kalimat,Kendala pembayaran tagihan dana cicil,4,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Azer,22511225,ASI,Kalimat,tidak bisa bayar dana cicil via bri,4,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Reza,21446546,ASI,Kalimat, kemarin saya melakukan tenor 2x sudah saya bayar 2x tetapi masih ada tagihan,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Reza,21446611,ASI,Kalimat,pinjam saya di tolak teruss,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Reza,21446611,ASI,Kalimat,tapii saya mau minjam lagi gk bisaa,17,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Reza,21441459,ASI,Kalimat,kok belum masuk uang nya padahal udah lolos verifikasi,0,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Reza,21455862,ASI,Kalimat,saya berhasil ajak teman ajukan limit tp kenapa tidak masuk ke saya putaran lucky drwanya,3,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Reza,21455862,ASI,Kalimat,Tidak mendapatkan bonus dari ajak teman,35,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Reza,21455862,ASI,Kalimat,[Lucky Draw] - Misi Tidak Terhitung,10,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-3,Reza,21455904,ASI,Kalimat,knapa aku gk bisa minjam,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-3,Reza,21445425,ASI,Kalimat,roda hadiah 300rb php ya?,48,-1,(Cluster Noise) Keluhan Umum/Noise,-1.0
+2025-12-4,Reza,21455587,ASI,Kalimat,"saya kemarin sudah melakukan pelunasan pembayaran, tapi saya belum dapat bukti atas penulasan tersebut",0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-4,Reza,21456111,ASI,Kalimat,"tagihan pertama saya lewat 2 hari, tapi kenapa disuruh lunasi langsung dengan tagihan ke 2",0,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Reza,21456448,ASI,Kalimat,saya kok ga pernah di acc,32,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Reza,21445261,ASI,Kalimat,mengapa saya tidak bisa mengajukan peminjaman?,3,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Reza,21445261,ASI,Kalimat,Hadiah Voucher belanja tidak bisa digunakan,34,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Reza,21455850,ASI,Kalimat,ini saya sudah membayar cicilan nya tapi kok belum selesai juga ya,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-4,Reza,21456647,ASI,Kalimat,Notifikasi pembayaran tagihan tidak sesuai,4,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-4,Aulia,20596578,ASI,Kalimat,nik ktp saya d pakai orang lain,20,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Aulia,20528945,ASI,Kalimat,Saya minta dana saya kembali,0,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Aulia,20528047,ASI,Kalimat,tolong tarik lagi kak tagihannya soalnya merugikan banget ke saya,17,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Aulia,20620877,ASI,Kalimat,Atau saya lapor ojk aja lah klo lapor disini disuruh ngulang2 lg,17,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-4,Aulia,20589098,ASI,Kalimat,"Saya juga sudah melaporkan ke polisi tentang akun akulaku saya di curi terus di salagunakan oleh orang lain
+",8,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Aulia,20548083,ASI,Kalimat,"banyak peraturan ujung2nya ga bisa, cape sia2 doang",2,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Aulia,20548083,ASI,Kalimat,"hadeuhh masih muter2 aja, udh dikasih tau kerja sebagai ojek online malah dimintain suraht phk, cape berhadapan sm org stres",30,-1,(Cluster Noise) Keluhan Umum/Noise,-1.0
+2025-12-4,Aulia,20605524,ASI,Kalimat,Data kredit Akulaku dengan OJK tidak sesuai,7,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Azer,22511069,ASI,Kalimat,kenapa kita pengajuan pinjaman selalu di tolak kk,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-4,Azer,22510856,ASI,Kalimat,Tagihan pinjaman bulan depan belum muncul,4,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-4,Azer,22510571,ASI,Kalimat,Cara cicil tagihan tidak sanggup bayar,4,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-4,Azer,22510286,ASI,Kalimat,sudah melakukan pembayaran tapi status di akulaku ya belum berhasil,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-4,Azer,22509694,ASI,Kalimat,ko tagihan harus bayar sekaligus 2 bulan,0,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Neneng,21611614,ASI,Kalimat,saya mendapatkan teror telepon dari mengaku sebagai DC dari akulaku mengancam akan kerumah,8,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Neneng,21611587,ASI,Kalimat,tapi tiba tiba tidak ada tagihan,4,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Neneng,21611573,ASI,Kalimat,untuk pinjaman dana cicil itu yg limide 10jt udah ga ada yaa,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-4,Neneng,21611405,ASI,Kalimat,Kenapa saya selalu gagal meminjam,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-4,Neneng,21611256,ASI,Kalimat,hari ini saya akan bayar cicilan namun perhitungan tidak sesuai..yg seharusnya 767000..begitu akan direalisasi kenapa menjadi 2x lipat,21,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-4,Neneng,21612364,ASI,Kalimat,kenapa saya tidak bisa menggunakan spayletr,39,-1,(Cluster Noise) Keluhan Umum/Noise,-1.0
+2025-12-4,Neneng,21612274,ASI,Kalimat,saya mau bayar kenapa tagihan saya bisa sampai 1jt,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-4,Neneng,21612227,ASI,Kalimat,Saat saya ajukan pinjaman gak bisa kak,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-4,Neneng,21613340,ASI,Kalimat,kenapa saya nungak sekali Langsung ngak bisa minjam lagi ya,3,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-4,Neneng,21613291,ASI,Kalimat,bca dan mandiri tidak bisa virtual nya,36,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Neneng,22102489,ASI,Kalimat,"tinggal satu biji,lucky draw apaan ini,pelit bget ni aplikasi akulaku",10,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Neneng,22102335,ASI,Kalimat,limit sudah muncul tpi tidak bisa d cairkan,2,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Neneng,22102046,ASI,Kalimat,knpa tdk bisah mnjam lg,15,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-5,Neneng,22105678,ASI,Kalimat,code pembayaran virtual acount mandiri tdak di temukan,28,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Neneng,22105587,ASI,Kalimat,saya telah membayar DP untuk barang HP tetapi belum dikirim juga mohon dikembalikan dp,16,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Neneng,22105336,ASI,Kalimat,pinjaman saya kok belum lunas setelah 1/24 jam,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-5,Neneng,22105314,ASI,Kalimat,Saya sudah pelunasan pinjaman tetapi masih tertera,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-5,Neneng,22104092,ASI,Kalimat,mau bayar tapi ngedouble sama bulan depan,0,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Neneng,22107915,ASI,Kalimat,tadi sudah balik limitnya ini kok berkurang lgi ya,2,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Reza,21456784,ASI,Kalimat,kenapa perifikasi saya gagal trus,3,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Reza,21456791,ASI,Kalimat,saya telah mengajukan pinjaman namun blum di transfer uang tersebut,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-5,Reza,21457828,ASI,Kalimat,Pembayaran tagihan pulsa belum masuk,4,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-5,Reza,21456000,ASI,Kalimat,dulu pernah pinjam dan berhasil dan kedua kali nya gagal terus sampe sekarang setiap mau ambil pinjaman,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-5,Reza,21458527,ASI,Kalimat,mau lunasi tagihan tapi invoice belum ada bulan 11,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-5,Reza,21457203,ASI,Kalimat,di ovo sudah berhasil tapi tagihannya kok tetep ada kak,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-5,Reza,21457014,ASI,Kalimat,sudah 4 bulan lebih belum pernah di acc,14,-1,(Cluster Noise) Keluhan Umum/Noise,-1.0
+2025-12-5,Reza,21457185,ASI,Kalimat,Denda muncul 2 kali lipat,44,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Reza,21442739,ASI,Kalimat,jadi gx bisa pinjam lagi,31,-1,(Cluster Noise) Keluhan Umum/Noise,-1.0
+2025-12-5,Aulia,20312468,AFI,Kalimat,kak pesanan saya kok g ada ya,17,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-5,Aulia,20541153,AFI,Kalimat,dan ko aneh aplikasi anda bisa se eror itu yg sudah lunas clear semua tahun 2022 bisa muncul dari pertengahan lagi tagihan nya di 2025,40,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Aulia,20563429,AFI,Kalimat,"pastinya pihak akulaku ingin nya saya yg tanggung jawab selaku pemilik akun , sedangkan saya tidak melakukan transaksi",26,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Aulia,20692210,ASI,Kalimat,"Barang sudah diretur, tagihan muncul",0,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Aulia,20705967,ASI,Kalimat,Saat ajukan Pinjaman akun terblokir permanen,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-5,Aulia,20685108,ASI,Kalimat,"KELAMAAN 3-7 HARI KERJA, SEDANGKAN TAGIHAN DI TANGGAL 6",5,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Azer,22527489,ASI,Kalimat,"Mau melakukan pembayaran, Tidak muncul VA BNI",4,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-5,Azer,22527303,ASI,Kalimat,"saya mau bayar pinjaman, tapi kok gak ada bca va nya va?",7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-5,Azer,22527144,ASI,Kalimat,Paket data tidak bisa digunakan,19,-1,(Cluster Noise) Keluhan Umum/Noise,-1.0
+2025-12-5,Azer,22527010,ASI,Kalimat,Batalkan pengajuan Pinjaman pakai BPKP,12,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-5,Azer,22526962,ASI,Kalimat,pinjaman saya di tolak terus,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-5,Azer,22526927,ASI,Kalimat,skrg sy mau minjem lg ko gaada,17,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-5,Azer,22526737,ASI,Kalimat,"Tidak bisa pinjaman, sedangkan limit tersedia",7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Neneng,22117485,ASI,Kalimat,kenapa ckrg d akulaku mncul berkeliaran bnyak pinjol ilegal tlong dnk di bratas pinjol itu kok malah bernaung di akulaku,13,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-8,Neneng,22117432,ASI,Kalimat,"pagi pak ko ini tiba"" akun saya ngambil pinjaman",7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Neneng,22119128,ASI,Kalimat,pengajuan di tolak terus min,6,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-8,Neneng,22119105,ASI,Kalimat,saya tidak punya tanggungan diakulalu kok tiba-tiba ada tagihan belum dibayar,4,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Neneng,22118890,ASI,Kalimat,limited dana cicilan saya kenapa blm bertambah,43,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-8,Neneng,22118650,ASI,Kalimat,pinjaman ko lama cair ya,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Neneng,22121522,ASI,Kalimat,"Kenapa limit saya tidak bisa lolos, saya sangat kecewa🥹",3,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-8,Neneng,22120422,ASI,Kalimat,"tidak pernah terlambat, limit tidak naik",37,-1,(Cluster Noise) Keluhan Umum/Noise,-1.0
+2025-12-8,Neneng,22120365,ASI,Kalimat,knp ngga di acc trus ya,17,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-8,Neneng,22122724,ASI,Kalimat,va bca kok belum ada,15,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-8,Azer,22158397,ASI,Kalimat,knpa pinjaman saya GK lolos,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Azer,22158674,ASI,Kalimat,aku ngajukan pinjaman kenapa di tolak terus?,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Azer,22158851,ASI,Kalimat,akun tidak bisa login dan tidak tahu kodeva,11,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-8,Azer,22159134,ASI,Kalimat,saya sudah bayar tapi di sini masih ada tagihannya mohon di chek,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Azer,22160365,ASI,Kalimat,dana cicil saya kok gak bisa pinjam,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Azer,22160162,ASI,Kalimat,ko saya gabisa minjem ya di akulaku,17,0,(Cluster A) Masalah Pengajuan/Akses Pinjam,
+2025-12-8,Azer,22160096,ASI,Kalimat,kak Aku Mau Bayar Tagihan Dana Cicil Tapi Kenapa ya gak ada Fiturnya,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Azer,22164995,ASI,Kalimat,Nama yang muncul saat Pinjaman salah,23,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-8,Reza,21458517,ASI,Kalimat,kenapa baru jatuh tempo 1 hari tapi harus membayar 2 kali lipat,21,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-8,Reza,21460254,ASI,Kalimat,saya sudah bayar lewat ovo tapi tagihan masih ada,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Reza,21460355,ASI,Kalimat,"Sudah bayar tagihan, namun tidak bisa pinjaman",7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Reza,21460486,ASI,Kalimat,kenapa gak bisa ngajuin pinjaman,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Reza,21460630,ASI,Kalimat,knpa pinjaman saya gk biasa di cair kan,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Reza,21460690,ASI,Kalimat,saya sudah melakukan pembayaran tadi siang kenapa masih ada wa dari bank Neo y nagih,0,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0
+2025-12-8,Reza,21461048,ASI,Kalimat,saya sdh melakukan pembayaran setengah kok belum terpotong tagihannya?,0,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Reza,21461237,ASI,Kalimat,knapa saya cek KTP saya punya hutang di Akulaku padahal saya gk pernah minjam,7,1,(Cluster B) Masalah Tagihan & Pembayaran,
+2025-12-8,Reza,21461317,ASI,Kalimat,sdh berbulan bulan melakukan pinjaman tapi ditolak terus,7,-1,(Cluster C) Masalah Sistem & Fitur Aplikasi,1.0

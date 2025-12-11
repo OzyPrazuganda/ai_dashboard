@@ -1,110 +1,348 @@
-Date,Validator,Ticket ID,AFI,Indikasi Kata Negative,cluster_id
-2025-11-26,Aulia,21906939,AFI,pinjaman gak bisa,5
-2025-11-26,Aulia,21915627,AFI,tidak bisa pengajuan kredit ,1
-2025-11-26,Aulia,21915656,AFI,limit paylater tidak bisa dipakai,1
-2025-11-26,Aulia,21915825,AFI,transaksi gagal,1
-2025-11-26,Aulia,21919039,AFI,kenapa gagal,8
-2025-11-26,Aulia,21905535,AFI,tidak dapat digunakan,8
-2025-11-26,Aulia,21905695,AFI,belum diterima,8
-2025-11-26,Aulia,21905708,AFI,gagal pakai,8
-2025-11-26,Aulia,21905712,AFI,sangat tidak membantu,8
-2025-11-26,Azer,22302274,,masalah pengajuan pinjaman,5
-2025-11-26,Azer,22302060,,paylater tidak bisa digunakan,1
-2025-11-26,Azer,22333145,,masih muncul tagihan,11
-2025-11-26,Azer,22288714,,belum nerima surat pelunasan,24
-2025-11-26,Azer,22286481,,kesulitan melunasi cicilan tagihan,11
-2025-11-26,Azer,22289287,,masalah pinjaman,5
-2025-11-26,Azer,22300587,,pinjaman tunai tidak bisa,5
-2025-11-26,Azer,22320492,,pinjaman ditolak,5
-2025-11-26,Azer,22331448,,tidak bisa pengajuan,8
-2025-11-26,Azer,22334800,,limit pinjaman di kurangi,5
-2025-11-26,Neneng,21924286,,limit tidak dapat digunakan,6
-2025-11-26,Neneng,21924133,,tidak sesuai,8
-2025-11-26,Neneng,21923590,,kenapa tidak bisa bayar,1
-2025-11-26,Neneng,21924507,,denda muncul,9
-2025-11-26,Neneng,21924357,,tidak muncul barcode pembayaran,1
-2025-11-26,Neneng,21924357,,tagihan pinjaman tidak muncul,5
-2025-11-26,Neneng,21924357,,tidak bisa melakukan pembayaran cicilan,1
-2025-11-26,Neneng,21924336,,pembayaran dengan paylater gagal ,1
-2025-11-26,Neneng,21934267,,pembayaran tidak sesuai,1
-2025-11-26,Neneng,21924947,,sudah melakukan pembayaran tapi nggak masuk,1
-2025-11-26,Reza,22387603,,kendala ,9
-2025-11-26,Reza,22387595,,kesulitan ,9
-2025-11-26,Reza,22387595,,tidak bisa melakukan pembayaran,1
-2025-11-26,Reza,22387533,,sllu gagal ,8
-2025-11-26,Reza,22387533,,pengajuan pinjaman ditolak,5
-2025-11-26,Reza,22387533,,tidak sesuai ,8
-2025-11-26,Reza,22387444,,sudah bayar masih ada tagihan,11
-2025-11-26,Reza,22387434,,tidak bisa bayar,1
-2025-11-26,Reza,22387156,,saya mau bayar kok jadi ,11
-2025-11-26,Reza,22387117,,sama sekali tidak membantu,23
-2025-11-27,Aulia,21906690,AFI,waduh ribet ya,9
-2025-11-27,Aulia,21906956,AFI,akulaku gak berguna,0
-2025-11-27,Aulia,21914695,AFI,gagal terus ,8
-2025-11-27,Aulia,21914708,AFI,pesanan saya tidak bisa di batalkan,3
-2025-11-27,Aulia,21914949,AFI,tidak lolos verifikasi,13
-2025-11-27,Aulia,21915377,AFI,tidak bisa pake qris,8
-2025-11-27,Aulia,21915464,AFI,ada masalah akun ,14
-2025-11-27,Aulia,21915825,AFI,tidak bisa di pakai top up pulsa,22
-2025-11-27,Aulia,21919075,AFI,sudah 3x ini saya gagal menggunakannya,25
-2025-11-27,Aulia,21905818,AFI,kenapa prosesnya lama sekali,2
-2025-11-27,Azer,22406347,,gagal melakukan pembayaran,1
-2025-11-27,Azer,22405074,,nggak bisa pinjam,1
-2025-11-27,Azer,22376509,,mau pnjam lagi belum terverivikasi,9
-2025-11-27,Azer,22405058,,kenapa sya tidak bisa mengajukan paylater,1
-2025-11-27,Azer,22376751,,kendala nya hari ini,9
-2025-11-27,Azer,22408154,,tidak bisa melakukan dana cicil,1
-2025-11-27,Azer,22377079,,gagal pembayaran,1
-2025-11-27,Azer,22376691,,akulaku bener2 sampah,0
-2025-11-27,Azer,22376864,,tidak muncul di riwayat dana cicil,24
-2025-11-27,Azer,22406746,,"sudah bayar tagihan pinjaman, tetapi masih muncul",11
-2025-11-27,Neneng,21934166,AFI,tidak bisa bayar pake paylater,1
-2025-11-27,Neneng,21934138,AFI,pinjaman gagal,5
-2025-11-27,Neneng,21933978,AFI,tidak bisa pinjam,1
-2025-11-27,Neneng,21935247,AFI,pembayaran gagal,1
-2025-11-27,Neneng,21935351,AFI,bisa pakai qris paylater,15
-2025-11-27,Neneng,21936479,AFI,token ngga bisa di pakai,20
-2025-11-27,Neneng,21936655,AFI,kenapa ini suruh bayar dp,12
-2025-11-27,Neneng,21938278,AFI,tidak bisa membeli pulsa,22
-2025-11-27,Neneng,21987041,,pinjaman kok lama,5
-2025-11-27,Neneng,21987437,,tidak bisa bayar va mandiri,1
-2025-11-27,Reza,22393215,,tai,9
-2025-11-27,Reza,22393215,,ngewe,9
-2025-11-27,Reza,22393215,,hpus akun,14
-2025-11-27,Reza,22388239,,va alfamart dan va bca saya tidak bisa,3
-2025-11-27,Reza,22369695,,kode virtual tagihan tidak sama,19
-2025-11-27,Reza,22393882,,ada kenaikan limit namun tidak bertambah,6
-2025-11-27,Reza,22393411,,sampai kapan saya bisa bayar cicilan tagihan,11
-2025-11-27,Reza,22393060,,tidak bisa lolos di dana cicil ,1
-2025-11-27,Reza,22392882,,koq ga bisa transfer dr neo bank ,16
-2025-11-27,Reza,22392882,,server nya perbaikan terus,17
-2025-11-28,Reza,22421091,,komplain pengiriman merchant,4
-2025-11-28,Reza,22421091,,status pinjaman belum sukses,5
-2025-11-28,Reza,22421023,,pinjaman lama disetujuinya,5
-2025-11-28,Reza,22421023,,proses pencairan lama bos,10
-2025-11-28,Reza,22421023,,tolong dipercepat bos,10
-2025-11-28,Reza,22420726,,tidak bisa membayar,1
-2025-11-28,Reza,22420641,,ribet,9
-2025-11-28,Reza,22420641,,mau bayar aja susah,11
-2025-11-28,Reza,22420515,,halo kenapa pinjaman saya tidak kunjung cair😭,5
-2025-11-28,Reza,22420515,,terlalu lama dicairkan padahal saya selalu melunasi tepat waktu😭,2
-2025-11-28,Aulia,20163460,AFI,ini customer service dongo banget heran,4
-2025-11-28,Aulia,20322021,AFI,saldo berkurang tapi di akulaku belum berhasil,0
-2025-11-28,Aulia,20322017,AFI,ini sudah lebih dri 1x24 jam,2
-2025-11-28,Aulia,20323055,AFI,kenapa tagihan selalu muncul,11
-2025-11-28,Aulia,20362026,AFI,apasi sekelas akulaku jelek sistemnya,0
-2025-11-28,Aulia,20183969,AFI,mau hapus akun aja dibikin ribet,14
-2025-11-28,Aulia,20323122,AFI,saldo aku aja udh ketarik loh udh 2 hari yg bener aja,9
-2025-11-28,Aulia,20357163,AFI,tidak ada solusi,8
-2025-11-28,Aulia,20223150,AFI,kalau begini saya gk nyaman jadinya,18
-2025-11-28,Aulia,20310667,AFI,mls repot,7
-2025-11-28,Azer,22000471,,akun disalahgunakan,14
-2025-11-28,Azer,22000610,,gagal terus ajukan pinjaman,5
-2025-11-28,Azer,21999950,,kurang apalagi,8
-2025-11-28,Azer,22009962,,tidak muncul va bni,8
-2025-11-28,Azer,21997177,,saya sudah bayar tagihan masih ada,11
-2025-11-28,Azer,21995746,,tagihan pinjaman muncul 2 bulan,5
-2025-11-28,Azer,22011777,,ajukan pinjaman kok ditolak terus,5
-2025-11-28,Azer,22011522,,layanan pelanggan respon lambat,21
-2025-11-28,Azer,22011597,,paylater saya kenapa tidak bisa di gunakan,1
-2025-11-28,Azer,22011584,,pinjaman ditolak terus,5
+Date,Validator,Ticket ID,AFI,Type,Indikasi Kata Negative
+2025-11-26,Aulia,21915505,AFI,,Tidak bisa mengajukan pinjaman
+2025-11-26,Aulia,21906939,AFI,,Pinjaman gak bisa
+2025-11-26,Aulia,21915627,AFI,,Tidak bisa pengajuan kredit 
+2025-11-26,Aulia,21915656,AFI,,Limit Paylater tidak bisa dipakai
+2025-11-26,Aulia,21915825,AFI,,Transaksi gagal
+2025-11-26,Aulia,21919039,AFI,,Kenapa gagal
+2025-11-26,Aulia,21905535,AFI,,Tidak dapat digunakan
+2025-11-26,Aulia,21905695,AFI,,Belum diterima
+2025-11-26,Aulia,21905708,AFI,,Gagal pakai
+2025-11-26,Aulia,21905712,AFI,,Sangat tidak membantu
+2025-11-26,Azer,22302274,ASI,,masalah pengajuan pinjaman
+2025-11-26,Azer,22302060,ASI,,Paylater tidak bisa digunakan
+2025-11-26,Azer,22333145,ASI,,masih muncul tagihan
+2025-11-26,Azer,22288714,ASI,,belum nerima surat pelunasan
+2025-11-26,Azer,22286481,ASI,,Kesulitan melunasi cicilan tagihan
+2025-11-26,Azer,22289287,ASI,,masalah pinjaman
+2025-11-26,Azer,22300587,ASI,,Pinjaman tunai tidak bisa
+2025-11-26,Azer,22320492,ASI,,pinjaman ditolak
+2025-11-26,Azer,22331448,ASI,,Tidak bisa pengajuan
+2025-11-26,Azer,22334800,ASI,,limit pinjaman di kurangi
+2025-11-26,Neneng,21924286,ASI,,Limit tidak dapat digunakan
+2025-11-26,Neneng,21924133,ASI,,tidak sesuai
+2025-11-26,Neneng,21923590,ASI,,kenapa tidak bisa bayar
+2025-11-26,Neneng,21924507,ASI,,Denda muncul
+2025-11-26,Neneng,21924357,ASI,,tidak muncul barcode pembayaran
+2025-11-26,Neneng,21924357,ASI,,Tagihan pinjaman tidak muncul
+2025-11-26,Neneng,21924357,ASI,,tidak bisa melakukan pembayaran cicilan
+2025-11-26,Neneng,21924336,ASI,,pembayaran dengan paylater gagal 
+2025-11-26,Neneng,21934267,ASI,,pembayaran tidak sesuai
+2025-11-26,Neneng,21924947,ASI,,sudah melakukan pembayaran tapi nggak masuk
+2025-11-26,Reza,22387603,ASI,,Kendala 
+2025-11-26,Reza,22387595,ASI,,Kesulitan 
+2025-11-26,Reza,22387595,ASI,,Tidak bisa melakukan pembayaran
+2025-11-26,Reza,22387533,ASI,,sllu gagal 
+2025-11-26,Reza,22387533,ASI,,Pengajuan pinjaman ditolak
+2025-11-26,Reza,22387533,ASI,,tidak sesuai 
+2025-11-26,Reza,22387444,ASI,,sudah bayar masih ada tagihan
+2025-11-26,Reza,22387434,ASI,,Tidak bisa bayar
+2025-11-26,Reza,22387156,ASI,,saya mau bayar kok jadi 
+2025-11-26,Reza,22387117,ASI,,sama sekali tidak membantu
+2025-11-27,Aulia,21906690,AFI,,waduh ribet ya
+2025-11-27,Aulia,21906956,AFI,,akulaku gak berguna
+2025-11-27,Aulia,21914695,AFI,,gagal terus 
+2025-11-27,Aulia,21914708,AFI,,pesanan saya tidak bisa di batalkan
+2025-11-27,Aulia,21914949,AFI,,Tidak lolos verifikasi
+2025-11-27,Aulia,21915377,AFI,,tidak bisa pake qris
+2025-11-27,Aulia,21915464,AFI,,ada masalah akun 
+2025-11-27,Aulia,21915825,AFI,,tidak bisa di pakai top up pulsa
+2025-11-27,Aulia,21919075,AFI,,sudah 3x ini saya gagal menggunakannya
+2025-11-27,Aulia,21905818,AFI,,kenapa prosesnya lama sekali
+2025-11-27,Azer,22406347,ASI,,gagal melakukan pembayaran
+2025-11-27,Azer,22405074,ASI,,nggak bisa pinjam
+2025-11-27,Azer,22376509,ASI,,mau pnjam lagi belum terverivikasi
+2025-11-27,Azer,22405058,ASI,,kenapa sya tidak bisa mengajukan paylater
+2025-11-27,Azer,22376751,ASI,,kendala nya hari ini
+2025-11-27,Azer,22408154,ASI,,tidak bisa melakukan dana cicil
+2025-11-27,Azer,22377079,ASI,,Gagal pembayaran
+2025-11-27,Azer,22376691,ASI,,Akulaku bener2 sampah
+2025-11-27,Azer,22376864,ASI,,tidak muncul di riwayat dana cicil
+2025-11-27,Azer,22406746,ASI,,"Sudah bayar tagihan pinjaman, tetapi masih muncul"
+2025-11-27,Neneng,21934166,AFI,,tidak bisa bayar pake paylater
+2025-11-27,Neneng,21934138,AFI,,pinjaman gagal
+2025-11-27,Neneng,21933978,AFI,,tidak bisa pinjam
+2025-11-27,Neneng,21935247,AFI,,Pembayaran gagal
+2025-11-27,Neneng,21935351,AFI,,bisa pakai qris paylater
+2025-11-27,Neneng,21936479,AFI,,token ngga bisa di pakai
+2025-11-27,Neneng,21936655,AFI,,kenapa ini suruh bayar dp
+2025-11-27,Neneng,21938278,AFI,,tidak bisa membeli pulsa
+2025-11-27,Neneng,21987041,ASI,,Pinjaman Kok lama
+2025-11-27,Neneng,21987437,ASI,,Tidak bisa bayar VA MANDIRI
+2025-11-27,Reza,22393215,ASI,,tai
+2025-11-27,Reza,22393215,ASI,,ngewe
+2025-11-27,Reza,22393215,ASI,,hpus akun
+2025-11-27,Reza,22388239,ASI,,va alfamart dan va bca saya tidak bisa
+2025-11-27,Reza,22369695,ASI,,Kode Virtual tagihan tidak sama
+2025-11-27,Reza,22393882,ASI,,ada kenaikan limit namun tidak bertambah
+2025-11-27,Reza,22393411,ASI,,sampai kapan saya bisa bayar cicilan tagihan
+2025-11-27,Reza,22393060,ASI,,tidak bisa lolos di dana cicil 
+2025-11-27,Reza,22392882,ASI,,koq ga bisa transfer dr neo bank 
+2025-11-27,Reza,22392882,ASI,,server nya perbaikan terus
+2025-11-28,Reza,22421091,ASI,,Komplain pengiriman merchant
+2025-11-28,Reza,22421091,ASI,,Status Pinjaman belum sukses
+2025-11-28,Reza,22421023,ASI,,pinjaman lama disetujuinya
+2025-11-28,Reza,22421023,ASI,,proses pencairan lama bos
+2025-11-28,Reza,22421023,ASI,,tolong dipercepat bos
+2025-11-28,Reza,22420726,ASI,,tidak bisa membayar
+2025-11-28,Reza,22420641,ASI,,ribet
+2025-11-28,Reza,22420641,ASI,,mau bayar aja susah
+2025-11-28,Reza,22420515,ASI,,halo kenapa pinjaman saya tidak kunjung cair😭
+2025-11-28,Reza,22420515,ASI,,terlalu lama dicairkan padahal saya selalu melunasi tepat waktu😭
+2025-11-28,Aulia,20163460,AFI,,Ini customer service dongo banget heran
+2025-11-28,Aulia,20322021,AFI,,saldo berkurang tapi di akulaku belum berhasil
+2025-11-28,Aulia,20322017,AFI,,ini sudah lebih dri 1x24 jam
+2025-11-28,Aulia,20323055,AFI,,kenapa tagihan selalu muncul
+2025-11-28,Aulia,20362026,AFI,,apasi sekelas akulaku jelek sistemnya
+2025-11-28,Aulia,20183969,AFI,,mau hapus akun aja dibikin ribet
+2025-11-28,Aulia,20323122,AFI,,saldo aku aja udh ketarik loh udh 2 hari yg bener aja
+2025-11-28,Aulia,20357163,AFI,,tidak ada solusi
+2025-11-28,Aulia,20223150,AFI,,Kalau begini saya gk nyaman jadinya
+2025-11-28,Aulia,20310667,AFI,,mls repot
+2025-11-28,Azer,22000471,ASI,,Akun disalahgunakan
+2025-11-28,Azer,22000610,ASI,,gagal terus ajukan pinjaman
+2025-11-28,Azer,21999950,ASI,,kurang apalagi
+2025-11-28,Azer,22009962,ASI,,Tidak muncul VA BNI
+2025-11-28,Azer,21997177,ASI,,saya sudah bayar tagihan masih ada
+2025-11-28,Azer,21995746,ASI,,Tagihan pinjaman muncul 2 bulan
+2025-11-28,Azer,22011777,ASI,,ajukan pinjaman kok ditolak terus
+2025-11-28,Azer,22011522,ASI,,Layanan pelanggan respon lambat
+2025-11-28,Azer,22011597,ASI,,paylater saya kenapa tidak bisa di gunakan
+2025-11-28,Azer,22011584,ASI,,pinjaman ditolak terus
+2025-12-1,Aulia,20341671,AFI,Kata,ini bisa merugikan saya
+2025-12-1,Aulia,20176275,AFI,Kata,Penagihan akulaku ga ramah
+2025-12-1,Aulia,20261294,AFI,Kalimat,sampai saat ini belum menemukan solusi kak
+2025-12-1,Aulia,20170101,AFI,Kalimat,saya tidak merasa punya tagihan tapi kenapa begini
+2025-12-1,Aulia,20176212,AFI,Kata,hadeh kacau
+2025-12-1,Aulia,20315251,AFI,Kalimat,kok sekarang paylater hilang dan harus ajuin ulang
+2025-12-1,Aulia,20282225,AFI,Kata,dasar aplikasi tipu tipu
+2025-12-1,Aulia,20209563,AFI,Kalimat,"Pesanan dibatalkan limit tidak kembali
+"
+2025-12-1,Aulia,20347327,AFI,Kalimat,klo ga d batalkan saya ga akan bayar!
+2025-12-1,Aulia,20506365,AFI,Kalimat,"sdh bnyk laporan saya tp g selesai""
+"
+2025-12-1,Aulia,20316361,AFI,Kata,"anjing akulaku
+"
+2025-12-1,Azer,22491070,ASI,Kata,akun syaa di retas
+2025-12-1,Azer,22491047,ASI,Kalimat,Sudah bayar tapi masih muncul tagihan
+2025-12-1,Azer,22491024,ASI,Kata,Top up belum masuk
+2025-12-1,Azer,22490978,ASI,Kalimat,"Pinjaman disetujui, dana belum masuk"
+2025-12-1,Azer,22491103,ASI,Kata,Kenapa pinjaman masih verifikasi
+2025-12-1,Azer,22490966,ASI,Kalimat,Tidak merasa pinjam kenapa bayar terus
+2025-12-1,Azer,22490948,ASI,Kalimat,sy sudah ajukan puluhan kali tapi selalu di tolak
+2025-12-1,Azer,22490938,ASI,Kata,Tidak bisa pembayaran pinjaman
+2025-12-1,Azer,22490808,ASI,Kata,kenapa ga bisa bayar
+2025-12-1,Azer,22490795,ASI,Kalimat,Tidak bisa bayar tagihan pinjaman lewat BCA
+2025-12-1,Azer,22490759,ASI,Kata,tidak bisa paylater
+2025-12-1,Neneng,22021689,ASI,Kalimat,kok saya mengajukan dana cicil selalu di tolak yh
+2025-12-1,Neneng,22022408,ASI,Kalimat,kenapa dana cicil saya gak bisa
+2025-12-1,Neneng,22022289,ASI,Kalimat,mengapa limit dana cicil semakin kecil
+2025-12-1,Neneng,22022188,ASI,Kalimat,riwayat tagihan kenapa tidak muncul ka
+2025-12-1,Neneng,22022938,ASI,Kalimat,aku sudah bayar tapi kenapa di apk nya belum masih ada hutang
+2025-12-1,Neneng,22024140,ASI,Kalimat,Kenapa limit gak mau naik
+2025-12-1,Neneng,22023985,ASI,Kalimat,kenapa pinjamanku tidak lolos padahal aku selalu bayar tepat waktu
+2025-12-1,Neneng,22023908,ASI,Kalimat,gak bisa bayar sisa cicilan nominalnya 8000
+2025-12-1,Neneng,22025005,ASI,Kata,tidak bisa bayar tagihan
+2025-12-1,Neneng,22024983,ASI,Kalimat,saya mau minta kode virtual ka karena setelah ganti no tlp tagihan saya tdk muncul
+2025-12-1,Reza,22024846,ASI,Kalimat,kenapa tagihannya jadi 2bulan sekaligus
+2025-12-1,Reza,22024601,ASI,Kalimat,kenapa aku udah gak bisa ajukan pinjaman min
+2025-12-1,Reza,20570146,AFI,Kalimat,Tidak bisa melakukan pengajuan kredit di aplikasi Akulaku
+2025-12-1,Reza,20570146,AFI,Kalimat,Laporan SLIK OJK tidak sesuai
+2025-12-1,Reza,20570146,AFI,Kata,Hapus paylater diaplikasi Akulaku
+2025-12-1,Reza,20570146,AFI,Kalimat,sudah melunasi semua tagihan saya di aplikasi tapi ko data Bicheking saya masih blacklist di perbankan
+2025-12-1,Reza,20569866,AFI,Kalimat,kapan pembaruan data padahal sudah tidak ada tagihan lagi
+2025-12-1,Reza,20609267,AFI,Kalimat,kenapa saya masih ada tagihan hutang
+2025-12-1,Reza,20637904,AFI,Kata,"Transaksi ""Transfer"" belum update"
+2025-12-1,Reza,20472988,AFI,Kalimat,Muncul tagihan yang tidak diketahui
+2025-12-2,Aulia,20414100,ASI,Kalimat,kuota atau paket yg saya beli blum msuk sampai skrg
+2025-12-2,Aulia,20414518,ASI,Kalimat,kemaren saya bayar Wifi pakai akulaku deskripsinya sudah berhasil tapi kenapa belum masuk ya mas
+2025-12-2,Aulia,20526184,ASI,Kalimat,kenapa lokasinya gagal terus ya
+2025-12-2,Aulia,20526441,ASI,Kalimat,nasabah AKULAKU NAMUN SY TDK ADA TUNGGAKAN
+2025-12-2,Aulia,20371657,ASI,Kalimat,"tolong sy pusing,sy bilang pinjaman yg sy ajukan belum sy terima"
+2025-12-2,Aulia,20419031,ASI,Kalimat,"gak ada pengaruh sama aja jawabannya ganti"" cs dari kemarin sama aja gk bakal ada perubahan apk gak nyaman untuk pinjol"
+2025-12-2,Aulia,20372209,ASI,Kalimat,"ini kesalahan dari akulaku nya lambat ,tangganin nyaa"
+2025-12-2,Aulia,20531716,ASI,Kalimat,saya juga bisa buat laporan atas masalah ini
+2025-12-2,Aulia,20561905,ASI,Kalimat,"kalau mau saya bayarkan itu ya buang bunganya. krna saya tidak merasa memakai nya..
+dan klopun tidak ya sudah terserah sya tidka akan bayarkan"
+2025-12-2,Aulia,20285647,ASI,Kalimat,ingat saya sudah bayar ya!!
+2025-12-2,Azer,22055951,ASI,Kalimat,kenapa pinjaman saya masih ditolak ya kak
+2025-12-2,Azer,22053901,ASI,Kata,Tagihan muncul double
+2025-12-2,Azer,22055126,ASI,Kata,ada kendala pembayaran ka
+2025-12-2,Azer,22078903,ASI,Kalimat,kenapa sudah bayar tetapi masih muncul
+2025-12-2,Azer,22079521,ASI,Kalimat,Sudah lunasi Pinjaman tapi tagihan muncul
+2025-12-2,Azer,22074769,ASI,Kalimat,Tidak muncul Virtual Account tagihan Pinjaman
+2025-12-2,Azer,22080660,ASI,Kalimat,Pembayaran Akulaku Paylater tidak sesuai
+2025-12-2,Azer,22079914,ASI,Kalimat,mau diganti tp tidak bisa
+2025-12-2,Azer,22078932,ASI,Kalimat,Pembayaran tagihan Pinjaman belum masuk
+2025-12-2,Azer,22074058,ASI,Kata,Tidak bisa melakukan Pinjaman
+2025-12-2,Neneng,22432898,ASI,Kalimat,no VA sudah sesuai tapi gagal terus
+2025-12-2,Neneng,22433588,ASI,Kata,Dijadikan kontak darurat
+2025-12-2,Neneng,22433818,ASI,Kalimat,kenapa pinjaman saya lama sekali cair nya
+2025-12-2,Neneng,22425255,ASI,Kata,memverifikasi pinjaman lama cekali
+2025-12-2,Neneng,22477040,ASI,Kalimat,kenapa sekarang status tagihanku masih bulan November saja seharusnya tagihanku berubah menjadi bulan Desember
+2025-12-2,Neneng,22476896,ASI,Kalimat,pembayaran melalui bca kok dihilangkan
+2025-12-2,Neneng,22476896,ASI,Kalimat,tidak ada pilihan untuk bayar melalui BCA
+2025-12-2,Neneng,22476735,ASI,Kalimat,"bos ini saya sudah bayar di bulan ini , kok masih blm masuk ya pembayarannya"
+2025-12-2,Neneng,22476610,ASI,Kalimat,saya mau bayar tapi kok gak bisa
+2025-12-2,Neneng,22476568,ASI,Kalimat,sudah bayar dana cicil namun masih dalam penagihan
+2025-12-2,Reza,22299182,ASI,Kalimat,Pret akh teu berpungsi dana cicil ya
+2025-12-2,Reza,22299182,ASI,Kata,Pinjaman diterima tidak sesuai
+2025-12-2,Reza,22299106,ASI,Kata,masih aja belum lolos
+2025-12-2,Reza,22298970,ASI,Kalimat,kok gk bs pinjm lg kk
+2025-12-2,Reza,22298957,ASI,Kata,tidak bisa melunasi pembayaran
+2025-12-2,Reza,22298957,ASI,Kata,kesulitan pelunasan pembayaran
+2025-12-2,Reza,22298508,ASI,Kalimat,sebelumya saya mau mengajuhkan pinjaman diakulaku tetapi menunggu pending terus tidak di-ACC padahal belum pernah pinjol
+2025-12-2,Reza,22298508,ASI,Kalimat,saya sudah semuanya tetapi tidak diverifikasi
+2025-12-2,Reza,22298686,ASI,Kalimat,"lama kelamaan limit itu BKN ny bertambah,yg ada malah berkurang terus🤦"
+2025-12-2,Reza,22298371,ASI,Kalimat,AQ udah bayar tagihan 390 kok masih ada tagihan
+2025-12-3,Aulia,20171153,ASI,Kalimat,"informasi sudah jelas dan itu harus bikin"" laporan/ dukumen kurang ribet bang"
+2025-12-3,Aulia,20249280,ASI,Kata,ko ribett
+2025-12-3,Aulia,20249280,ASI,Kalimat,kejelasannya dong udh seminggu ga dikabarin
+2025-12-3,Aulia,20249280,ASI,Kata,lama amat kontol
+2025-12-3,Aulia,20518183,ASI,Kalimat,kalo emang tida bisa meminjam di aplikasi ini bilang
+2025-12-3,Aulia,20554534,ASI,Kalimat,"itu bukti trsferan saya,, saya udah bayar lunas, tpi ko jdi ribet begini"
+2025-12-3,Aulia,20191012,ASI,Kalimat,akulaku kok gini sih. kecewa banget aku
+2025-12-3,Aulia,20167667,ASI,Kalimat,sudah dapet email dari akulaku tapi blon ada perkembangan
+2025-12-3,Aulia,20531716,ASI,Kalimat,saya minta bantuan ke OJK atau pihak berwajib
+2025-12-3,Aulia,20347327,ASI,Kalimat,pokonya sya ga Terima sya mau limitnya balik
+2025-12-3,Neneng,22038774,ASI,Kalimat,Metode bank mandiri tidak ada
+2025-12-3,Neneng,22038659,ASI,Kalimat,kenapa limit pinjamanku gk bida di pakai gagal trs
+2025-12-3,Neneng,22039283,ASI,Kalimat,aplikasinya tidak ramah untuk customer/pengguna
+2025-12-3,Neneng,22039141,ASI,Kalimat,kendala ya di tolak trs padahal pinjaman udh lunas
+2025-12-3,Neneng,22039119,ASI,Kalimat,massa udah benar samua di tolak
+2025-12-3,Neneng,22039105,ASI,Kalimat,ko saya mau pinjaman tidak bisa ya min
+2025-12-3,Neneng,22039852,ASI,Kalimat,Saya ingin memeriksan tagihan karena akun saya tidak bisa diakses
+2025-12-3,Neneng,22040027,ASI,Kalimat,saya mau lunasi tagihan bulan januari tapi tidak bisa kak
+2025-12-3,Neneng,22039918,ASI,Kata,saya kesulitan membayar pinjaman
+2025-12-3,Neneng,22039651,ASI,Kalimat,kredit saya ko masih bermasalah saya Uda ga ada cicilan
+2025-12-3,Azer,22512935,ASI,Kalimat,saya bener bener gabisa pinjam lg ya di akun ini
+2025-12-3,Azer,22512833,ASI,Kalimat,Masalah akan diviralkan ke media
+2025-12-3,Azer,22512667,ASI,Kata,Tidak bisa pengajuan pinjaman
+2025-12-3,Azer,22512525,ASI,Kalimat,"Sudah memiliki no rekening, tetapi pinjaman gagal"
+2025-12-3,Azer,22512230,ASI,Kalimat,paylater ga bisa di pakai
+2025-12-3,Azer,22488075,ASI,Kalimat,Tidak bisa bayar tagihan Akulaku paylater lewat BCA
+2025-12-3,Azer,22511336,ASI,Kalimat,Tidak bisa bayar tagihan via Alfamart
+2025-12-3,Azer,22490707,ASI,Kalimat,hadeh susah amat ya mau bayar di persulit
+2025-12-3,Azer,22511318,ASI,Kalimat,Kendala pembayaran tagihan dana cicil
+2025-12-3,Azer,22511225,ASI,Kalimat,tidak bisa bayar dana cicil via bri
+2025-12-3,Reza,21446546,ASI,Kalimat, kemarin saya melakukan tenor 2x sudah saya bayar 2x tetapi masih ada tagihan
+2025-12-3,Reza,21446611,ASI,Kalimat,pinjam saya di tolak teruss
+2025-12-3,Reza,21446611,ASI,Kalimat,tapii saya mau minjam lagi gk bisaa
+2025-12-3,Reza,21441459,ASI,Kalimat,kok belum masuk uang nya padahal udah lolos verifikasi
+2025-12-3,Reza,21455862,ASI,Kalimat,saya berhasil ajak teman ajukan limit tp kenapa tidak masuk ke saya putaran lucky drwanya
+2025-12-3,Reza,21455862,ASI,Kalimat,Tidak mendapatkan bonus dari ajak teman
+2025-12-3,Reza,21455862,ASI,Kalimat,[Lucky Draw] - Misi Tidak Terhitung
+2025-12-3,Reza,21455904,ASI,Kalimat,knapa aku gk bisa minjam
+2025-12-3,Reza,21445425,ASI,Kalimat,roda hadiah 300rb php ya?
+2025-12-3,Reza,21445425,ASI,Kata,babi
+2025-12-4,Reza,21445425,ASI,Kata,kontol
+2025-12-4,Reza,21455587,ASI,Kalimat,"saya kemarin sudah melakukan pelunasan pembayaran, tapi saya belum dapat bukti atas penulasan tersebut"
+2025-12-4,Reza,21456111,ASI,Kalimat,"tagihan pertama saya lewat 2 hari, tapi kenapa disuruh lunasi langsung dengan tagihan ke 2"
+2025-12-4,Reza,21456181,ASI,Kata,Tidak membantu
+2025-12-4,Reza,21456181,ASI,Kata,Cs mana?
+2025-12-4,Reza,21456448,ASI,Kalimat,saya kok ga pernah di acc
+2025-12-4,Reza,21445261,ASI,Kalimat,mengapa saya tidak bisa mengajukan peminjaman?
+2025-12-4,Reza,21445261,ASI,Kalimat,Hadiah Voucher belanja tidak bisa digunakan
+2025-12-4,Reza,21455850,ASI,Kalimat,ini saya sudah membayar cicilan nya tapi kok belum selesai juga ya
+2025-12-4,Reza,21456647,ASI,Kalimat,Notifikasi pembayaran tagihan tidak sesuai
+2025-12-4,Aulia,20596578,ASI,Kalimat,nik ktp saya d pakai orang lain
+2025-12-4,Aulia,20528945,ASI,Kalimat,Saya minta dana saya kembali
+2025-12-4,Aulia,20528047,ASI,Kalimat,tolong tarik lagi kak tagihannya soalnya merugikan banget ke saya
+2025-12-4,Aulia,20620877,ASI,Kalimat,Atau saya lapor ojk aja lah klo lapor disini disuruh ngulang2 lg
+2025-12-4,Aulia,20589098,ASI,Kalimat,"Saya juga sudah melaporkan ke polisi tentang akun akulaku saya di curi terus di salagunakan oleh orang lain
+"
+2025-12-4,Aulia,20511850,ASI,Kata,gk jelasss
+2025-12-4,Aulia,20548083,ASI,Kalimat,"banyak peraturan ujung2nya ga bisa, cape sia2 doang"
+2025-12-4,Aulia,20548083,ASI,Kalimat,"hadeuhh masih muter2 aja, udh dikasih tau kerja sebagai ojek online malah dimintain suraht phk, cape berhadapan sm org stres"
+2025-12-4,Aulia,20621347,ASI,Kata,nanti saya viralin .
+2025-12-4,Aulia,20605524,ASI,Kalimat,Data kredit Akulaku dengan OJK tidak sesuai
+2025-12-4,Azer,22511069,ASI,Kalimat,kenapa kita pengajuan pinjaman selalu di tolak kk
+2025-12-4,Azer,22510967,ASI,Kata,masalah akun
+2025-12-4,Azer,22510856,ASI,Kalimat,Tagihan pinjaman bulan depan belum muncul
+2025-12-4,Azer,22510571,ASI,Kalimat,Cara cicil tagihan tidak sanggup bayar
+2025-12-4,Azer,22510533,ASI,Kata,kenapa gabisa bca
+2025-12-4,Azer,22510467,ASI,Kata,Gagal pengajuan Pinjaman
+2025-12-4,Azer,22510363,ASI,Kata,Komplain limit kredit berkurang
+2025-12-4,Azer,22510286,ASI,Kalimat,sudah melakukan pembayaran tapi status di akulaku ya belum berhasil
+2025-12-4,Azer,22509709,ASI,Kata,Menghapus akun secara permanen
+2025-12-4,Azer,22509694,ASI,Kalimat,ko tagihan harus bayar sekaligus 2 bulan
+2025-12-4,Neneng,21611614,ASI,Kalimat,saya mendapatkan teror telepon dari mengaku sebagai DC dari akulaku mengancam akan kerumah
+2025-12-4,Neneng,21611587,ASI,Kalimat,tapi tiba tiba tidak ada tagihan
+2025-12-4,Neneng,21611573,ASI,Kalimat,untuk pinjaman dana cicil itu yg limide 10jt udah ga ada yaa
+2025-12-4,Neneng,21611405,ASI,Kalimat,Kenapa saya selalu gagal meminjam
+2025-12-4,Neneng,21611256,ASI,Kalimat,hari ini saya akan bayar cicilan namun perhitungan tidak sesuai..yg seharusnya 767000..begitu akan direalisasi kenapa menjadi 2x lipat
+2025-12-4,Neneng,21612364,ASI,Kalimat,kenapa saya tidak bisa menggunakan spayletr
+2025-12-4,Neneng,21612274,ASI,Kalimat,saya mau bayar kenapa tagihan saya bisa sampai 1jt
+2025-12-4,Neneng,21612227,ASI,Kalimat,Saat saya ajukan pinjaman gak bisa kak
+2025-12-4,Neneng,21613340,ASI,Kalimat,kenapa saya nungak sekali Langsung ngak bisa minjam lagi ya
+2025-12-4,Neneng,21613291,ASI,Kalimat,bca dan mandiri tidak bisa virtual nya
+2025-12-5,Neneng,22102489,ASI,Kalimat,"tinggal satu biji,lucky draw apaan ini,pelit bget ni aplikasi akulaku"
+2025-12-5,Neneng,22102361,ASI,Kata,knp bca Meintance yah
+2025-12-5,Neneng,22102335,ASI,Kalimat,limit sudah muncul tpi tidak bisa d cairkan
+2025-12-5,Neneng,22102046,ASI,Kalimat,knpa tdk bisah mnjam lg
+2025-12-5,Neneng,22105678,ASI,Kalimat,code pembayaran virtual acount mandiri tdak di temukan
+2025-12-5,Neneng,22105587,ASI,Kalimat,saya telah membayar DP untuk barang HP tetapi belum dikirim juga mohon dikembalikan dp
+2025-12-5,Neneng,22105336,ASI,Kalimat,pinjaman saya kok belum lunas setelah 1/24 jam
+2025-12-5,Neneng,22105314,ASI,Kalimat,Saya sudah pelunasan pinjaman tetapi masih tertera
+2025-12-5,Neneng,22104092,ASI,Kalimat,mau bayar tapi ngedouble sama bulan depan
+2025-12-5,Neneng,22107915,ASI,Kalimat,tadi sudah balik limitnya ini kok berkurang lgi ya
+2025-12-5,Reza,21456784,ASI,Kalimat,kenapa perifikasi saya gagal trus
+2025-12-5,Reza,21456791,ASI,Kalimat,saya telah mengajukan pinjaman namun blum di transfer uang tersebut
+2025-12-5,Reza,21457828,ASI,Kalimat,Pembayaran tagihan pulsa belum masuk
+2025-12-5,Reza,21456000,ASI,Kalimat,dulu pernah pinjam dan berhasil dan kedua kali nya gagal terus sampe sekarang setiap mau ambil pinjaman
+2025-12-5,Reza,21458527,ASI,Kalimat,mau lunasi tagihan tapi invoice belum ada bulan 11
+2025-12-5,Reza,21457203,ASI,Kalimat,di ovo sudah berhasil tapi tagihannya kok tetep ada kak
+2025-12-5,Reza,21458074,ASI,Kata,kenapa pinjaman GK bisa
+2025-12-5,Reza,21457014,ASI,Kalimat,sudah 4 bulan lebih belum pernah di acc
+2025-12-5,Reza,21457185,ASI,Kalimat,Denda muncul 2 kali lipat
+2025-12-5,Reza,21442739,ASI,Kalimat,jadi gx bisa pinjam lagi
+2025-12-5,Aulia,20623089,AFI,Kata,malah nambah bikin pusing
+2025-12-5,Aulia,20312468,AFI,Kalimat,kak pesanan saya kok g ada ya
+2025-12-5,Aulia,20541153,AFI,Kalimat,dan ko aneh aplikasi anda bisa se eror itu yg sudah lunas clear semua tahun 2022 bisa muncul dari pertengahan lagi tagihan nya di 2025
+2025-12-5,Aulia,20563429,AFI,Kalimat,"pastinya pihak akulaku ingin nya saya yg tanggung jawab selaku pemilik akun , sedangkan saya tidak melakukan transaksi"
+2025-12-5,Aulia,20532070,AFI,Kata,Diteror atas nama akulaku
+2025-12-5,Aulia,20640773,AFI,Kata,tai anjing
+2025-12-5,Aulia,20690476,AFI,Kata,bego banget ga nyambung
+2025-12-5,Aulia,20692210,ASI,Kalimat,"Barang sudah diretur, tagihan muncul"
+2025-12-5,Aulia,20705967,ASI,Kalimat,Saat ajukan Pinjaman akun terblokir permanen
+2025-12-5,Aulia,20685108,ASI,Kalimat,"KELAMAAN 3-7 HARI KERJA, SEDANGKAN TAGIHAN DI TANGGAL 6"
+2025-12-5,Azer,22527869,ASI,Kata,pinjaman selalu gagal
+2025-12-5,Azer,22527623,ASI,Kata,saya pengajuan gagal Mulu
+2025-12-5,Azer,22527489,ASI,Kalimat,"Mau melakukan pembayaran, Tidak muncul VA BNI"
+2025-12-5,Azer,22527303,ASI,Kalimat,"saya mau bayar pinjaman, tapi kok gak ada bca va nya va?"
+2025-12-5,Azer,22527144,ASI,Kalimat,Paket data tidak bisa digunakan
+2025-12-5,Azer,22527010,ASI,Kalimat,Batalkan pengajuan Pinjaman pakai BPKP
+2025-12-5,Azer,22526962,ASI,Kalimat,pinjaman saya di tolak terus
+2025-12-5,Azer,22526927,ASI,Kalimat,skrg sy mau minjem lg ko gaada
+2025-12-5,Azer,22526869,ASI,Kata,transferpay tapi ga bisa
+2025-12-5,Azer,22526737,ASI,Kalimat,"Tidak bisa pinjaman, sedangkan limit tersedia"
+2025-12-8,Neneng,22117485,ASI,Kalimat,kenapa ckrg d akulaku mncul berkeliaran bnyak pinjol ilegal tlong dnk di bratas pinjol itu kok malah bernaung di akulaku
+2025-12-8,Neneng,22117432,ASI,Kalimat,"pagi pak ko ini tiba"" akun saya ngambil pinjaman"
+2025-12-8,Neneng,22119128,ASI,Kalimat,pengajuan di tolak terus min
+2025-12-8,Neneng,22119105,ASI,Kalimat,saya tidak punya tanggungan diakulalu kok tiba-tiba ada tagihan belum dibayar
+2025-12-8,Neneng,22118890,ASI,Kalimat,limited dana cicilan saya kenapa blm bertambah
+2025-12-8,Neneng,22118650,ASI,Kalimat,pinjaman ko lama cair ya
+2025-12-8,Neneng,22121522,ASI,Kalimat,"Kenapa limit saya tidak bisa lolos, saya sangat kecewa🥹"
+2025-12-8,Neneng,22120422,ASI,Kalimat,"tidak pernah terlambat, limit tidak naik"
+2025-12-8,Neneng,22120365,ASI,Kalimat,knp ngga di acc trus ya
+2025-12-8,Neneng,22122724,ASI,Kalimat,va bca kok belum ada
+2025-12-8,Azer,22158397,ASI,Kalimat,knpa pinjaman saya GK lolos
+2025-12-8,Azer,22158652,ASI,Kata,Pemalsuan akun
+2025-12-8,Azer,22158674,ASI,Kalimat,aku ngajukan pinjaman kenapa di tolak terus?
+2025-12-8,Azer,22158851,ASI,Kalimat,akun tidak bisa login dan tidak tahu kodeva
+2025-12-8,Azer,22159134,ASI,Kalimat,saya sudah bayar tapi di sini masih ada tagihannya mohon di chek
+2025-12-8,Azer,22161049,ASI,Kata,gak bisa melakukan pembayaran
+2025-12-8,Azer,22160365,ASI,Kalimat,dana cicil saya kok gak bisa pinjam
+2025-12-8,Azer,22160162,ASI,Kalimat,ko saya gabisa minjem ya di akulaku
+2025-12-8,Azer,22160096,ASI,Kalimat,kak Aku Mau Bayar Tagihan Dana Cicil Tapi Kenapa ya gak ada Fiturnya
+2025-12-8,Azer,22164995,ASI,Kalimat,Nama yang muncul saat Pinjaman salah
+2025-12-8,Reza,21458517,ASI,Kalimat,kenapa baru jatuh tempo 1 hari tapi harus membayar 2 kali lipat
+2025-12-8,Reza,21442173,ASI,Kata,mau komplain
+2025-12-8,Reza,21460254,ASI,Kalimat,saya sudah bayar lewat ovo tapi tagihan masih ada
+2025-12-8,Reza,21460355,ASI,Kalimat,"Sudah bayar tagihan, namun tidak bisa pinjaman"
+2025-12-8,Reza,21460486,ASI,Kalimat,kenapa gak bisa ngajuin pinjaman
+2025-12-8,Reza,21460630,ASI,Kalimat,knpa pinjaman saya gk biasa di cair kan
+2025-12-8,Reza,21460690,ASI,Kalimat,saya sudah melakukan pembayaran tadi siang kenapa masih ada wa dari bank Neo y nagih
+2025-12-8,Reza,21461048,ASI,Kalimat,saya sdh melakukan pembayaran setengah kok belum terpotong tagihannya?
+2025-12-8,Reza,21461237,ASI,Kalimat,knapa saya cek KTP saya punya hutang di Akulaku padahal saya gk pernah minjam
+2025-12-8,Reza,21461317,ASI,Kalimat,sdh berbulan bulan melakukan pinjaman tapi ditolak terus
