@@ -20,7 +20,7 @@ CURRENT_THEME = "light"
 IS_DARK_THEME = False
 st.set_page_config(layout="wide")
 
-team = st.sidebar.radio('Team', ['KULA', 'QC'])
+team = st.sidebar.radio('Team', ['QC'])
 
 if team == 'QC':
     st.sidebar.header("Adjust Data")
@@ -738,6 +738,15 @@ if team == 'QC':
 
 
     # Page 4
+    elif page == "Recheck Sample":
+        st.title("Recheck Sample")
+        
+        # Load data
+        df = pd.read_csv("")
+        df.columns = df.columns.str.strip()
+
+
+    # Page 5
     elif page == 'Performance':
         df_sampling = pd.read_csv(
             'dataset_qc/kalib_sampling.csv',
