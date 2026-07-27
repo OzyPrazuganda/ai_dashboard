@@ -122279,3 +122279,103 @@
 122276,2026-07-21,ASI,Customer,Not meet expectation,Can't submit a loan,Loan
 122277,2026-07-21,ASI,Customer,Not meet expectation,loan limit reduced,Loan
 122278,2026-07-21,ASI,Customer,Not meet expectation,"Can not be a loan, while the limit is available",Loan
+122279,2026-07-22,AFI,Customer,Not meet expectation,Elimination of fines,Installment/Payment Gateway
+122280,2026-07-22,AFI,Customer,Not meet expectation,Postponement of bill payments,Collection
+122281,2026-07-22,AFI,Customer,Not meet expectation,Paylater submission failed,Submission of Limit/Credit Points
+122282,2026-07-22,AFI,Customer,Not meet expectation,Cannot pay VA MANDIRI,Installment/Payment Gateway
+122283,2026-07-22,AFI,Customer,Not meet expectation,Paylater submission failed,Submission of Limit/Credit Points
+122284,2026-07-22,AFI,Customer,Not meet expectation,Cannot make credit applications in the Akulaku application,Submission of Limit/Credit Points
+122285,2026-07-22,AFI,Customer,Not meet expectation,Cannot make credit applications in the Akulaku application,Submission of Limit/Credit Points
+122286,2026-07-22,AFI,Customer,Not meet expectation,Orders through the Blibli application have not been received,Akulaku Paylater
+122287,2026-07-22,AFI,Customer,Not meet expectation,Akulaku PayLater tenor choice,Akulaku Paylater
+122288,2026-07-22,AFI,Customer,Not meet expectation,Installment Bill Repayment Discount,Installment/Payment Gateway
+122289,2026-07-22,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122290,2026-07-22,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122291,2026-07-22,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122292,2026-07-22,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122293,2026-07-22,AFI/ASI,Customer,Issue not clear,Customer service complaints,No Category
+122294,2026-07-22,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122295,2026-07-22,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122296,2026-07-22,AFI/ASI,Customer,Issue not clear,Customer service number,No Category
+122297,2026-07-22,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122298,2026-07-22,AFI/ASI,Customer,Issue not clear,Customer service complaints,No Category
+122299,2026-07-22,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122300,2026-07-22,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122301,2026-07-22,AFI/ASI,Customer,Issue not clear,Customer service number,No Category
+122302,2026-07-22,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122303,2026-07-22,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122304,2026-07-22,ASI,Customer,Not meet expectation,Changes in telephone number,Data Update
+122305,2026-07-22,ASI,Customer,Not meet expectation,Refund status fails,Refund
+122306,2026-07-22,ASI,Customer,Not meet expectation,loan limit reduced,Loan
+122307,2026-07-22,ASI,Customer,Not meet expectation,loan limit reduced,Loan
+122308,2026-07-22,ASI,Customer,Not meet expectation,"Already paid the loan bill, but can't apply for a loan",Loan
+122309,2026-07-22,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122310,2026-07-22,ASI,Customer,Not meet expectation,Extend Loan Due Date,Loan
+122311,2026-07-22,ASI,Customer,Not meet expectation,Change the loan tenor,Loan
+122312,2026-07-22,ASI,Customer,Not meet expectation,Cannot apply for a Dana Cicil,Loan
+122313,2026-07-22,ASI,Customer,Not meet expectation,Can't submit a loan,Loan
+122314,2026-07-22,ASI,Customer,Not meet expectation,Cannot apply for a loan,Loan
+122315,2026-07-22,ASI,Customer,Not meet expectation,Loan status has not been successful,Loan
+122316,2026-07-22,ASI,Customer,Not meet expectation,How to check the loan limit,Loan
+122317,2026-07-22,ASI,Customer,Not meet expectation,Want a loan application,Loan
+122318,2026-07-22,ASI,Customer,Not meet expectation,Loan limit does not rise,Loan
+122319,2026-07-22,ASI,Customer,Not meet expectation,"Can not be a loan, while the limit is available",Loan
+122320,2026-07-22,ASI,Customer,Not meet expectation,Loan application is rejected,Loan
+122321,2026-07-22,ASI,Customer,Not meet expectation,Loan application is rejected,Loan
+122322,2026-07-22,ASI,Customer,Not meet expectation,Loan application is rejected,Loan
+122323,2026-07-22,ASI,Customer,Not meet expectation,Application login constraints,Bug
+122324,2026-07-22,ASI,Customer,Not meet expectation,Facial verification constraints,Bug
+122325,2026-07-22,ASI,Customer,Not meet expectation,Repayment of loan bills,Loan
+122326,2026-07-22,ASI,Customer,Not meet expectation,Repayment of loan bills,Loan
+122327,2026-07-23,AFI,Customer,Not meet expectation,Paylater submission failed,Submission of Limit/Credit Points
+122328,2026-07-23,AFI,Customer,Not meet expectation,Payment akulaku paylater is not appropriate,Akulaku Paylater
+122329,2026-07-23,AFI,Customer,Not meet expectation,Payment akulaku paylater is not appropriate,Akulaku Paylater
+122330,2026-07-23,AFI,Customer,Not meet expectation,Cannot pay VA MANDIRI,Installment/Payment Gateway
+122331,2026-07-23,AFI,Customer,Not meet expectation,Credit limit complaints reduced,Submission of Limit/Credit Points
+122332,2026-07-23,AFI,Customer,Not meet expectation,Changes to due date,Collection
+122333,2026-07-23,AFI,Customer,Not meet expectation,Cannot make credit applications in the Akulaku application,Submission of Limit/Credit Points
+122334,2026-07-23,AFI,Customer,Not meet expectation,Cannot pay Akulaku paylater bill via BCA,Installment/Payment Gateway
+122335,2026-07-23,AFI,Customer,Not meet expectation,Paylater submission failed,Submission of Limit/Credit Points
+122336,2026-07-23,AFI,Customer,Not meet expectation,PAYMENTS have not entered,Installment/Payment Gateway
+122337,2026-07-23,AFI,Customer,Not meet expectation,Cannot pay Akulaku paylater bill via BCA,Installment/Payment Gateway
+122338,2026-07-23,AFI,Customer,Not select a recommendation topic,Deactivate account,Account Security
+122339,2026-07-23,AFI,Customer,Not meet expectation,How to pay with Akulaku Paylater,Akulaku Paylater
+122340,2026-07-23,AFI,Customer,Not meet expectation,Deactivate account,Account Security
+122341,2026-07-23,AFI,Customer,Not meet expectation,Details of installment bills,Installment/Payment Gateway
+122342,2026-07-23,AFI,Customer,Not meet expectation,Postponement of bill payments,Collection
+122343,2026-07-23,AFI,Customer,Not meet expectation,Can't use the barcode feature,Akulaku Paylater
+122344,2026-07-23,AFI,Customer,Not meet expectation,Credit limit complaints reduced,Submission of Limit/Credit Points
+122345,2026-07-23,AFI,Customer,Not meet expectation,Credit Score Evaluation,Submission of Limit/Credit Points
+122346,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122347,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122348,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122349,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122350,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122351,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122352,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122353,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122354,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122355,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122356,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122357,2026-07-23,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122358,2026-07-23,ASI,Customer,Not meet expectation,Merchant Online - Status will be sent,Merchant Online
+122359,2026-07-23,ASI,Customer,Not meet expectation,Changes to missing telephone numbers,Data Update
+122360,2026-07-23,ASI,Customer,Not meet expectation,Changes to missing telephone numbers,Data Update
+122361,2026-07-23,ASI,Customer,Not meet expectation,Help ACC loan application,Loan
+122362,2026-07-23,ASI,Customer,Not meet expectation,"Already paid the loan bill, but can't apply for a loan",Loan
+122363,2026-07-23,ASI,Customer,Not meet expectation,Cash loans are not possible,Loan
+122364,2026-07-23,ASI,Customer,Not meet expectation,Extend Loan Due Date,Loan
+122365,2026-07-23,ASI,Customer,Not meet expectation,Loan simultaneously,Loan
+122366,2026-07-23,ASI,Customer,Not meet expectation,Loan funds have not been received,Loan
+122367,2026-07-23,ASI,Customer,Not meet expectation,Cannot apply for a loan,Loan
+122368,2026-07-23,ASI,Customer,Not meet expectation,"Can not be a loan, the issue of credit quality",Loan
+122369,2026-07-23,ASI,Customer,Not meet expectation,Loan application back after the bill is paid off,Loan
+122370,2026-07-23,ASI,Customer,Not meet expectation,Loans do not pass verification,Loan
+122371,2026-07-23,ASI,Customer,Not meet expectation,How to pay a loan bill,Loan
+122372,2026-07-23,ASI,Customer,Not meet expectation,"On time paying loans, but can't borrow",Loan
+122373,2026-07-23,ASI,Customer,Not meet expectation,Loan application is rejected,Loan
+122374,2026-07-23,ASI,Customer,Not meet expectation,Loan application is rejected,Loan
+122375,2026-07-23,ASI,Customer,Not meet expectation,Loan application is rejected,Loan
+122376,2026-07-23,ASI,Customer,Not meet expectation,Loan application is rejected,Loan
+122377,2026-07-23,ASI,Customer,Not meet expectation,Loan application is rejected,Loan
+122378,2026-07-23,ASI,Customer,Not meet expectation,The status of the limit submission there are obstacles,Bug
