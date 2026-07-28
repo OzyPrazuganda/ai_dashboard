@@ -122379,3 +122379,39 @@
 122376,2026-07-23,ASI,Customer,Not meet expectation,Loan application is rejected,Loan
 122377,2026-07-23,ASI,Customer,Not meet expectation,Loan application is rejected,Loan
 122378,2026-07-23,ASI,Customer,Not meet expectation,The status of the limit submission there are obstacles,Bug
+122379,2026-07-24,AFI,Customer,Not meet expectation,Deactivate account,Account Security
+122380,2026-07-24,AFI,Customer,Not meet expectation,Payment akulaku paylater is not appropriate,Akulaku Paylater
+122381,2026-07-24,AFI,Customer,Not meet expectation,Postponement of bill payments,Collection
+122382,2026-07-24,AFI,Customer,Not meet expectation,Changes to due date,Collection
+122383,2026-07-25,AFI,Customer,Not meet expectation,How to restore my missing akulaku account,Account Security
+122384,2026-07-25,AFI,Customer,Not meet expectation,Deactivate account,Account Security
+122385,2026-07-25,AFI,Customer,Not meet expectation,Request for Bill Payment Code,Installment/Payment Gateway
+122386,2026-07-26,AFI,Customer,Not meet expectation,Payment akulaku paylater is not appropriate,Akulaku Paylater
+122387,2026-07-24,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122388,2026-07-24,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122389,2026-07-24,AFI/ASI,Customer,Issue not clear,Customer service number,No Category
+122390,2026-07-24,AFI/ASI,Customer,Issue not clear,Customer service complaints,No Category
+122391,2026-07-25,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122392,2026-07-26,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122393,2026-07-26,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122394,2026-07-26,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122395,2026-07-24,ASI,Customer,Not meet expectation,PLN token number has not been received,Voucher
+122396,2026-07-24,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122397,2026-07-24,ASI,Customer,Not meet expectation,How to apply for a loan,Loan
+122398,2026-07-24,ASI,Customer,Not meet expectation,Loan status has not been successful,Loan
+122399,2026-07-24,ASI,Customer,Not meet expectation,Loans do not pass verification,Loan
+122400,2026-07-25,ASI,Customer,Not meet expectation,Change Phone Number - Cannot Login (Registered Account),Data Update
+122401,2026-07-25,ASI,Customer,Not meet expectation,How to Change Account Number,Data Update
+122402,2026-07-25,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122403,2026-07-25,ASI,Customer,Not meet expectation,Failed to apply for a loan,Loan
+122404,2026-07-25,ASI,Customer,Not meet expectation,How to increase loan limit,Loan
+122405,2026-07-25,ASI,Customer,Not meet expectation,Want a loan application,Loan
+122406,2026-07-25,ASI,Customer,Not meet expectation,Application login constraints,Bug
+122407,2026-07-25,ASI,Customer,Not meet expectation,Repayment of loan bills,Loan
+122408,2026-07-26,ASI,Customer,Not meet expectation,Login constraints because the cellphone number is not active,Data Update
+122409,2026-07-26,ASI,Customer,Not meet expectation,How to apply for a loan,Loan
+122410,2026-07-26,ASI,Customer,Not meet expectation,Check the loan status,Loan
+122411,2026-07-26,ASI,Customer,Not meet expectation,Loan application is rejected,Loan
+122412,2026-07-26,ASI,Customer,Not meet expectation,How to set a payment pin,Bug
+122413,2026-07-26,ASI,Customer,Not meet expectation,Application login constraints,Bug
+122414,2026-07-26,ASI,Customer,Not meet expectation,KTP verification constraints,Bug
