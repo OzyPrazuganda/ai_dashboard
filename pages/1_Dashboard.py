@@ -166,14 +166,34 @@ def aggregation_ratio(df, date_col, granularity):
 
 
     
-def aggregate_sum(df, date_col, granularity, agg_dict):
+def aggregate_sum(df, date_col, granularity, agg_dict, start_date=None, end_date=None):
     df = df.copy()
     df[date_col] = pd.to_datetime(df[date_col])
 
     if granularity == 'Daily':
         df['Period'] = df[date_col].dt.date
     elif granularity == 'Weekly':
-        df['Period'] = df[date_col].dt.to_period('W').dt.start_time
+        # Use same custom 7-day chunks as aggregate_table_with_granularity
+        # so graph and table week boundaries match exactly
+        if start_date is not None and end_date is not None:
+            sd = pd.to_datetime(start_date)
+            ed = pd.to_datetime(end_date)
+            week_ranges = []
+            cur = sd
+            while cur <= ed:
+                wend = min(cur + timedelta(days=6), ed)
+                week_ranges.append((cur, wend))
+                cur = wend + timedelta(days=1)
+
+            def assign_week(d):
+                for ws, we in week_ranges:
+                    if ws <= d <= we:
+                        return ws
+                return d
+
+            df['Period'] = df[date_col].apply(assign_week)
+        else:
+            df['Period'] = df[date_col].dt.to_period('W').dt.start_time
     elif granularity == 'Monthly':
         df['Period'] = df[date_col].dt.to_period('M').dt.to_timestamp()
     else:
@@ -628,7 +648,7 @@ with st.container():
     df_daily = aggregate_sum(df_like_dislike, 'Date', granularity,{
         "solved_num": "sum",
         "unsolved_num": "sum"
-    })
+    }, start_date=start, end_date=end)
     df_daily.rename(columns={'solved_num': 'Like', 'unsolved_num': 'Dislike'}, inplace=True)
 
     latest_date = df_daily['Date'].max()
@@ -707,16 +727,9 @@ with st.container():
     cols[1].plotly_chart(fig, use_container_width=True)
 
 # Tabel data category like and dislike
+# NOTE: df_like_dislike already filtered by date range (line 620) and company (line 623-626)
+# No second filter needed — previous code double-filtered using reassigned start_date/end_date
 df_like_dislike['unsolved_num'] = pd.to_numeric(df_like_dislike['unsolved_num'], errors='coerce').fillna(0)
-
-# Filter data berdasarkan date range & company jika perlu
-if date_mode == 'Single' and selected_date:
-    df_like_dislike = df_like_dislike[df_like_dislike['Date'].dt.date == selected_date]
-elif date_mode == 'Range' and selected_range and len(selected_range) == 2:
-    df_like_dislike = df_like_dislike[df_like_dislike['Date'].between(start_date, end_date)]
-
-if company_filter:  # multiselect
-    df_like_dislike = df_like_dislike[df_like_dislike['Manual Check [business]'].isin(company_filter)]
 
 # ===== Table 1: Berdasarkan Team/Category =====
 if granularity in ['Weekly', 'Monthly'] and date_mode == 'Range':
