@@ -727,8 +727,10 @@ with st.container():
     cols[1].plotly_chart(fig, use_container_width=True)
 
 # Tabel data category like and dislike
-# NOTE: df_like_dislike already filtered by date range (line 620) and company (line 623-626)
-# No second filter needed — previous code double-filtered using reassigned start_date/end_date
+# For Single date mode, narrow df_like_dislike to selected_date for tables only
+# (chart above already rendered with full range data)
+if date_mode == 'Single' and selected_date:
+    df_like_dislike = df_like_dislike[df_like_dislike['Date'].dt.date == selected_date]
 df_like_dislike['unsolved_num'] = pd.to_numeric(df_like_dislike['unsolved_num'], errors='coerce').fillna(0)
 
 # ===== Table 1: Berdasarkan Team/Category =====

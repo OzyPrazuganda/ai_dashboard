@@ -2335,7 +2335,7 @@ Pertanyaan cust ""Mengapa tidak melakukan pengajuan Pinjaman?, saran seharusnya 
 2216,2023-05-26,2023-05-24,Week 4,January,Yulia Sari,ASI,20257081,2-20257081-3-1_1684947065,CHATBOT OPS,Answer not update by Engineer,PLN transaction has not been successful,Urgent,Bad Survey,Voucher,,,2.0,ASI
 2217,2023-05-26,2023-05-24,Week 4,January,Yulia Sari,AFI,2023360413,2-2023360413-3-1_1684945880,Customer,Information Not Meet Customer Expectations,How to pay Dana Cicil bills,N/A,Bad Survey,Loan,,,1.0,ASI
 2218,2023-05-26,2023-05-25,Week 4,January,Yulia Sari,ASI,80944019,2-80944019-3-1_1684987935,CHATBOT OPS,Answer not update by Engineer,Change of telephone number,Urgent,Bad Survey,Account,,,1.0,ASI
-2219,2023-05-26,2023-05-25,Week 4,January,Yulia Sari,AFI,111479364,2-111479364-3-1_1684975117,Customer,Information Not Meet Customer Expectations,Usage limits that can only be used at certain merchants,N/A,Bad Survey,Akulaku Paylater,,,1.0,ASI
+2219,2023-05-26,2023-05-25,Week 4,January,Yulia Sari,AFI,111479364,2-111479364-3-1_1684975117,Customer,Information Not Meet Customer Expectations,Use of limits that can only be used at certain merchants,N/A,Bad Survey,Akulaku Paylater,,,1.0,ASI
 2220,2023-05-26,2023-05-25,Week 4,January,Yulia Sari,AFI,2023944544,2-2023944544-3-1_1684984482,Customer,Information Not Meet Customer Expectations,Akulaku Paylater cannot be used,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 2221,2023-05-26,2023-05-25,Week 4,January,Yulia Sari,AFI,77062995,2-77062995-3-1_1684991318,Customer,Information Not Meet Customer Expectations,Didn't get credit limit,N/A,Bad Survey,Submission of Limit/Credit Points,,,1.0,ASI
 2222,2023-05-26,2023-05-25,Week 4,January,Yulia Sari,ASI,118804093,2-118804093-3-1_1684995430,CHATBOT OPS,Answer not update by Engineer,Online Merchant - Invalid Receipt Number,Urgent,Bad Survey,Merchant Online,,,1.0,ASI
@@ -23178,22 +23178,22 @@ Seharusnya robot memberikan jawaban chit-chat",2.0,ASI
 22849,2026-07-28,2026-07-27,Week 5,July,Yulia Sari,No Differentiated,2062002786,2-2062002786-3-1_1785104493,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,Robot 2,1.0,ASI
 22850,2026-07-28,2026-07-27,Week 5,July,Yulia Sari,AFI,16868296,2-16868296-3-1_1785119306,Customer,Information Not Meet Customer Expectations,Payment akulaku paylater is not appropriate,N/A,Bad Survey,Akulaku Paylater,872890985243,Robot 2,1.0,ASI
 22851,2026-07-28,2026-07-27,Week 5,July,Yulia Sari,No Differentiated,7263693,2-7263693-3-1_1785151974,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,Robot 2,2.0,ASI
-22852,2026-07-29,2026-07-28,Week 5,July,,,2061013553,2-2061013553-3-1_1785227221,,,,,Bad Survey,,,,1.0,
-22853,2026-07-29,2026-07-28,Week 5,July,,,18585497,2-18585497-3-1_1785239412,,,,,Bad Survey,,,,1.0,
-22854,2026-07-29,2026-07-28,Week 5,July,,,9326464,2-9326464-3-1_1785214250,,,,,Bad Survey,,,,1.0,
-22855,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,,2005934054,2-2005934054-3-1_1785255686,,,,,Bad Survey,,,,1.0,ASI
-22856,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,,2062257522,2-2062257522-3-1_1785193516,,,,,Bad Survey,,,,1.0,ASI
-22857,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,,2028560768,2-2028560768-3-1_1785204386,,,,,Bad Survey,,,,1.0,ASI
-22858,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,,2061304889,2-2061304889-3-1_1785205965,,,,,Bad Survey,,,,1.0,ASI
-22859,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,,2057290760,2-2057290760-3-1_1785210428,,,,,Bad Survey,,,,1.0,ASI
-22860,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,,2053314702,2-2053314702-3-1_1785225944,,,,,Bad Survey,,,,1.0,ASI
-22861,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,,117469818,2-117469818-3-1_1785248252,,,,,Bad Survey,,,,1.0,ASI
-22862,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,,2049840764,2-2049840764-3-1_1785229528,,,,,Bad Survey,,,,1.0,ASI
-22863,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,,2060301897,2-2060301897-3-1_1785242101,,,,,Bad Survey,,,,2.0,ASI
-22864,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,,2027921136,2-2027921136-3-1_1785211759,,,,,Bad Survey,,,,1.0,ASI
-22865,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,,2023181671,2-2023181671-3-1_1785220677,,,,,Bad Survey,,,,1.0,ASI
-22866,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,,2057618198,2-2057618198-3-1_1785202955,,,,,Bad Survey,,,,1.0,ASI
-22867,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,,2045650922,2-2045650922-3-1_1785247815,,,,,Bad Survey,,,,1.0,ASI
-22868,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,,2060105480,2-2060105480-3-1_1785252053,,,,,Bad Survey,,,,1.0,ASI
-22869,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,,2007914485,2-2007914485-3-1_1785222940,,,,,Bad Survey,,,,1.0,ASI
-22870,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,,2016183967,2-2016183967-3-1_1785236201,,,,,Bad Survey,,,,1.0,ASI
+22852,2026-07-29,2026-07-28,Week 5,July,Dyah Arum Wijayanti,No Differentiated,2061013553,2-2061013553-3-1_1785227221,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,AFI
+22853,2026-07-29,2026-07-28,Week 5,July,Dicky Pratama Putra,No Differentiated,18585497,2-18585497-3-1_1785239412,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,AFI
+22854,2026-07-29,2026-07-28,Week 5,July,Dicky Pratama Putra,No Differentiated,9326464,2-9326464-3-1_1785214250,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,AFI
+22855,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,No Differentiated,2005934054,2-2005934054-3-1_1785255686,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+22856,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,No Differentiated,2062257522,2-2062257522-3-1_1785193516,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+22857,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,No Differentiated,2028560768,2-2028560768-3-1_1785204386,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+22858,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,No Differentiated,2061304889,2-2061304889-3-1_1785205965,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+22859,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,No Differentiated,2057290760,2-2057290760-3-1_1785210428,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+22860,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,ASI,2053314702,2-2053314702-3-1_1785225944,Customer,Information Not Meet Customer Expectations,Cancellation of loan application,N/A,Bad Survey,Loan,289410567715,,1.0,ASI
+22861,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,ASI,117469818,2-117469818-3-1_1785248252,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0,ASI
+22862,2026-07-29,2026-07-28,Week 5,July,Yulia Sari,ASI,2049840764,2-2049840764-3-1_1785229528,Customer,Information Not Meet Customer Expectations,Loan limit decreases,N/A,Bad Survey,Loan,289308465411,,1.0,ASI
+22863,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,AFI,2060301897,2-2060301897-3-1_1785242101,CHATBOT OPS,Answer Robot Mistake,Can't pay MANDIRI VA,Urgent,Bad Survey,Installment/Payment Gateway,872173617371171,,2.0,ASI
+22864,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,ASI,2027921136,2-2027921136-3-1_1785211759,Customer,Information Not Meet Customer Expectations,discount while paying off,N/A,Bad Survey,Loan,8729441039654,,1.0,ASI
+22865,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,AFI,2023181671,2-2023181671-3-1_1785220677,Customer,Information Not Meet Customer Expectations,Can't pay Akulaku PayLater bills via BCA,N/A,Bad Survey,Installment/Payment Gateway,87217211163,,1.0,ASI
+22866,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,No Differentiated,2057618198,2-2057618198-3-1_1785202955,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,parah,1.0,ASI
+22867,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,No Differentiated,2045650922,2-2045650922-3-1_1785247815,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+22868,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,ASI,2060105480,2-2060105480-3-1_1785252053,Customer,Information Not Meet Customer Expectations,Can't pay loan bills via BCA,N/A,Bad Survey,Loan,289177017711188,,1.0,ASI
+22869,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,No Differentiated,2007914485,2-2007914485-3-1_1785222940,Customer,Chat Customer No Clear,Chit-chat,N/A,Bad Survey,No Category,,,1.0,ASI
+22870,2026-07-29,2026-07-28,Week 5,July,Nurhamni Septia,ASI,2016183967,2-2016183967-3-1_1785236201,Customer,Information Not Meet Customer Expectations,Loan application is rejected,N/A,Bad Survey,Loan,289424581778,,1.0,ASI
