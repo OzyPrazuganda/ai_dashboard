@@ -122417,7 +122417,7 @@
 122414,2026-07-26,ASI,Customer,Not meet expectation,KTP verification constraints,Bug
 122415,2026-07-27,AFI,Customer,Not meet expectation,,
 122416,2026-07-27,AFI,Customer,Not meet expectation,,
-122417,2026-07-27,AFI,,,,
+122417,2026-07-27,AFI,Customer,Not meet expectation,,
 122418,2026-07-27,AFI/ASI,Customer,Issue not clear,,
 122419,2026-07-27,AFI/ASI,Customer,Issue not clear,,
 122420,2026-07-27,AFI/ASI,Customer,Issue not clear,,
@@ -122428,10 +122428,10 @@
 122425,2026-07-27,ASI,Customer,Not meet expectation,,
 122426,2026-07-28,AFI,Customer,Not meet expectation,Paylater submission failed,Submission of Limit/Credit Points
 122427,2026-07-28,AFI,Customer,Not meet expectation,How to pay installment bills,Installment/Payment Gateway
-122428,2026-07-28,AFI,,,Postponement of bill payments,Collection
-122429,2026-07-28,AFI,,,Deactivate account,Account Security
+122428,2026-07-28,AFI,Customer,Not meet expectation,Postponement of bill payments,Collection
+122429,2026-07-28,AFI,Customer,Not meet expectation,Deactivate account,Account Security
 122430,2026-07-28,AFI,Customer,Not meet expectation,How to pay Paylater bills,Installment/Payment Gateway
-122431,2026-07-28,AFI,,,Payment akulaku paylater is not appropriate,Akulaku Paylater
+122431,2026-07-28,AFI,Customer,Not meet expectation,Payment akulaku paylater is not appropriate,Akulaku Paylater
 122432,2026-07-28,AFI,Customer,Not meet expectation,Deactivate account,Account Security
 122433,2026-07-28,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
 122434,2026-07-28,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
@@ -122484,11 +122484,11 @@
 122481,2026-07-31,AFI,Customer,Not meet expectation,Deactivate account,Account Security
 122482,2026-07-31,AFI,Customer,Not meet expectation,Block permanent limit,Account Security
 122483,2026-07-31,AFI,Customer,Not meet expectation,Deactivate account,Account Security
-122484,2026-08-01,AFI,,,How to check the bill,Installment/Payment Gateway
-122485,2026-08-01,AFI,,,How to restore my missing akulaku account,Account Security
+122484,2026-08-01,AFI,Customer,Not meet expectation,How to check the bill,Installment/Payment Gateway
+122485,2026-08-01,AFI,Customer,Not meet expectation,How to restore my missing akulaku account,Account Security
 122486,2026-08-01,AFI,Customer,Not meet expectation,Deactivate account,Account Security
 122487,2026-08-01,AFI,Customer,Not meet expectation,How to submit akulaku paylater,Akulaku Paylater
-122488,2026-08-02,AFI,,,How to pay the remaining bill,Installment/Payment Gateway
+122488,2026-08-02,AFI,Customer,Not meet expectation,How to pay the remaining bill,Installment/Payment Gateway
 122489,2026-08-02,AFI,Customer,Not meet expectation,How to activate the qris feature,Akulaku Paylater
 122490,2026-07-31,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
 122491,2026-07-31,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
@@ -122536,8 +122536,8 @@
 122533,2026-08-03,ASI,Customer,Not meet expectation,Want a loan application,Loan
 122534,2026-08-03,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
 122535,2026-08-03,ASI,Customer,Not meet expectation,How to apply for a loan,Loan
-122536,2026-08-04,AFI,,,Details of installment bills,Installment/Payment Gateway
-122537,2026-08-04,AFI,,,Request for Bill Payment Code,Installment/Payment Gateway
+122536,2026-08-04,AFI,Customer,Not meet expectation,Details of installment bills,Installment/Payment Gateway
+122537,2026-08-04,AFI,Customer,Not meet expectation,Request for Bill Payment Code,Installment/Payment Gateway
 122538,2026-08-04,AFI,Customer,Not meet expectation,Deactivate account,Account Security
 122539,2026-08-04,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
 122540,2026-08-04,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
@@ -122548,3 +122548,39 @@
 122545,2026-08-04,ASI,Customer,Not meet expectation,Loan limit does not rise,Loan
 122546,2026-08-04,ASI,Customer,Not meet expectation,Already paid off the loan but the bill appeared,Loan
 122547,2026-08-04,ASI,Customer,Not meet expectation,Want a loan application,Loan
+122548,2026-08-05,AFI,Customer,Not meet expectation,Credit limit complaints reduced,Submission of Limit/Credit Points
+122549,2026-08-05,AFI,,,How to register my akulaku,Submission of Limit/Credit Points
+122550,2026-08-05,AFI,,,How to pay installment bills,Installment/Payment Gateway
+122551,2026-08-05,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122552,2026-08-05,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122553,2026-08-05,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122554,2026-08-05,ASI,Customer,Not meet expectation,Merchant Online - Cancel Orders because there is no stock,Merchant Online
+122555,2026-08-05,ASI,Customer,Not meet expectation,"Already paid the loan bill, but can't apply for a loan",Loan
+122556,2026-08-05,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122557,2026-08-05,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122558,2026-08-05,ASI,Customer,Not meet expectation,How to apply for a loan,Loan
+122559,2026-08-05,ASI,Customer,Not meet expectation,How to apply for a loan,Loan
+122560,2026-08-05,ASI,Customer,Not meet expectation,Can't submit a loan,Loan
+122561,2026-08-05,ASI,Customer,Not meet expectation,The loan bill next month has not yet appeared,Loan
+122562,2026-08-06,AFI,Customer,Not meet expectation,Installment Bill Repayment Discount,Installment/Payment Gateway
+122563,2026-08-06,AFI,Customer,Not meet expectation,Deactivate account,Account Security
+122564,2026-08-06,AFI,Customer,Not meet expectation,Deactivate account,Account Security
+122565,2026-08-06,AFI,Customer,Not meet expectation,SLIK nominal is not listed (AFI),SLIK
+122566,2026-08-06,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122567,2026-08-06,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122568,2026-08-06,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122569,2026-08-06,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122570,2026-08-06,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122571,2026-08-06,AFI/ASI,Customer,Issue not clear,Chit-chat,No Category
+122572,2026-08-06,ASI,Customer,Not meet expectation,Login constraints because the cellphone number is not active,Data Update
+122573,2026-08-06,ASI,Customer,Not meet expectation,How to Change Account Number,Data Update
+122574,2026-08-06,ASI,Customer,Not meet expectation,Check the history of submission of installment funds,Loan
+122575,2026-08-06,ASI,Customer,Not meet expectation,loan limit reduced,Loan
+122576,2026-08-06,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122577,2026-08-06,ASI,Customer,Not meet expectation,Unable to pay loan via BCA,Loan
+122578,2026-08-06,ASI,Customer,Not meet expectation,Want a loan application,Loan
+122579,2026-08-06,ASI,Customer,Not meet expectation,Want a loan application,Loan
+122580,2026-08-06,ASI,Customer,Not meet expectation,"On time paying loans, but can't borrow",Loan
+122581,2026-08-06,ASI,Customer,Not meet expectation,Application login constraints,Bug
+122582,2026-08-06,ASI,Customer,Not meet expectation,discount while paying off,Loan
+122583,2026-08-06,ASI,Customer,Not meet expectation,Repayment of loan bills,Loan
