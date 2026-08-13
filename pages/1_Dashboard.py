@@ -666,7 +666,7 @@ with st.container():
         y='Total',
         color='Category',
         color_discrete_map={'Like': 'light blue','Dislike': 'red'},
-        text='Total'
+        text='Total' 
     )
 
     bar_fig.update_traces(textposition='inside')
@@ -859,19 +859,19 @@ with st.container():
             .sort_values('Total Sample', ascending=False)
         )
 
-    # === Show the data ===
-    st.markdown('##### QC Dislike')
-    with st.container():
-        cols = st.columns([4, 3])
+    # # === Show the data ===
+    # st.markdown('##### QC Dislike')
+    # with st.container():
+    #     cols = st.columns([4, 3])
 
-        with cols[0]:
-            render_aggrid(main_sub_summary)
+    #     with cols[0]:
+    #         render_aggrid(main_sub_summary)
 
-        with cols[1]:
-            render_aggrid(team_cat_qc)
+    #     with cols[1]:
+    #         render_aggrid(team_cat_qc)
     
-    with st.container():
-        cols = st.columns([3,2])
+    # with st.container():
+    #     cols = st.columns([3,2])
 
-        with cols[0]:
-            render_aggrid(bg_summary)
+    #     with cols[0]:
+    #         render_aggrid(bg_summary)
