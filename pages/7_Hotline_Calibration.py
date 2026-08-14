@@ -504,7 +504,7 @@ for _, row in df.iterrows():
                 rows.append(['', ''])
 
     if alasan:
-        rows.append(['Text Sebelum', alasan])
+        rows.append(['Alasan', alasan])
 
     if not rows and not screenshot_file_1 and not audio_filename:
         continue
@@ -541,7 +541,7 @@ if selected_date not in meeting_data:
     st.stop()
 
 # Date filter
-manual_order = ['Azer', 'Aulia', 'Neneng', 'Reza']
+manual_order = ['Neneng', 'Reza', 'Aulia', 'Azer']
 agent_list = [agent for agent in manual_order if agent in {entry['agent'] for entry in meeting_data[selected_date]}]
 selected_agent = st.sidebar.radio('Agent Sampling', agent_list)
 
