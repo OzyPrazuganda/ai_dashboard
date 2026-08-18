@@ -631,7 +631,7 @@ with st.container():
 # Like and Dislike
 st.markdown('##### Like and Dislike')
 with st.container():
-    cols = st.columns([1,4])
+    cols = st.columns([2,2])
     
     #The Linechart
     df_like_dislike = load_csv('dataset_kula/kula_like_dislike.csv')
@@ -639,81 +639,81 @@ with st.container():
 
     df_like_dislike = df_like_dislike[(df_like_dislike['Date'] >= pd.to_datetime(start)) & (df_like_dislike['Date'] <= pd.to_datetime(end))]
 
-    # Filter company
+    # Split by model BEFORE company filter:
+    # 3-1robot2 (Code == "0") has no business labels, so company filter would drop all its rows
+    df_like_dislike['Code'] = df_like_dislike['Code'].astype(str)
+    df_ld_robot1 = df_like_dislike[df_like_dislike['Code'] != '0']
+    df_ld_robot2 = df_like_dislike[df_like_dislike['Code'] == '0']
+
+    # Apply company filter only to robot1 (robot2 has no business differentiation)
     if company_filter:
+        df_ld_robot1 = df_ld_robot1[
+            df_ld_robot1['Manual Check [business]'].isin(company_filter)
+        ]
+        # Also filter df_like_dislike for downstream tables
         df_like_dislike = df_like_dislike[
             df_like_dislike['Manual Check [business]'].isin(company_filter)
         ]
 
-    df_daily = aggregate_sum(df_like_dislike, 'Date', granularity,{
+    # --- Aggregation for 3-1robot (previous model) ---
+    df_daily_r1 = aggregate_sum(df_ld_robot1, 'Date', granularity, {
         "solved_num": "sum",
         "unsolved_num": "sum"
     }, start_date=start, end_date=end)
-    df_daily.rename(columns={'solved_num': 'Like', 'unsolved_num': 'Dislike'}, inplace=True)
+    df_daily_r1.rename(columns={'solved_num': 'Like', 'unsolved_num': 'Dislike'}, inplace=True)
 
-    latest_date = df_daily['Date'].max()
-    latest_data = df_daily[df_daily['Date'] == latest_date].melt(
-        id_vars='Date',
-        value_vars=['Like', 'Dislike'],
-        var_name='Category',
-        value_name='Total'
-    )
+    # --- Aggregation for 3-1robot2 (new model) ---
+    df_daily_r2 = aggregate_sum(df_ld_robot2, 'Date', granularity, {
+        "solved_num": "sum",
+        "unsolved_num": "sum"
+    }, start_date=start, end_date=end)
+    df_daily_r2.rename(columns={'solved_num': 'Like', 'unsolved_num': 'Dislike'}, inplace=True)
 
-    # Bar chart
-    bar_fig = px.bar(
-        latest_data,
-        x='Category',
-        y='Total',
-        color='Category',
-        color_discrete_map={'Like': 'light blue','Dislike': 'red'},
-        text='Total' 
-    )
+    latest_date = df_daily_r1['Date'].max() if not df_daily_r1.empty else None
+    latest_data = pd.DataFrame()
+    if latest_date is not None:
+        latest_data = df_daily_r1[df_daily_r1['Date'] == latest_date].melt(
+            id_vars='Date',
+            value_vars=['Like', 'Dislike'],
+            var_name='Category',
+            value_name='Total'
+        )
 
-    bar_fig.update_traces(textposition='inside')
-    bar_fig.update_layout(
-        yaxis_title='Jumlah',
-        xaxis_title=None,
-        showlegend=False,
-        template='plotly_white'
-    )
+    # Plot line chart — 3-1robot (previous model)
+    fig_r1 = go.Figure()
 
-    # Tampilkan di kolom kiri
-    cols[0].plotly_chart(bar_fig, use_container_width=True)
+    if not df_daily_r1.empty:
+        fig_r1.add_trace(go.Scatter(
+            x=df_daily_r1['Date'],
+            y=df_daily_r1['Like'],
+            mode='lines+markers+text',
+            name='Like',
+            text=[f"<span style='color:black'>{x}" for x in df_daily_r1['Like']],
+            textposition='top center',
+            fill='tonexty',
+            fillcolor='rgba(0, 123, 255, 0.2)'
+        ))
 
+        fig_r1.add_trace(go.Scatter(
+            x=df_daily_r1['Date'],
+            y=df_daily_r1['Dislike'],
+            mode='lines+markers+text',
+            name='Dislike',
+            line=dict(color='red'),
+            text=[f"<span style='color:black'>{x}" for x in df_daily_r1['Dislike']],
+            textposition='top center',
+            fill='tonexty',
+            fillcolor='rgba(255,0,0,0.2)'
+        ))
 
-    # Plot line chart
-    fig = go.Figure()
+        x_min_r1 = df_ld_robot1['Date'].min()
+        x_max_r1 = df_ld_robot1['Date'].max()
+        fig_r1.update_layout(
+            xaxis=dict(range=[x_min_r1 - pd.Timedelta(days=0.5), x_max_r1 + pd.Timedelta(days=0.5)]),
+        )
 
-    # Like
-    fig.add_trace(go.Scatter(
-        x=df_daily['Date'],
-        y=df_daily['Like'],
-        mode='lines+markers+text',
-        name='Like',
-        text=[f"<span style='color:black'>{x}" for x in df_daily['Like']],
-        textposition='top center',
-        fill='tonexty',
-        fillcolor='rgba(0, 123, 255, 0.2)'
-    ))
-
-    # Dislike
-    fig.add_trace(go.Scatter(
-        x=df_daily['Date'],
-        y=df_daily['Dislike'],
-        mode='lines+markers+text',
-        name='Dislike',
-        line=dict(color='red'),
-        text=[f"<span style='color:black'>{x}" for x in df_daily['Dislike']],
-        textposition='top center',
-        fill='tonexty',
-        fillcolor='rgba(255,0,0,0.2)'
-    ))
-
-    x_min = df_like_dislike['Date'].min()
-    x_max = df_like_dislike['Date'].max()
-
-    fig.update_layout(
-        xaxis=dict(range=[x_min - pd.Timedelta(days=0.5), x_max + pd.Timedelta(days=0.5)]),
+    fig_r1.update_layout(
+        title=dict(text='3-1robot (Previous Model)', x=0.4),
         yaxis=dict(title=None),
         legend=dict(
             orientation="v",
@@ -724,7 +724,54 @@ with st.container():
         )
     )
 
-    cols[1].plotly_chart(fig, use_container_width=True)
+    cols[0].plotly_chart(fig_r1, use_container_width=True)
+
+    # Plot line chart — 3-1robot2 (New Model)
+    fig_r2 = go.Figure()
+
+    if not df_daily_r2.empty:
+        fig_r2.add_trace(go.Scatter(
+            x=df_daily_r2['Date'],
+            y=df_daily_r2['Like'],
+            mode='lines+markers+text',
+            name='Like',
+            text=[f"<span style='color:black'>{x}" for x in df_daily_r2['Like']],
+            textposition='top center',
+            fill='tonexty',
+            fillcolor='rgba(0, 123, 255, 0.2)'
+        ))
+
+        fig_r2.add_trace(go.Scatter(
+            x=df_daily_r2['Date'],
+            y=df_daily_r2['Dislike'],
+            mode='lines+markers+text',
+            name='Dislike',
+            line=dict(color='red'),
+            text=[f"<span style='color:black'>{x}" for x in df_daily_r2['Dislike']],
+            textposition='top center',
+            fill='tonexty',
+            fillcolor='rgba(255,0,0,0.2)'
+        ))
+
+        x_min_r2 = df_ld_robot2['Date'].min()
+        x_max_r2 = df_ld_robot2['Date'].max()
+        fig_r2.update_layout(
+            xaxis=dict(range=[x_min_r2 - pd.Timedelta(days=0.5), x_max_r2 + pd.Timedelta(days=0.5)]),
+        )
+
+    fig_r2.update_layout(
+        title=dict(text='3-1robot2 (Latest Model)', x=0.4),
+        yaxis=dict(title=None),
+        legend=dict(
+            orientation="v",
+            yanchor="top",
+            y=1.1,
+            xanchor="right",
+            x=1
+        )
+    )
+
+    cols[1].plotly_chart(fig_r2, use_container_width=True)
 
 # Tabel data category like and dislike
 # For Single date mode, narrow df_like_dislike to selected_date for tables only
