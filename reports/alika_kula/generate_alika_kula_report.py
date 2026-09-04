@@ -28,6 +28,7 @@ def build_figures():
     frames = {}
     for month, frame in raw.items():
         frame = frame.loc[frame["currentAccount"].isin(["3-1-robot", "3-1-robot2"])].copy()
+        frame["month"] = month
         frame["datetime"] = pd.to_datetime(frame["createTime"], errors="coerce")
         frame["date"] = frame["datetime"].dt.normalize()
         frame["score_num"] = pd.to_numeric(frame["score"], errors="coerce")
@@ -71,43 +72,22 @@ def build_figures():
     plt.close(fig)
 
     all_data = pd.concat(frames.values(), ignore_index=True)
-    daily = all_data.groupby("date").agg(conversations=("id", "size"), rated=("rated", "sum"), good=("good", "sum"), score_sum=("score_num", "sum")).reset_index()
-    daily["good_rate"] = 100 * daily["good"] / daily["rated"]
-    daily["csat"] = daily["score_sum"] / daily["rated"]
-    daily["response_rate"] = 100 * daily["rated"] / daily["conversations"]
-    for column in ["conversations", "good_rate", "csat", "response_rate"]:
-        daily[column + "_7d"] = daily[column].rolling(7, min_periods=3).mean()
-    fig, axes = plt.subplots(2, 2, figsize=(12, 7), sharex=True)
-    specs = [("conversations_7d", "7-day average conversations", "Conversations/day"), ("good_rate_7d", "7-day good-survey rate", "Good surveys (%)"), ("csat_7d", "7-day average CSAT", "CSAT score"), ("response_rate_7d", "7-day survey response rate", "Response rate (%)")]
-    for axis, (column, title, ylabel) in zip(axes.flat, specs):
-        axis.plot(daily["date"], daily[column], color="#264653", linewidth=2)
-        axis.axvline(pd.Timestamp("2026-06-28"), color="#d95f02", linestyle="--", label="Candidate June 28")
-        axis.axvline(pd.Timestamp("2026-07-31"), color="#1b9e77", linestyle="--", label="Observed July 31")
-        axis.set_title(title)
-        axis.set_ylabel(ylabel)
-        axis.grid(alpha=0.25)
-    axes[0, 0].legend(frameon=False, fontsize=7)
-    fig.suptitle("KULA Daily Trends and ALIKA Cutoff Sensitivity", fontweight="bold")
-    fig.tight_layout()
-    trend_path = FIGURE_DIR + "\\figure3_daily_trends.png"
-    fig.savefig(trend_path, dpi=180, bbox_inches="tight")
-    plt.close(fig)
-
-    marker = all_data.groupby("date").agg(conversations=("id", "size"), marked=("from_alika", "sum")).reset_index()
-    marker["coverage"] = 100 * marker["marked"] / marker["conversations"]
-    fig, axis = plt.subplots(figsize=(12, 3.8))
-    axis.bar(marker["date"], marker["coverage"], color="#e9c46a")
-    axis.axvline(pd.Timestamp("2026-06-28"), color="#d95f02", linestyle="--", label="Candidate June 28")
-    axis.axvline(pd.Timestamp("2026-07-31"), color="#1b9e77", linestyle="--", label="Observed July 31")
-    axis.set_title("Daily Share of KULA Conversations Marked from ALIKA", fontweight="bold")
-    axis.set_ylabel("Marked conversations (%)")
-    axis.legend(frameon=False)
+    monthly_forwarding = all_data.groupby("month").agg(
+        alika_forwarded=("from_alika", "sum"),
+        kula_conversations=("id", "size"),
+    ).reindex(["May", "June", "July", "August"])
+    monthly_forwarding["forwarded_pct"] = 100 * monthly_forwarding["alika_forwarded"] / monthly_forwarding["kula_conversations"]
+    fig, axis = plt.subplots(figsize=(12, 4.2))
+    bars = axis.bar(monthly_forwarding.index, monthly_forwarding["forwarded_pct"], color=["#3976a8", "#3976a8", "#3976a8", "#d77932"])
+    axis.bar_label(bars, labels=[f"{count:,} ({pct:.3f}%)" for count, pct in zip(monthly_forwarding["alika_forwarded"], monthly_forwarding["forwarded_pct"])], padding=3, fontsize=8)
+    axis.set_title("Monthly KULA Conversations Marked as Forwarded from ALIKA", fontweight="bold")
+    axis.set_ylabel("ALIKA-forwarded conversations (% of KULA volume)")
     axis.grid(axis="y", alpha=0.25)
     fig.tight_layout()
-    marker_path = FIGURE_DIR + "\\figure4_marker_coverage.png"
-    fig.savefig(marker_path, dpi=180, bbox_inches="tight")
+    forwarding_path = FIGURE_DIR + "\\figure3_monthly_alika_forwarding.png"
+    fig.savefig(forwarding_path, dpi=180, bbox_inches="tight")
     plt.close(fig)
-    return volume_path, quality_path, trend_path, marker_path
+    return volume_path, quality_path, forwarding_path
 
 
 FIGURES = build_figures()
@@ -208,18 +188,18 @@ byline.alignment = WD_ALIGN_PARAGRAPH.CENTER
 byline.add_run("Analysis period: 1 May-31 August 2026 | Report date: 3 September 2026")
 
 add_heading(document, "Abstract", 1)
-add_body(document, "Background: This study assessed whether KULA service outcomes changed during the period in which conversations were observed to route from ALIKA. Methods: KULA records from May through August 2026 were deduplicated by conversation identifier, restricted to the account labels 3-1-robot and 3-1-robot2, and compared across complete export dates. Valid survey scores were 1-5; good surveys were scores 3-5. The primary cutoff was the first explicit ALIKA routing marker, 31 July 2026. Welch's t-test compared mean CSAT and a Pearson chi-square test compared good/bad survey composition. Results: The observed-routing period had 190,417 conversations across 29 complete days versus 643,117 across 91 days before routing. Mean CSAT increased from 3.250 to 3.361 (+0.111, p=0.038), while good-survey rate increased from 58.70% to 60.93% (+2.23 percentage points, p=0.113). Survey response rate decreased from 0.992% to 0.790%. The June 28 candidate date produced larger differences, but explicit routing markers did not validate it. Conclusion: KULA outcomes improved in the observed routing period, but the evidence does not establish that ALIKA caused the improvement. Sparse and delayed routing markers, falling response rates, temporal confounding, and low power for the good-survey endpoint limit causal interpretation.")
+add_body(document, "Background: This study assessed whether KULA service outcomes changed during the period in which conversations were observed to route from ALIKA. Methods: KULA records from May through August 2026 were deduplicated by conversation identifier, restricted to the account labels 3-1-robot and 3-1-robot2, and compared across complete export dates. Valid survey scores were 1-5; good surveys were scores 3-5. The primary cutoff was the first explicit ALIKA routing marker, 31 July 2026. Welch's t-test compared mean CSAT and a Pearson chi-square test compared good/bad survey composition. Results: The observed-routing period had 190,417 conversations across 29 complete days versus 643,117 across 91 days before routing. Mean CSAT increased from 3.250 to 3.361 (+0.111, p=0.038), while good-survey rate increased from 58.70% to 60.93% (+2.23 percentage points, p=0.113). Survey response rate decreased from 0.992% to 0.790%. Monthly ALIKA-marked forwarding was 0 conversations in May, 0 in June, 1 in July, and 772 in August; August's 772 marked conversations represented 0.423% of complete-date KULA volume. Conclusion: KULA outcomes improved in the observed routing period, but the evidence does not establish that ALIKA caused the improvement. Sparse and delayed routing markers, falling response rates, temporal confounding, and low power for the good-survey endpoint limit causal interpretation.")
 add_body(document, "Keywords: customer satisfaction; CSAT; chatbot routing; before-after study; service operations; observational analysis", italic=True)
 
 add_heading(document, "1. Introduction", 1)
 add_body(document, "Operational teams often evaluate a conversational-system rollout by comparing customer feedback before and after routing changes. Such comparisons are useful for monitoring, but they can overstate causal effects when rollout timing is uncertain, exposure is incompletely recorded, or customer composition changes over time. This analysis examines the relationship between ALIKA routing and KULA outcomes using the available export data.")
-add_body(document, "The prespecified candidate launch date supplied with the analysis was 28 June 2026. The primary analysis instead uses the earliest complete-date KULA record whose changeFlag explicitly indicates transfer from ALIKA, because that is an observable data event. The study question is therefore deliberately narrower than a causal launch evaluation: did KULA volume and survey outcomes differ after the first observed ALIKA routing marker?")
+add_body(document, "The primary analysis uses the earliest complete-date KULA record whose changeFlag explicitly indicates transfer from ALIKA, because that is an observable data event. The study question is therefore deliberately narrower than a causal launch evaluation: did KULA volume and survey outcomes differ after the first observed ALIKA routing marker?")
 
 add_heading(document, "2. Methods", 1)
 add_heading(document, "2.1 Design and data preparation", 2)
 add_body(document, "This was a retrospective, uncontrolled before-after study. Twenty-six May-July exports and eight August exports were concatenated within month and deduplicated by id. KULA traffic was defined as currentAccount in {3-1-robot, 3-1-robot2}. Dates whose latest available record did not reach hour 23 were excluded from normalized daily and phase comparisons; 18, 20, and 31 August were incomplete and excluded. This yielded 833,534 complete-date KULA conversations across the four months.")
 add_heading(document, "2.2 Measures", 2)
-add_body(document, "Conversation volume was the number of unique deduplicated conversations. Survey respondents were records with numeric scores from 1 through 5. CSAT was the arithmetic mean valid score. Good-survey rate was the proportion of valid respondents scoring 3-5, and bad-survey rate was the proportion scoring 1-2. Survey response rate was valid respondents divided by conversations. The routing marker was a case-insensitive search for Alika in changeFlag.")
+add_body(document, "Conversation volume was the number of unique deduplicated conversations. Survey respondents were records with numeric scores from 1 through 5. CSAT was calculated by adding all valid survey scores and dividing by the number of valid respondents. For example, five valid scores of 5, 4, 3, 2, and 1 sum to 15; dividing by five gives a CSAT of 3.0. This is the average rating among people who answered, not a percentage and not a score assigned to conversations without a survey response. Good-survey rate was the proportion of valid respondents scoring 3-5, and bad-survey rate was the proportion scoring 1-2. Survey response rate was valid respondents divided by conversations. The routing marker was a case-insensitive search for Alika in changeFlag. Monthly ALIKA forwarding was the number of complete-date KULA conversations with that marker and its percentage of all complete-date KULA conversations in the month.")
 add_heading(document, "2.3 Statistical analysis", 2)
 add_body(document, "The primary comparison used Welch's independent-samples t-test for CSAT and an uncorrected Pearson chi-square test for the 2-by-2 good/bad survey table, with alpha=0.05. Monthly differences were assessed with one-way ANOVA, Kruskal-Wallis, and a monthly good/bad chi-square test. A sensitivity analysis used 28 June as the cutoff. A post hoc two-proportion power calculation estimated the additional routing-period respondents needed to reach approximately 80% power for the observed good-survey difference, holding the pre-period sample fixed. Analyses were performed in Python with pandas, NumPy, SciPy, and Matplotlib/Seaborn.")
 
@@ -231,7 +211,16 @@ add_table(document, ["Month", "Conversations", "Complete days", "Respondents", "
     ["July", "211,595", "31", "1,780", "3.417", "63.32", "0.841"],
     ["August", "182,503", "28", "1,451", "3.357", "60.79", "0.795"],
 ], [0.8, 1.2, 1.0, 1.0, 0.7, 0.8, 0.9])
-add_body(document, "The candidate date of 28 June was not validated by the routing marker. The first ALIKA-marked KULA conversation occurred at 09:54:24 on 31 July 2026. Only 773 of the 190,417 conversations in the observed-routing period were marked from ALIKA (0.41%), and the marker was concentrated in later August records. This makes the marker a sparse exposure indicator rather than a complete treatment assignment.")
+add_body(document, "The first ALIKA-marked KULA conversation occurred at 09:54:24 on 31 July 2026. Monthly marked forwarding was 0 of 240,894 KULA conversations in May, 0 of 198,542 in June, 1 of 211,595 in July, and 772 of 182,503 in August. Thus, the marker was concentrated in August and represented 0.423% of August's complete-date KULA volume. This makes the marker a sparse exposure indicator rather than a complete treatment assignment.")
+
+add_heading(document, "3.2 Monthly ALIKA forwarding", 2)
+add_table(document, ["Month", "ALIKA-forwarded", "KULA conversations", "Forwarded %"], [
+    ["May", "0", "240,894", "0.000%"],
+    ["June", "0", "198,542", "0.000%"],
+    ["July", "1", "211,595", "0.000%"],
+    ["August", "772", "182,503", "0.423%"],
+], [1.0, 1.4, 1.5, 1.0])
+add_body(document, "This table counts only conversations whose changeFlag explicitly contains ALIKA. The percentage answers how much of each month's KULA traffic was visibly marked as forwarded from ALIKA. It should not be interpreted as the total share of ALIKA-influenced conversations, because an unmarked conversation may still have had exposure that was not recorded in this field.")
 
 add_heading(document, "3.2 Primary before-versus-observed-routing comparison", 2)
 add_table(document, ["Outcome", "Before (through 30 Jul)", "Routing period (from 31 Jul)", "Difference", "p-value"], [
@@ -243,28 +232,23 @@ add_table(document, ["Outcome", "Before (through 30 Jul)", "Routing period (from
 ], [1.5, 1.3, 1.5, 1.4, 0.7])
 add_body(document, "The CSAT difference was statistically significant at the nominal 0.05 level. The good-survey proportion was directionally higher but did not meet that threshold. Because the analysis tested multiple related outcomes and did not adjust for multiplicity, the CSAT p-value should be interpreted as exploratory rather than confirmatory.")
 
-add_heading(document, "3.3 Monthly and sensitivity findings", 2)
+add_heading(document, "3.3 Monthly findings", 2)
 add_body(document, "Outcomes varied across months: the monthly CSAT means were 3.148, 3.238, 3.417, and 3.357 from May through August. The monthly omnibus tests were significant for CSAT by ANOVA (F=8.555, p<0.001), score distributions by Kruskal-Wallis (H=24.369, p<0.001), and good/bad composition by chi-square (chi-square=25.172, p<0.001). These findings show time variation, but they do not identify ALIKA as the cause of that variation.")
-add_table(document, ["Cutoff", "CSAT before", "CSAT after", "CSAT p", "Good before", "Good after", "Good p"], [
-    ["28 Jun candidate", "3.183", "3.386", "<0.001", "56.81%", "62.15%", "<0.001"],
-    ["31 Jul observed marker", "3.250", "3.361", "0.038", "58.70%", "60.93%", "0.113"],
-], [1.3, 1.0, 1.0, 0.8, 1.0, 1.0, 0.8])
-add_body(document, "The candidate-date sensitivity result is larger, but it should not be presented as validated treatment evidence because the marker data place the first explicit ALIKA routing event on 31 July. The candidate comparison also combines June, July, and August calendar time in a way that may capture unrelated temporal changes.")
+add_body(document, "The first observed ALIKA routing marker occurred late in the study period, so the before-versus-routing comparison has unequal time windows. The monthly pattern also shows that survey outcomes changed over time independently of the sparse forwarding marker. These results should therefore be treated as monitoring evidence rather than proof of an ALIKA effect.")
 
 add_heading(document, "3.4 Precision and power", 2)
 add_body(document, "For the observed +2.23 percentage-point good-survey difference, the available sample provided approximately 35.3% power under the notebook's two-proportion approximation. Approximately 9,316 routing-period respondents would be required for 80% power with the pre-period sample fixed; 7,811 additional respondents were estimated, equivalent to about 151 additional complete days at the observed rate of 51.9 respondents per day. Thus, one or two additional 30-day months would not be expected to reach 80% power under the same assumptions; the notebook estimates approximately six additional 30-day months.")
 
-add_heading(document, "3.5 Visual analysis", 2)
+add_heading(document, "3.4 Visual analysis", 2)
 add_figure(document, FIGURES[0], "Figure 1. KULA complaint volume by month and average volume per complete day.", "Volume declined from 240,894 conversations in May to 182,503 complete-date conversations in August. The daily view shows that this is not only a calendar-length effect: average volume fell from 7,771 conversations per day in May to 6,518 in August. The observed-routing period averaged 6,566 conversations per day, 7.1% below the preceding period. This operational change is a potential confounder when interpreting survey outcomes.")
 add_figure(document, FIGURES[1], "Figure 2. Monthly survey quality and valid-rating score distribution.", "The share of good surveys rose from 56.10% in May to 63.32% in July, then eased to 60.79% in August. The score distribution shows that the improvement is largely reflected in a lower share of score-1 responses and a higher share of score-5 responses in July and August. Because response rates also decline over the same period, the chart describes respondents rather than all conversations and may be affected by non-response selection.")
-add_figure(document, FIGURES[2], "Figure 3. Seven-day rolling daily trends with candidate and observed ALIKA cutoffs.", "The rolling trends provide temporal context that monthly averages conceal. The June 28 candidate line precedes the first explicit ALIKA marker on July 31; therefore, changes near the candidate line cannot be attributed to verified ALIKA routing. The observed July 31 line occurs late in the analysis window, and the marker does not correspond to a broad, immediate exposure jump. This visual supports treating the primary result as an association with a late-period regime, not a clean intervention effect.")
-add_figure(document, FIGURES[3], "Figure 4. Daily percentage of KULA conversations explicitly marked from ALIKA.", "Marker coverage is zero on most days, begins with one marked conversation on July 31, and increases only on selected later August days. The sparse, intermittent pattern means changeFlag cannot be used as a complete indicator of ALIKA exposure. In particular, the two-line cutoff comparison should not be read as evidence that every post-July-31 conversation was routed from ALIKA.")
+add_figure(document, FIGURES[2], "Figure 3. Monthly KULA conversations explicitly marked as forwarded from ALIKA.", "The monthly chart shows no marked forwarding in May or June, one marked conversation in July, and 772 in August. Even in August, the marked conversations represented only 0.423% of complete-date KULA volume. This is useful operational evidence about recorded forwarding, but it is too sparse to represent all ALIKA exposure.")
 
 add_heading(document, "4. Discussion", 1)
 add_body(document, "The data show a modest improvement in average KULA survey score after 31 July, alongside a non-significant increase in the good-survey rate. The pattern is compatible with improved customer experience, but the design cannot separate an ALIKA effect from calendar trends, changes in traffic mix, operational changes, differences in survey participation, or regression to the mean. The concurrent 7.1% decline in daily conversation volume and 0.202 percentage-point decline in survey response rate are especially important: the observed respondents may not represent the same customer population before and after the cutoff.")
-add_body(document, "The routing marker is not suitable for a direct exposed-versus-unexposed causal comparison in this extract. Marked conversations represented only 0.41% of the routing-period volume and had just two valid survey respondents; their CSAT and survey proportions are therefore unstable. The first non-null autoTransferType also appeared earlier, on 14 May, and only two such records were present, so it does not provide a reliable rollout boundary.")
+add_body(document, "The routing marker is not suitable for a direct exposed-versus-unexposed causal comparison in this extract. Only 773 conversations were marked from ALIKA across the observed-routing period, and the marked subgroup had just two valid survey respondents; their CSAT and survey proportions are therefore unstable. The first non-null autoTransferType also appeared earlier, on 14 May, and only two such records were present, so it does not provide a reliable rollout boundary.")
 add_heading(document, "4.1 Strengths", 2)
-add_body(document, "Strengths include explicit deduplication, inclusion of both KULA account labels, exclusion of incomplete export dates, separation of survey quality from complaint volume, use of a routing-marker validation step, and a prespecified sensitivity analysis around the supplied candidate date.")
+add_body(document, "Strengths include explicit deduplication, inclusion of both KULA account labels, exclusion of incomplete export dates, separation of survey quality from complaint volume, use of a routing-marker validation step, and a monthly count of recorded ALIKA forwarding.")
 add_heading(document, "4.2 Limitations", 2)
 add_body(document, "Limitations include the uncontrolled before-after design; uncertain and sparse exposure measurement; unequal phase lengths; possible changes in customer mix and operations; low and declining survey response; repeated observations that may not be independent at the user level; no confidence intervals or multiplicity correction in the notebook; and the stale-kernel failure of the final machine-readable conclusion cell. The numerical tables used here were generated successfully from the preceding analytical cells, but the notebook should be rerun from the top for a clean reproducibility record.")
 
